@@ -1,0 +1,26 @@
+---
+description: 
+alwaysApply: true
+enabled: true
+updatedAt: 2026-07-22T06:59:20.094Z
+provider: 
+---
+
+# 分发方式
+本项目为**公开发布到 Chrome Web Store / Edge Add-ons 商店的扩展**，非企业内部发布、非离线 CRX 分发。
+
+约束：
+- 所有代码必须**打包为 zip 后上传商店**，不得依赖本地未打包文件
+- 禁止在扩展内加载外部 JS（如 CDN、远程脚本），所有运行时逻辑必须包含在 zip 包中
+- 禁止通过 `fetch()` 拉取并执行任意远程代码（eval / new Function / 动态 import 外部 URL）
+- 更新只能通过**商店自动更新机制**，不得在扩展内部实现自更新、热更新逻辑
+- 若使用远程资源（如 JSON 配置、CDN 图片），必须：
+  - 明确声明用途
+  - 确保内容不可变为可执行代码
+  - 不在 CSP 中放宽 `script-src`
+- 涉及远程 API 调用时，域名必须在 `host_permissions` 中声明，且尽量收敛路径（不用 `*://*/`）
+
+默认假设：
+- 目标商店：Chrome Web Store（优先）
+- Manifest：V3
+- 审核环境：商店自动化扫描 + 人工审核
