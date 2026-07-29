@@ -13,6 +13,6 @@ Video speed controller with pitch-preserving audio. Works on Bilibili, YouTube, 
 
 ## Links
 
-- [Chrome Web Store](#) *(coming soon)*
-- [Edge Add-ons](#) *(coming soon)*
-- [Source Code](https://github.com)
+- [Chrome Web Store](#) _(coming soon)_
+- [Edge Add-ons](#) _(coming soon)_
+- [Source Code](https://github.com/vincelabs-k/speeding)

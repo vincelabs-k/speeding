@@ -44,4 +44,4 @@ This extension does not collect, store, or transmit any user data. See [docs/PRI
 
 ## License
 
-[MIT](./LICENSE)
+[Apache 2.0](./LICENSE)

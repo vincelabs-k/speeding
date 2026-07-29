@@ -34,4 +34,4 @@ Any changes to this privacy policy will be reflected in the extension's store li
 
 ## Contact
 
-If you have questions about this privacy policy, please contact: your-email@example.com
+If you have questions about this privacy policy, please contact: 1093358332@qq.com
