@@ -8,10 +8,15 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 13px;
+}
+
 body {
   font-family: "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, sans-serif;
   font-size: 13px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #F8FAFC;
 }

@@ -5,11 +5,28 @@ const MIN_SPEED = 0.5;
 const MAX_SPEED = 16;
 const STEP = 0.25;
 
+// Log-scale math constants
+const LOG_MIN = Math.log(MIN_SPEED);
+const LOG_MAX = Math.log(MAX_SPEED);
+const LOG_RANGE = LOG_MAX - LOG_MIN;
+
+const SLIDER_LABELS = [
+  { label: '0.5', value: 0.5 },
+  { label: '1', value: 1 },
+  { label: '2', value: 2 },
+  { label: '4', value: 4 },
+  { label: '8', value: 8 },
+  { label: '16', value: 16 },
+];
+
 const clamp = (v: number) => Math.max(MIN_SPEED, Math.min(MAX_SPEED, v));
 const formatSpeed = (v: number) => {
   const rounded = Math.round(v * 100) / 100;
-  return rounded % 1 === 0 ? `${rounded}` : rounded.toFixed(2);
+  return parseFloat(rounded.toFixed(2)).toString();
 };
+
+const speedToLogPct = (s: number) => ((Math.log(s) - LOG_MIN) / LOG_RANGE) * 100;
+const logPctToSpeed = (p: number) => Math.exp(LOG_MIN + (p / 100) * LOG_RANGE);
 
 type VideoInfo = { speed: number; videoCount: number };
 type LoadingState = 'loading' | 'loaded' | 'no-video';
@@ -19,6 +36,7 @@ function App() {
   const [videoCount, setVideoCount] = useState(0);
   const [loadState, setLoadState] = useState<LoadingState>('loading');
   const [customInput, setCustomInput] = useState('1');
+  const [sliderDragPct, setSliderDragPct] = useState(speedToLogPct(1));
   const initialized = useRef(false);
 
   const sendMessage = useCallback(async (type: 'GET_SPEED' | 'SET_SPEED', speedVal?: number) => {
@@ -43,6 +61,7 @@ function App() {
         setSpeed(info.speed);
         setVideoCount(info.videoCount);
         setCustomInput(formatSpeed(info.speed));
+        setSliderDragPct(speedToLogPct(info.speed));
         setLoadState(info.videoCount > 0 ? 'loaded' : 'no-video');
       } else {
         setLoadState('no-video');
@@ -56,19 +75,23 @@ function App() {
     const clamped = clamp(val);
     setSpeed(clamped);
     setCustomInput(formatSpeed(clamped));
+    setSliderDragPct(speedToLogPct(clamped));
     sendMessage('SET_SPEED', clamped);
   }, [sendMessage]);
 
   const handleSlider = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = parseFloat(e.target.value);
-    setSpeed(val);
-    setCustomInput(formatSpeed(val));
+    const pct = parseFloat(e.target.value);
+    setSliderDragPct(pct);
+    const raw = logPctToSpeed(pct);
+    setSpeed(raw);
+    setCustomInput(formatSpeed(raw));
   }, []);
 
-  const handleSliderCommit = useCallback((e: React.MouseEvent<HTMLInputElement> | React.TouchEvent<HTMLInputElement>) => {
-    const val = parseFloat((e.target as HTMLInputElement).value);
-    applySpeed(val);
-  }, [applySpeed]);
+  const handleSliderCommit = useCallback(() => {
+    const raw = logPctToSpeed(sliderDragPct);
+    const snapped = Math.round(raw / STEP) * STEP;
+    applySpeed(snapped);
+  }, [sliderDragPct, applySpeed]);
 
   const handleCustomInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomInput(e.target.value);
@@ -89,14 +112,14 @@ function App() {
     }
   }, [handleCustomApply]);
 
-  const sliderPercent = ((speed - MIN_SPEED) / (MAX_SPEED - MIN_SPEED)) * 100;
-
   // ── Loading ──
   if (loadState === 'loading') {
     return (
-      <div className="w-80 h-[340px] flex items-center justify-center bg-[#F9F9F9]">
-        <div className="relative w-6 h-6">
-          <div className="absolute inset-0 rounded-full border-[2.5px] border-[#E0E0E0] border-t-[#0078D4] animate-spin" />
+      <div className="w-80 p-[3px] bg-slate-100">
+        <div className="rounded-xl border border-slate-200/60 bg-gradient-to-b from-slate-50 to-white min-h-[360px] flex items-center justify-center">
+          <div className="relative w-7 h-7">
+            <div className="absolute inset-0 rounded-full border-[3px] border-slate-200 border-t-indigo-500 animate-spin" />
+          </div>
         </div>
       </div>
     );
@@ -105,98 +128,137 @@ function App() {
   // ── No video ──
   if (loadState === 'no-video') {
     return (
-      <div className="w-80 h-[340px] flex items-center justify-center bg-[#F9F9F9]">
-        <p className="text-sm text-[#6B6B6B] font-medium">No video detected</p>
+      <div className="w-80 p-[3px] bg-slate-100">
+        <div className="rounded-xl border border-slate-200/60 bg-gradient-to-b from-slate-50 to-white min-h-[360px] flex flex-col items-center justify-center gap-3">
+          <div className="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center">
+            <svg className="w-6 h-6 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
+            </svg>
+          </div>
+          <p className="text-sm text-slate-400 font-medium">No video detected</p>
+          <p className="text-[11px] text-slate-300">Open a page with video to get started</p>
+        </div>
       </div>
     );
   }
 
   // ── Main ──
   return (
-    <div className="w-80 bg-[#F9F9F9] text-[#1A1A1A] select-none">
+    <div className="w-80 p-[3px] bg-slate-100">
+    <div className="rounded-xl border border-slate-200/60 bg-gradient-to-b from-slate-50 to-white text-slate-800 select-none overflow-hidden">
       {/* Header */}
-      <div className="px-5 pt-5 pb-3 flex items-center justify-between">
+      <div className="px-5 pt-5 pb-4 flex items-center justify-between">
         <div>
-          <h1 className="text-base font-semibold tracking-tight text-[#1A1A1A]">
+          <h1 className="text-lg font-bold tracking-tight text-slate-800">
             Speeding
           </h1>
-          <p className="text-[11px] text-[#8A8A8A] mt-0.5">
+          <p className="text-[12px] text-slate-400 mt-0.5 font-medium">
             {videoCount} video{videoCount !== 1 ? 's' : ''} detected
           </p>
         </div>
         {/* Speed badge */}
-        <div className="flex-shrink-0 w-[64px] h-[64px] rounded-xl bg-white border border-[#E8E8E8] flex flex-col items-center justify-center shadow-sm">
-          <span className="text-[26px] font-semibold leading-none text-[#0078D4]">
+        <div className="flex-shrink-0 w-[68px] h-[68px] rounded-2xl bg-gradient-to-br from-indigo-50 via-white to-violet-50 border border-indigo-100/60 flex flex-col items-center justify-center shadow-lg shadow-indigo-500/5">
+          <span className="text-[28px] font-bold leading-none bg-gradient-to-br from-indigo-600 to-violet-600 bg-clip-text text-transparent">
             {formatSpeed(speed)}
           </span>
-          <span className="text-[10px] text-[#8A8A8A] font-medium mt-0.5">x SPEED</span>
+          <span className="text-[10px] text-slate-400 font-semibold mt-0.5 tracking-wide uppercase">
+            speed
+          </span>
         </div>
       </div>
 
       {/* Slider */}
-      <div className="px-5 pb-4">
-        <div className="flex justify-between text-[10px] text-[#A0A0A0] mb-1.5 px-0.5 font-medium">
-          <span>0.5</span>
-          <span>4</span>
-          <span>8</span>
-          <span>12</span>
-          <span>16</span>
+      <div className="px-5 pb-3">
+        {/* Labels */}
+        <div className="relative h-5 mb-1">
+          {SLIDER_LABELS.map((item, idx) => {
+            const pct = speedToLogPct(item.value);
+            const isFirst = idx === 0;
+            const isLast = idx === SLIDER_LABELS.length - 1;
+            const style = isFirst
+              ? { left: '0%' }
+              : isLast
+                ? { left: '100%', transform: 'translateX(-100%)' }
+                : { left: `${pct}%`, transform: 'translateX(-50%)' };
+            return (
+              <span
+                key={item.label}
+                className="absolute text-[10px] text-slate-400 font-medium"
+                style={style}
+              >
+                {item.label}
+              </span>
+            );
+          })}
         </div>
 
-        <div className="relative">
+        {/* Slider track + progress */}
+        <div className="relative h-7 flex items-center">
+          {/* Background track */}
+          <div className="absolute inset-x-0 h-1.5 rounded-full bg-slate-200" />
+          {/* Progress fill */}
+          <div
+            className="absolute h-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500"
+            style={{ width: `${sliderDragPct}%` }}
+          />
+          {/* Invisible range input overlaid */}
           <input
             type="range"
-            min={MIN_SPEED}
-            max={MAX_SPEED}
-            step={STEP}
-            value={speed}
+            min={0}
+            max={100}
+            step={1}
+            value={Math.round(sliderDragPct)}
             onChange={handleSlider}
             onMouseUp={handleSliderCommit}
             onTouchEnd={handleSliderCommit}
-            className="w-full h-1 rounded-full appearance-none cursor-pointer bg-[#E0E0E0] focus:outline-none"
-            style={{
-              background: `linear-gradient(to right, #0078D4 ${sliderPercent}%, #E0E0E0 ${sliderPercent}%)`,
-            }}
+            className="relative w-full h-full appearance-none bg-transparent cursor-pointer focus:outline-none"
           />
           <style>{`
             input[type=range]::-webkit-slider-thumb {
               -webkit-appearance: none;
               appearance: none;
-              width: 20px;
-              height: 20px;
+              width: 22px;
+              height: 22px;
               border-radius: 50%;
-              background: #FFFFFF;
-              border: 2px solid #0078D4;
-              box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+              background: linear-gradient(135deg, #6366F1, #818CF8);
+              border: 3px solid #FFFFFF;
+              box-shadow: 0 2px 8px rgba(99,102,241,0.35), 0 0 0 1px rgba(99,102,241,0.1);
               cursor: pointer;
-              transition: transform 0.1s ease;
+              transition: transform 0.15s ease, box-shadow 0.15s ease;
             }
             input[type=range]::-webkit-slider-thumb:hover {
               transform: scale(1.15);
-              border-color: #006CBE;
+              box-shadow: 0 3px 12px rgba(99,102,241,0.45), 0 0 0 1px rgba(99,102,241,0.15);
+            }
+            input[type=range]::-webkit-slider-thumb:active {
+              transform: scale(1.08);
             }
             input[type=range]::-moz-range-thumb {
-              width: 20px;
-              height: 20px;
+              width: 22px;
+              height: 22px;
               border-radius: 50%;
-              background: #FFFFFF;
-              border: 2px solid #0078D4;
-              box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+              background: linear-gradient(135deg, #6366F1, #818CF8);
+              border: 3px solid #FFFFFF;
+              box-shadow: 0 2px 8px rgba(99,102,241,0.35);
               cursor: pointer;
+            }
+            input[type=range]::-moz-range-track {
+              background: transparent;
             }
           `}</style>
         </div>
 
-        <div className="text-center mt-2">
-          <span className="text-[11px] text-[#A0A0A0]">
-            Drag to adjust · {formatSpeed(speed)}x
+        {/* Hint */}
+        <div className="text-center mt-1.5">
+          <span className="text-[11px] text-slate-400 font-medium">
+            Drag to adjust &middot; {formatSpeed(speed)}&times;
           </span>
         </div>
       </div>
 
       {/* Presets */}
       <div className="px-4 pb-3">
-        <p className="text-[10px] text-[#A0A0A0] uppercase tracking-[0.05em] mb-1.5 px-1 font-medium">Presets</p>
+        <p className="text-[10px] text-slate-400 uppercase tracking-wider mb-2 px-1 font-semibold">Presets</p>
         <div className="grid grid-cols-4 gap-1.5">
           {PRESETS.map((p) => {
             const isActive = speed === p;
@@ -205,18 +267,19 @@ function App() {
                 key={p}
                 onClick={() => applySpeed(p)}
                 className={`
-                  py-1.5 rounded-md text-[13px] font-medium
-                  transition-colors duration-150
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0078D4]/30
+                  relative py-2 rounded-lg text-[13px] font-semibold
+                  transition-all duration-150 ease-out
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/40 focus-visible:ring-offset-1
+                  active:scale-[0.96]
                   ${isActive
-                    ? 'bg-[#0078D4] text-white shadow-sm'
-                    : 'bg-white border border-[#E0E0E0] text-[#4A4A4A] hover:bg-[#F3F3F3] hover:border-[#CCCCCC] active:bg-[#E8E8E8]'
+                    ? 'bg-gradient-to-br from-indigo-500 to-indigo-600 text-white shadow-md shadow-indigo-500/25 scale-[1.02]'
+                    : 'bg-white/80 text-slate-500 border border-slate-200/80 hover:bg-indigo-50/60 hover:border-indigo-200 hover:text-indigo-600'
                   }
                 `}
               >
-                {formatSpeed(p)}<span className="text-[10px] opacity-70 ml-0.5">x</span>
+                {formatSpeed(p)}&times;
                 {isActive && (
-                  <span className="absolute -top-1 -right-1 w-2 h-2 bg-[#107C10] rounded-full border-2 border-white" />
+                  <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-400 rounded-full border-2 border-white shadow-sm" />
                 )}
               </button>
             );
@@ -226,7 +289,7 @@ function App() {
 
       {/* Custom */}
       <div className="px-4 pb-5">
-        <p className="text-[10px] text-[#A0A0A0] uppercase tracking-[0.05em] mb-1.5 px-1 font-medium">Custom</p>
+        <p className="text-[10px] text-slate-400 uppercase tracking-wider mb-2 px-1 font-semibold">Custom</p>
         <div className="flex gap-2">
           <div className="relative flex-1">
             <input
@@ -235,24 +298,25 @@ function App() {
               onChange={handleCustomInput}
               onBlur={handleCustomApply}
               onKeyDown={handleCustomKeyDown}
-              placeholder="0.5 - 16"
-              className="w-full h-8 bg-white border border-[#E0E0E0] rounded-md px-2.5 text-[13px] text-[#1A1A1A] placeholder:text-[#A0A0A0] focus:outline-none focus:border-[#0078D4] focus:ring-1 focus:ring-[#0078D4]/20 transition-colors"
+              placeholder="0.5 – 16"
+              className="w-full h-9 bg-white border border-slate-200 rounded-lg pl-3 pr-7 text-[13px] font-medium text-slate-700 placeholder:text-slate-300 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/15 transition-all"
             />
-            <span className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[11px] text-[#A0A0A0] pointer-events-none">
-              x
+            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[12px] text-slate-400 font-medium pointer-events-none select-none">
+              &times;
             </span>
           </div>
           <button
             onClick={handleCustomApply}
-            className="h-8 px-4 rounded-md bg-[#0078D4] text-white text-[13px] font-medium hover:bg-[#006CBE] active:bg-[#005DA6] transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0078D4]/30"
+            className="h-9 px-5 rounded-lg bg-gradient-to-br from-indigo-500 to-indigo-600 text-white text-[13px] font-semibold hover:from-indigo-600 hover:to-indigo-700 active:scale-[0.97] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/40 focus-visible:ring-offset-1 shadow-md shadow-indigo-500/20"
           >
             Apply
           </button>
         </div>
-        <p className="text-[10px] text-[#A0A0A0] mt-1.5 text-center">
-          Range: {MIN_SPEED}x – {MAX_SPEED}x · Step: {STEP}x
+        <p className="text-[10px] text-slate-300 mt-2 text-center font-medium">
+          Range: {formatSpeed(MIN_SPEED)}&times; – {formatSpeed(MAX_SPEED)}&times; &middot; Step: {STEP}&times;
         </p>
       </div>
+    </div>
     </div>
   );
 }
