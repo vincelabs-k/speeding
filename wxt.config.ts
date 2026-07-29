@@ -12,8 +12,10 @@ export default defineConfig({
   vite: () => ({ plugins: [tailwindcss()] }),
   manifest: {
     name: 'Speeding',
-    description: 'Video speed controller with pitch-preserving audio — perfect for binge-watching and online courses.',
+    description: 'Video speed controller with pitch-preserving audio. Works on YouTube, Vimeo, Netflix, and online course platforms.',
     permissions: ['activeTab'],
+    author: { email: '1093358332@qq.com' },
+    privacy_policy_url: 'https://your-domain.com/privacy',
   },
 });
 
