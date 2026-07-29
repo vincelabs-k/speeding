@@ -15,7 +15,7 @@ export default defineConfig({
     description: 'Video speed controller with pitch-preserving audio. Works on YouTube, Vimeo, Netflix, and online course platforms.',
     permissions: ['activeTab'],
     author: { email: '1093358332@qq.com' },
-    privacy_policy_url: 'https://your-domain.com/privacy',
+    privacy_policy_url: 'https://vincelabs-k.github.io/speeding/PRIVACY.html',
   },
 });
 
