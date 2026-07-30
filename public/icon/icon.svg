@@ -8,15 +8,19 @@
       <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.15"/>
     </filter>
   </defs>
-  <!-- Layer 1: Background Badge (rounded-rect, ocean) -->
+
+  <!-- Layer 1: Rounded Rectangle Badge -->
   <rect x="22" y="22" width="84" height="84" rx="10" ry="10"
-        fill="url(#bg)" stroke="#00C7FD" stroke-width="2"
-        stroke-linejoin="round" filter="url(#shadow)"/>
-  <!-- Layer 2: Fast Forward arrows (>>) -->
-  <polygon points="48,48 62,64 48,80"
-           fill="#FFFFFF" stroke="#00C7FD" stroke-width="2"
+        fill="url(#bg)" stroke="#00C7FD" stroke-width="2" stroke-linejoin="round"
+        filter="url(#shadow)"/>
+
+  <!-- Layer 2: Two Fast-Forward Triangles (blue accent) -->
+  <!-- Left triangle -->
+  <polygon points="48,38 48,86 68,62"
+           fill="#00C7FD" stroke="#00C7FD" stroke-width="2"
            stroke-linejoin="round" stroke-linecap="round"/>
-  <polygon points="70,48 84,64 70,80"
-           fill="#FFFFFF" stroke="#00C7FD" stroke-width="2"
+  <!-- Right triangle -->
+  <polygon points="68,38 68,86 88,62"
+           fill="#00C7FD" stroke="#00C7FD" stroke-width="2"
            stroke-linejoin="round" stroke-linecap="round"/>
 </svg>
