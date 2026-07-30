@@ -4,7 +4,7 @@ Video speed controller with pitch-preserving audio — works on Bilibili, YouTub
 
 ## Features
 
-- Adjust playback speed from 0.25x to 16x on any `<video>` element
+- Adjust playback speed from 0.5x to 16x on any `<video>` element
 - Pitch-preserving audio (voices and music stay natural)
 - One-click popup UI
 - No data collection, no tracking — 100% private
@@ -13,8 +13,8 @@ Video speed controller with pitch-preserving audio — works on Bilibili, YouTub
 
 Available on:
 
-- [Chrome Web Store](#) *(coming soon)*
-- [Edge Add-ons](#) *(coming soon)*
+- [Chrome Web Store](#) _(coming soon)_
+- [Edge Add-ons](#) _(coming soon)_
 
 ## Development
 

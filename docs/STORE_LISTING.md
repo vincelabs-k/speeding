@@ -17,7 +17,7 @@ Video speed controller with pitch-preserving audio. Works on Bilibili, YouTube, 
 **Speeding** lets you control video playback speed on virtually any website while keeping audio pitch natural. Perfect for binge-watching series, speeding through online courses, or slowing down tutorials.
 
 **Key Features:**
-- Adjust speed from 0.25x to 16x on any `<video>` element
+- Adjust speed from 0.5x to 16x on any `<video>` element
 - Pitch-preserving audio — voices and music sound natural at any speed
 - Works on Bilibili, YouTube, Vimeo, Netflix, and most online course platforms
 - Simple one-click popup UI — no configuration needed
