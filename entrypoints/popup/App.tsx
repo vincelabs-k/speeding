@@ -118,7 +118,7 @@ function App() {
       <div className="w-80 p-[3px] bg-slate-100">
         <div className="rounded-xl border border-slate-200/60 bg-gradient-to-b from-slate-50 to-white min-h-[360px] flex items-center justify-center">
           <div className="relative w-7 h-7">
-            <div className="absolute inset-0 rounded-full border-[3px] border-slate-200 border-t-indigo-500 animate-spin" />
+            <div className="absolute inset-0 rounded-full border-[3px] border-slate-200 border-t-sky-500 animate-spin" />
           </div>
         </div>
       </div>
@@ -130,8 +130,8 @@ function App() {
     return (
       <div className="w-80 p-[3px] bg-slate-100">
         <div className="rounded-xl border border-slate-200/60 bg-gradient-to-b from-slate-50 to-white min-h-[360px] flex flex-col items-center justify-center gap-3">
-          <div className="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center">
-            <svg className="w-6 h-6 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <div className="w-12 h-12 rounded-2xl bg-sky-50 flex items-center justify-center">
+            <svg className="w-6 h-6 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
             </svg>
           </div>
@@ -157,8 +157,8 @@ function App() {
           </p>
         </div>
         {/* Speed badge */}
-        <div className="flex-shrink-0 w-[68px] h-[68px] rounded-2xl bg-gradient-to-br from-indigo-50 via-white to-violet-50 border border-indigo-100/60 flex flex-col items-center justify-center shadow-lg shadow-indigo-500/5">
-          <span className="text-[28px] font-bold leading-none bg-gradient-to-br from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+        <div className="flex-shrink-0 w-[68px] h-[68px] rounded-2xl bg-gradient-to-br from-sky-50 via-white to-cyan-50 border border-sky-100/60 flex flex-col items-center justify-center shadow-lg shadow-sky-500/5">
+          <span className="text-[28px] font-bold leading-none bg-gradient-to-br from-sky-600 to-cyan-600 bg-clip-text text-transparent">
             {formatSpeed(speed)}
           </span>
           <span className="text-[10px] text-slate-400 font-semibold mt-0.5 tracking-wide uppercase">
@@ -198,7 +198,7 @@ function App() {
           <div className="absolute inset-x-0 h-1.5 rounded-full bg-slate-200" />
           {/* Progress fill */}
           <div
-            className="absolute h-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500"
+            className="absolute h-1.5 rounded-full bg-gradient-to-r from-sky-500 to-cyan-500"
             style={{ width: `${sliderDragPct}%` }}
           />
           {/* Invisible range input overlaid */}
@@ -220,15 +220,15 @@ function App() {
               width: 22px;
               height: 22px;
               border-radius: 50%;
-              background: linear-gradient(135deg, #6366F1, #818CF8);
+              background: linear-gradient(135deg, #0EA5E9, #38BDF8);
               border: 3px solid #FFFFFF;
-              box-shadow: 0 2px 8px rgba(99,102,241,0.35), 0 0 0 1px rgba(99,102,241,0.1);
+              box-shadow: 0 2px 8px rgba(14,165,233,0.35), 0 0 0 1px rgba(14,165,233,0.1);
               cursor: pointer;
               transition: transform 0.15s ease, box-shadow 0.15s ease;
             }
             input[type=range]::-webkit-slider-thumb:hover {
               transform: scale(1.15);
-              box-shadow: 0 3px 12px rgba(99,102,241,0.45), 0 0 0 1px rgba(99,102,241,0.15);
+              box-shadow: 0 3px 12px rgba(14,165,233,0.45), 0 0 0 1px rgba(14,165,233,0.15);
             }
             input[type=range]::-webkit-slider-thumb:active {
               transform: scale(1.08);
@@ -237,9 +237,9 @@ function App() {
               width: 22px;
               height: 22px;
               border-radius: 50%;
-              background: linear-gradient(135deg, #6366F1, #818CF8);
+              background: linear-gradient(135deg, #0EA5E9, #38BDF8);
               border: 3px solid #FFFFFF;
-              box-shadow: 0 2px 8px rgba(99,102,241,0.35);
+              box-shadow: 0 2px 8px rgba(14,165,233,0.35);
               cursor: pointer;
             }
             input[type=range]::-moz-range-track {
@@ -269,11 +269,11 @@ function App() {
                 className={`
                   relative py-2 rounded-lg text-[13px] font-semibold
                   transition-all duration-150 ease-out
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/40 focus-visible:ring-offset-1
+                  focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/40 focus-visible:ring-offset-1
                   active:scale-[0.96]
                   ${isActive
-                    ? 'bg-gradient-to-br from-indigo-500 to-indigo-600 text-white shadow-md shadow-indigo-500/25 scale-[1.02]'
-                    : 'bg-white/80 text-slate-500 border border-slate-200/80 hover:bg-indigo-50/60 hover:border-indigo-200 hover:text-indigo-600'
+                    ? 'bg-gradient-to-br from-sky-500 to-sky-600 text-white shadow-md shadow-sky-500/25 scale-[1.02]'
+                    : 'bg-white/80 text-slate-500 border border-slate-200/80 hover:bg-sky-50/60 hover:border-sky-200 hover:text-sky-600'
                   }
                 `}
               >
@@ -299,7 +299,7 @@ function App() {
               onBlur={handleCustomApply}
               onKeyDown={handleCustomKeyDown}
               placeholder="0.5 – 16"
-              className="w-full h-9 bg-white border border-slate-200 rounded-lg pl-3 pr-7 text-[13px] font-medium text-slate-700 placeholder:text-slate-300 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-400/15 transition-all"
+              className="w-full h-9 bg-white border border-slate-200 rounded-lg pl-3 pr-7 text-[13px] font-medium text-slate-700 placeholder:text-slate-300 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/15 transition-all"
             />
             <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[12px] text-slate-400 font-medium pointer-events-none select-none">
               &times;
@@ -307,7 +307,7 @@ function App() {
           </div>
           <button
             onClick={handleCustomApply}
-            className="h-9 px-5 rounded-lg bg-gradient-to-br from-indigo-500 to-indigo-600 text-white text-[13px] font-semibold hover:from-indigo-600 hover:to-indigo-700 active:scale-[0.97] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/40 focus-visible:ring-offset-1 shadow-md shadow-indigo-500/20"
+            className="h-9 px-5 rounded-lg bg-gradient-to-br from-sky-500 to-sky-600 text-white text-[13px] font-semibold hover:from-sky-600 hover:to-sky-700 active:scale-[0.97] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/40 focus-visible:ring-offset-1 shadow-md shadow-sky-500/20"
           >
             Apply
           </button>
