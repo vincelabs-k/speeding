@@ -1,6 +1,6 @@
 {
   "name": "speeding",
-  "description": "Video speed controller with pitch-preserving audio — perfect for binge-watching and online courses.",
+  "description": "Auto-speed for every site — set once, never touch again. Works on YouTube, Udemy, Bilibili, Netflix & podcasts.",
   "private": true,
   "version": "1.0.2",
   "type": "module",

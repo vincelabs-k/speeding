@@ -12,7 +12,7 @@ export default defineConfig({
   vite: () => ({ plugins: [tailwindcss()] }),
   manifest: {
     name: 'Speeding',
-    description: 'Set speed once, remembered per site. Pitch-preserving audio at 0.5x–16x. Works on YouTube, Bilibili, Netflix & online courses.',
+    description: 'Auto-speed for every site — set once, never touch again. Works on YouTube, Udemy, Bilibili, Netflix & podcast players.',
     permissions: ['activeTab', 'storage'],
     author: { email: '1093358332@qq.com' },
     privacy_policy_url: 'https://vincelabs-k.github.io/speeding/PRIVACY.html',
