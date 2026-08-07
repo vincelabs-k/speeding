@@ -19,7 +19,7 @@ Most video speed controllers forget your settings when you switch tabs. Speeding
 
 Available on:
 
-- [Chrome Web Store](#)
+- [Chrome Web Store](https://chromewebstore.google.com/detail/speeding/odgdahfgpkmljkbecelajkobpleeioif?utm_source=ext_ntp_promo_1p)
 - [Edge Add-ons](#) _(coming soon)_
 
 ## Development
