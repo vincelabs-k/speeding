@@ -5,8 +5,8 @@ export default defineConfig({
   webExt: {
     startUrls: [
       "https://www.bilibili.com/video/",
-
     ],
+    chromiumArgs: ["--user-data-dir=./.chrome-dev-profile"],
   },
   modules: ['@wxt-dev/module-react'],
   vite: () => ({ plugins: [tailwindcss()] }),
