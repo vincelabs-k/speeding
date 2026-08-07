@@ -2,7 +2,7 @@
   "name": "speeding",
   "description": "Video speed controller with pitch-preserving audio — perfect for binge-watching and online courses.",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "scripts": {
     "dev": "wxt",

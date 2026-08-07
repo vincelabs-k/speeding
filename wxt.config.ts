@@ -12,8 +12,8 @@ export default defineConfig({
   vite: () => ({ plugins: [tailwindcss()] }),
   manifest: {
     name: 'Speeding',
-    description: 'Video speed controller with pitch-preserving audio. Works on Bilibili, YouTube, Vimeo, Netflix, and online course platforms.',
-    permissions: ['activeTab'],
+    description: 'Set speed once, remembered per site. Pitch-preserving audio at 0.5x–16x. Works on YouTube, Bilibili, Netflix & online courses.',
+    permissions: ['activeTab', 'storage'],
     author: { email: '1093358332@qq.com' },
     privacy_policy_url: 'https://vincelabs-k.github.io/speeding/PRIVACY.html',
     icons: {

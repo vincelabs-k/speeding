@@ -1,19 +1,25 @@
 # Speeding
 
-Video speed controller with pitch-preserving audio — works on Bilibili, YouTube, Vimeo, Netflix, and online course platforms.
+Set speed once, remembered per site — pitch-preserving audio at 0.5x–16x.
 
 ## Features
 
+- Per-site speed memory — set it once, never touch it again
+- "This site" and "All sites" modes for flexible speed management
 - Adjust playback speed from 0.5x to 16x on any `<video>` element
-- Pitch-preserving audio (voices and music stay natural)
-- One-click popup UI
-- No data collection, no tracking — 100% private
+- Pitch-preserving audio — voices and music stay natural even at 8x
+- Works on YouTube, Bilibili, Netflix, Vimeo, Coursera, and more
+- Privacy-first — zero tracking, zero external servers
+
+## Why Speeding
+
+Most video speed controllers forget your settings when you switch tabs. Speeding remembers your speed per site and keeps audio pitch natural by default — no configuration, no signup, no tracking.
 
 ## Install
 
 Available on:
 
-- [Chrome Web Store](#) _(coming soon)_
+- [Chrome Web Store](#)
 - [Edge Add-ons](#) _(coming soon)_
 
 ## Development
@@ -40,7 +46,7 @@ bun run zip
 
 ## Privacy
 
-This extension does not collect, store, or transmit any user data. See [docs/PRIVACY.md](./docs/PRIVACY.md) for details.
+Speeding stores only your speed preferences (domain + speed value) in Chrome's local storage. No analytics, no tracking, no external servers. See [docs/PRIVACY.md](./docs/PRIVACY.md) for details.
 
 ## License
 

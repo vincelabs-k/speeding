@@ -9,7 +9,10 @@ export class SpeedController {
   private readonly MAX_SPEED = 16;
   private readonly CLEANUP_INTERVAL_MS = 5000;
 
-  constructor() {
+  constructor(initialSpeed?: number) {
+    if (initialSpeed !== undefined) {
+      this.currentSpeed = SpeedController.clamp(initialSpeed);
+    }
     this.scan();
     this.startObserver();
     this.cleanupTimer = setInterval(() => this.purgeDisconnected(), this.CLEANUP_INTERVAL_MS);
