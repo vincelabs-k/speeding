@@ -1,6 +1,7 @@
 export class SpeedController {
   private currentSpeed = 1.0;
   private observedVideos = new Set<HTMLVideoElement>();
+  private videoListeners = new WeakMap<HTMLVideoElement, () => void>();
   private observer: MutationObserver | null = null;
   private scanTimer: ReturnType<typeof setTimeout> | null = null;
   private cleanupTimer: ReturnType<typeof setInterval> | null = null;
@@ -49,6 +50,13 @@ export class SpeedController {
       clearInterval(this.cleanupTimer);
       this.cleanupTimer = null;
     }
+    for (const video of this.observedVideos) {
+      const listener = this.videoListeners.get(video);
+      if (listener) {
+        video.removeEventListener('ratechange', listener);
+      }
+    }
+    this.videoListeners = new WeakMap();
     this.observedVideos.clear();
   }
 
@@ -57,12 +65,26 @@ export class SpeedController {
     this.observedVideos.add(video);
 
     video.preservesPitch = true;
-    video.playbackRate = this.currentSpeed;
+
+    const apply = () => {
+      if (video.playbackRate !== this.currentSpeed) {
+        video.playbackRate = this.currentSpeed;
+      }
+    };
+
+    apply();
+    video.addEventListener('ratechange', apply);
+    this.videoListeners.set(video, apply);
   }
 
   private purgeDisconnected(): void {
     for (const video of this.observedVideos) {
       if (!video.isConnected) {
+        const listener = this.videoListeners.get(video);
+        if (listener) {
+          video.removeEventListener('ratechange', listener);
+          this.videoListeners.delete(video);
+        }
         this.observedVideos.delete(video);
       }
     }
