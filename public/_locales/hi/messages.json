@@ -4,7 +4,7 @@
     "message": "Speeding - Video Speed Controller"
   },
   "extDescription": {
-    "message": "YouTube, HTML5 वीडियो स्पीड कंट्रोलर शॉर्टकट के साथ। प्रति साइट एक बार प्लेबैक रेट सेट करें: Netflix, Bilibili, Udemy और अधिक।"
+    "message": "कीबोर्ड शॉर्टकट के साथ किसी भी HTML5 वीडियो या YouTube की प्लेबैक गति नियंत्रण। 0.5× से 16× तक समायोज्य — प्रति साइट गति प्राथमिकता याद रखी जाती है। Netflix, Bilibili, Udemy और अधिक पर काम करता है।"
   },
   "noVideo": {
     "message": "कोई वीडियो नहीं मिला"

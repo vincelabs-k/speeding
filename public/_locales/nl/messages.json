@@ -4,7 +4,7 @@
     "message": "Speeding - Video Speed Controller"
   },
   "extDescription": {
-    "message": "YouTube, HTML5 video speed controller met shortcuts. Stel afspeelsnelheid één keer per site in: Netflix, Bilibili, Udemy & meer."
+    "message": "Regel de afspeelsnelheid van elke HTML5-video of YouTube met sneltoetsen. Instelbaar van 0,5× tot 16× — snelheidsvoorkeur wordt per site onthouden. Werkt op Netflix, Bilibili, Udemy en meer."
   },
   "noVideo": {
     "message": "Geen video gedetecteerd"

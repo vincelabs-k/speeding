@@ -4,7 +4,7 @@
     "message": "Speeding - Video Speed Controller"
   },
   "extDescription": {
-    "message": "YouTube, HTML5 video speed controller med snarveier. Still inn avspillingshastighet én gang per nettsted: Netflix, Bilibili, Udemy og mer."
+    "message": "Styr avspillingshastigheten på enhver HTML5-video eller YouTube med tastatursnarveier. Justerbar fra 0,5× til 16× — hastighetspreferanse huskes per nettsted. Fungerer på Netflix, Bilibili, Udemy og mer."
   },
   "noVideo": {
     "message": "Ingen video funnet"

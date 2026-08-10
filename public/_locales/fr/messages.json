@@ -4,7 +4,7 @@
     "message": "Speeding - Video Speed Controller"
   },
   "extDescription": {
-    "message": "YouTube, HTML5 — contrôleur de vitesse vidéo avec raccourcis. Réglez la vitesse de lecture une fois par site : Netflix, Bilibili, Udemy et plus."
+    "message": "Contrôlez la vitesse de lecture de toute vidéo HTML5 ou YouTube avec des raccourcis clavier. Réglable de 0,5× à 16× — vitesse mémorisée par site. Fonctionne sur Netflix, Bilibili, Udemy et plus."
   },
   "noVideo": {
     "message": "Aucune vidéo détectée"

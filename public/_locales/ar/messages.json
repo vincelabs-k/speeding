@@ -4,7 +4,7 @@
     "message": "Speeding - Video Speed Controller"
   },
   "extDescription": {
-    "message": "YouTube, HTML5 — متحكم بسرعة الفيديو مع اختصارات. اضبط سرعة التشغيل مرة واحدة لكل موقع: Netflix, Bilibili, Udemy والمزيد."
+    "message": "التحكم في سرعة تشغيل أي فيديو HTML5 أو YouTube باستخدام اختصارات لوحة المفاتيح. قابل للتعديل من 0.5× إلى 16× — يتم تذكر تفضيل السرعة لكل موقع. يعمل على Netflix و Bilibili و Udemy والمزيد."
   },
   "noVideo": {
     "message": "لم يتم اكتشاف فيديو"
