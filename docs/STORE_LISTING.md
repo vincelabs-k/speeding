@@ -24,7 +24,7 @@ Unlike other speed controllers that forget your settings or distort audio, Speed
 - Pitch-preserving audio — voices and music stay natural at any speed
 - Ultra-wide range — from 0.5x slow-mo to 16x hyper-speed
 - Works everywhere — Bilibili, YouTube, Netflix, Vimeo, Coursera, and any site with `<video>` elements
-- Privacy-first — no tracking, no analytics, speed data stored locally only
+- Privacy-first — no tracking, no telemetry, data stored locally only
 - One-click popup — no signup, no configuration
 
 ---
@@ -69,4 +69,4 @@ When filling the privacy disclosure form:
 | Does it collect location data? | No |
 | Does it collect user input? | No |
 
-> **Note on stored data**: The extension saves per-site speed preferences (domain + speed value) and a mode preference to `chrome.storage.sync` / `chrome.storage.local`. This is user configuration data, not personal information. It is never transmitted to any external server. It only syncs through Chrome Sync if the user is signed into their Google account.
+> **Note on stored data**: The extension saves per-site speed preferences (domain + speed value), a mode preference, and a local usage counter (date + count only) to `chrome.storage.sync` / `chrome.storage.local`. This is user configuration data and anonymous feature-gating counters, not personal information. It is never transmitted to any external server. It only syncs through Chrome Sync if the user is signed into their Google account. The developer cannot access any of this data.

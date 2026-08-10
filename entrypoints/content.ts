@@ -7,6 +7,7 @@ import {
   setSpeedMode,
 } from './utils/storage';
 import type { SpeedMode } from './utils/storage';
+import { recordUsage } from './utils/stats';
 
 export default defineContentScript({
   matches: ['*://*/*'],
@@ -15,7 +16,17 @@ export default defineContentScript({
     const initialSpeed = await getResolvedSpeed(hostname);
     let currentMode = await getSpeedMode();
 
+    let sessionRecorded = false;
+
+    const maybeRecord = () => {
+      if (!sessionRecorded) {
+        sessionRecorded = true;
+        recordUsage();
+      }
+    };
+
     const controller = new SpeedController(initialSpeed);
+    controller.onFirstApply = maybeRecord;
 
     browser.runtime.onMessage.addListener((msg: { type: string; speed?: number; mode?: SpeedMode }) => {
       if (msg.type === 'GET_SPEED') {
@@ -36,6 +47,8 @@ export default defineContentScript({
           setSiteSpeed(hostname, msg.speed);
         }
 
+        maybeRecord();
+
         return Promise.resolve({
           success: true,
           speed: controller.getSpeed(),
@@ -48,6 +61,7 @@ export default defineContentScript({
           await setSpeedMode(msg.mode!);
           const resolved = await getResolvedSpeed(hostname);
           controller.setSpeed(resolved);
+          maybeRecord();
           return {
             success: true,
             speed: controller.getSpeed(),

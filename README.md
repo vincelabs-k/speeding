@@ -11,7 +11,7 @@ Set speed once per site, never touch it again. Open YouTube — auto 2x. Open Ud
 - **0.5x – 16x** with 0.25x steps on any HTML5 video or audio
 - **Pitch-preserving audio** — voices stay natural at any speed
 - **Podcasts & audiobooks** — works on audio-only players too
-- **Privacy-first** — zero tracking, zero data collection
+- **Privacy-first** — zero tracking, zero telemetry
 
 ## Who is this for?
 
@@ -37,7 +37,7 @@ Most video speed controllers forget your settings when you switch tabs. Speeding
 Available on:
 
 - [Chrome Web Store](https://chromewebstore.google.com/detail/speeding/odgdahfgpkmljkbecelajkobpleeioif?utm_source=ext_ntp_promo_1p)
-- [Edge Add-ons](#) _(coming soon)_
+- [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/speeding/ccbafdcmpemnooafglgkijaccnnohnkc)
 
 ## Development
 

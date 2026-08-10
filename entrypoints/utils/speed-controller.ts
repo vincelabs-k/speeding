@@ -6,6 +6,9 @@ export class SpeedController {
   private scanTimer: ReturnType<typeof setTimeout> | null = null;
   private cleanupTimer: ReturnType<typeof setInterval> | null = null;
 
+  /** Fired on the first video where speed is actually applied. Self-nulling after first call. */
+  onFirstApply: (() => void) | null = null;
+
   private readonly MIN_SPEED = 0.5;
   private readonly MAX_SPEED = 16;
   private readonly CLEANUP_INTERVAL_MS = 5000;
@@ -69,6 +72,10 @@ export class SpeedController {
     const apply = () => {
       if (video.playbackRate !== this.currentSpeed) {
         video.playbackRate = this.currentSpeed;
+        if (this.onFirstApply && this.currentSpeed !== 1.0) {
+          this.onFirstApply();
+          this.onFirstApply = null;
+        }
       }
     };
 

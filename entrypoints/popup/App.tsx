@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
+import { RatingButton } from './RatingButton';
 
 const PRESETS = [0.5, 1, 1.5, 2, 3, 4, 8, 16];
 const MIN_SPEED = 0.5;
@@ -380,6 +381,7 @@ function App() {
         <p className="text-[10px] text-slate-300 mt-2 text-center font-medium">
           Range: {formatSpeed(MIN_SPEED)}&times; – {formatSpeed(MAX_SPEED)}&times; &middot; Step: {STEP}&times;
         </p>
+        <RatingButton />
       </div>
     </div>
     </div>

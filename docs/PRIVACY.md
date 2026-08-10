@@ -15,8 +15,12 @@ The extension stores the following non-personal configuration data locally on yo
 - Primarily in `chrome.storage.sync` — allows your preferences to sync across devices when signed into Chrome.
 - Falls back to `chrome.storage.local` if the sync storage quota is exceeded.
 
+**Local usage counter:**
+- The extension may increment an anonymous usage counter (date + count only) in browser storage to enable in-app features — specifically, showing a store review prompt to users who actively use the extension.
+- This counter is never transmitted to any external server. It syncs only through Chrome Sync / Microsoft Sync if the user is signed into their browser account. The developer **cannot access this data** — it remains entirely within Google/Microsoft infrastructure.
+
 **What is NOT collected or transmitted:**
-- No analytics, telemetry, or crash reporting
+- No analytics, telemetry, or crash reporting (the local counter described above is purely for client-side feature gating, not analytics)
 - No cookies or tracking identifiers
 - No account registration required
 - No data is sent to any external server
