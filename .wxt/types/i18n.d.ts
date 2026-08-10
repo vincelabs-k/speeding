@@ -72,8 +72,13 @@ declare module "wxt/browser" {
       substitutions?: string | string[],
       options?: GetMessageOptions,
     ): string;
+    getMessage(
+      messageName: "_generated",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
     /**
-     * "Speeding"
+     * "Speeding - Video Speed Controller"
      */
     getMessage(
       messageName: "extName",
@@ -81,7 +86,7 @@ declare module "wxt/browser" {
       options?: GetMessageOptions,
     ): string;
     /**
-     * "Auto-speed for every site — set once, never touch again. Works on YouTube, Udemy, Bilibili, Netflix & podcast players."
+     * "Control playback speed on any HTML5 video or YouTube with keyboard shortcuts. Adjustable from 0.5× to 16× — speed preference remembered per site. Works on Netflix, Bilibili, Udemy, and more."
      */
     getMessage(
       messageName: "extDescription",
@@ -101,22 +106,6 @@ declare module "wxt/browser" {
      */
     getMessage(
       messageName: "noVideoHint",
-      substitutions?: string | string[],
-      options?: GetMessageOptions,
-    ): string;
-    /**
-     * "$COUNT$ video detected"
-     */
-    getMessage(
-      messageName: "videoDetected",
-      substitutions?: string | string[],
-      options?: GetMessageOptions,
-    ): string;
-    /**
-     * "$COUNT$ videos detected"
-     */
-    getMessage(
-      messageName: "videosDetected",
       substitutions?: string | string[],
       options?: GetMessageOptions,
     ): string;
@@ -141,14 +130,6 @@ declare module "wxt/browser" {
      */
     getMessage(
       messageName: "allSites",
-      substitutions?: string | string[],
-      options?: GetMessageOptions,
-    ): string;
-    /**
-     * "Drag to adjust · $SPEED$×"
-     */
-    getMessage(
-      messageName: "dragToAdjust",
       substitutions?: string | string[],
       options?: GetMessageOptions,
     ): string;
@@ -185,14 +166,6 @@ declare module "wxt/browser" {
       options?: GetMessageOptions,
     ): string;
     /**
-     * "Range: $MIN$× – $MAX$× · Step: $STEP$×"
-     */
-    getMessage(
-      messageName: "rangeStep",
-      substitutions?: string | string[],
-      options?: GetMessageOptions,
-    ): string;
-    /**
      * "Rate on Store"
      */
     getMessage(
@@ -225,22 +198,6 @@ declare module "wxt/browser" {
       options?: GetMessageOptions,
     ): string;
     /**
-     * "Current speed $SPEED$×"
-     */
-    getMessage(
-      messageName: "ariaSpeedDisplay",
-      substitutions?: string | string[],
-      options?: GetMessageOptions,
-    ): string;
-    /**
-     * "Set speed to $SPEED$×"
-     */
-    getMessage(
-      messageName: "ariaPresetSpeed",
-      substitutions?: string | string[],
-      options?: GetMessageOptions,
-    ): string;
-    /**
      * "Custom speed value"
      */
     getMessage(
@@ -264,8 +221,56 @@ declare module "wxt/browser" {
       substitutions?: string | string[],
       options?: GetMessageOptions,
     ): string;
+    /**
+     * "$COUNT$ video detected"
+     */
     getMessage(
-      messageName: "@@extension_id" | "@@ui_locale" | "@@bidi_dir" | "@@bidi_reversed_dir" | "@@bidi_start_edge" | "@@bidi_end_edge" | "extName" | "extDescription" | "noVideo" | "noVideoHint" | "videoDetected" | "videosDetected" | "speedLabel" | "thisSite" | "allSites" | "dragToAdjust" | "presets" | "custom" | "speedPlaceholder" | "apply" | "rangeStep" | "rateOnStore" | "shortcutHint" | "ariaLoading" | "ariaSlider" | "ariaSpeedDisplay" | "ariaPresetSpeed" | "ariaCustomSpeed" | "ariaApplyCustom" | "ariaRateOnStore",
+      messageName: "videoDetected",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "$COUNT$ videos detected"
+     */
+    getMessage(
+      messageName: "videosDetected",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Drag to adjust · $SPEED$×"
+     */
+    getMessage(
+      messageName: "dragToAdjust",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Range: $MIN$× – $MAX$× · Step: $STEP$×"
+     */
+    getMessage(
+      messageName: "rangeStep",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Current speed $SPEED$×"
+     */
+    getMessage(
+      messageName: "ariaSpeedDisplay",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Set speed to $SPEED$×"
+     */
+    getMessage(
+      messageName: "ariaPresetSpeed",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    getMessage(
+      messageName: "@@extension_id" | "@@ui_locale" | "@@bidi_dir" | "@@bidi_reversed_dir" | "@@bidi_start_edge" | "@@bidi_end_edge" | "_generated" | "extName" | "extDescription" | "noVideo" | "noVideoHint" | "speedLabel" | "thisSite" | "allSites" | "presets" | "custom" | "speedPlaceholder" | "apply" | "rateOnStore" | "shortcutHint" | "ariaLoading" | "ariaSlider" | "ariaCustomSpeed" | "ariaApplyCustom" | "ariaRateOnStore" | "videoDetected" | "videosDetected" | "dragToAdjust" | "rangeStep" | "ariaSpeedDisplay" | "ariaPresetSpeed",
       substitutions?: string | string[],
       options?: GetMessageOptions,
     ): string;
