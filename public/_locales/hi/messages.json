@@ -30,5 +30,19 @@
       "step": { "content": "$3", "example": "0.25" }
     }
   },
-  "rateOnStore": { "message": "स्टोर पर रेटिंग दें" }
+  "rateOnStore": { "message": "स्टोर पर रेटिंग दें" },
+  "shortcutHint": { "message": "Alt+↑/↓ गति समायोजित करें" },
+  "ariaLoading": { "message": "गति सेटिंग लोड हो रही है" },
+  "ariaSlider": { "message": "प्लेबैक गति" },
+  "ariaSpeedDisplay": {
+    "message": "वर्तमान गति $SPEED$×",
+    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+  },
+  "ariaPresetSpeed": {
+    "message": "गति $SPEED$× पर सेट करें",
+    "placeholders": { "speed": { "content": "$1", "example": "2" } }
+  },
+  "ariaCustomSpeed": { "message": "कस्टम गति मान" },
+  "ariaApplyCustom": { "message": "कस्टम गति लागू करें" },
+  "ariaRateOnStore": { "message": "Chrome वेब स्टोर पर रेटिंग दें" }
 }

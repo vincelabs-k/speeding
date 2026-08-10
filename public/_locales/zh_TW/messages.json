@@ -30,5 +30,19 @@
       "step": { "content": "$3", "example": "0.25" }
     }
   },
-  "rateOnStore": { "message": "前往商店評分" }
+  "rateOnStore": { "message": "前往商店評分" },
+  "shortcutHint": { "message": "Alt+↑/↓ 調整播放速度" },
+  "ariaLoading": { "message": "正在載入速度設定" },
+  "ariaSlider": { "message": "播放速度" },
+  "ariaSpeedDisplay": {
+    "message": "目前速度 $SPEED$×",
+    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+  },
+  "ariaPresetSpeed": {
+    "message": "設定速度為 $SPEED$×",
+    "placeholders": { "speed": { "content": "$1", "example": "2" } }
+  },
+  "ariaCustomSpeed": { "message": "自訂速度值" },
+  "ariaApplyCustom": { "message": "套用自訂速度" },
+  "ariaRateOnStore": { "message": "在 Chrome 線上應用程式商店評分" }
 }

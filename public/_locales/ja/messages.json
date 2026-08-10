@@ -30,5 +30,19 @@
       "step": { "content": "$3", "example": "0.25" }
     }
   },
-  "rateOnStore": { "message": "ストアで評価" }
+  "rateOnStore": { "message": "ストアで評価" },
+  "shortcutHint": { "message": "Alt+↑/↓ で速度を調整" },
+  "ariaLoading": { "message": "速度設定を読み込み中" },
+  "ariaSlider": { "message": "再生速度" },
+  "ariaSpeedDisplay": {
+    "message": "現在の速度 $SPEED$×",
+    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+  },
+  "ariaPresetSpeed": {
+    "message": "速度を $SPEED$× に設定",
+    "placeholders": { "speed": { "content": "$1", "example": "2" } }
+  },
+  "ariaCustomSpeed": { "message": "カスタム速度の値" },
+  "ariaApplyCustom": { "message": "カスタム速度を適用" },
+  "ariaRateOnStore": { "message": "Chrome ウェブストアで評価" }
 }

@@ -200,8 +200,72 @@ declare module "wxt/browser" {
       substitutions?: string | string[],
       options?: GetMessageOptions,
     ): string;
+    /**
+     * "Alt+↑/↓ to adjust speed"
+     */
     getMessage(
-      messageName: "@@extension_id" | "@@ui_locale" | "@@bidi_dir" | "@@bidi_reversed_dir" | "@@bidi_start_edge" | "@@bidi_end_edge" | "extName" | "extDescription" | "noVideo" | "noVideoHint" | "videoDetected" | "videosDetected" | "speedLabel" | "thisSite" | "allSites" | "dragToAdjust" | "presets" | "custom" | "speedPlaceholder" | "apply" | "rangeStep" | "rateOnStore",
+      messageName: "shortcutHint",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Loading speed settings"
+     */
+    getMessage(
+      messageName: "ariaLoading",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Playback speed"
+     */
+    getMessage(
+      messageName: "ariaSlider",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Current speed $SPEED$×"
+     */
+    getMessage(
+      messageName: "ariaSpeedDisplay",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Set speed to $SPEED$×"
+     */
+    getMessage(
+      messageName: "ariaPresetSpeed",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Custom speed value"
+     */
+    getMessage(
+      messageName: "ariaCustomSpeed",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Apply custom speed"
+     */
+    getMessage(
+      messageName: "ariaApplyCustom",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Rate on Chrome Web Store"
+     */
+    getMessage(
+      messageName: "ariaRateOnStore",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    getMessage(
+      messageName: "@@extension_id" | "@@ui_locale" | "@@bidi_dir" | "@@bidi_reversed_dir" | "@@bidi_start_edge" | "@@bidi_end_edge" | "extName" | "extDescription" | "noVideo" | "noVideoHint" | "videoDetected" | "videosDetected" | "speedLabel" | "thisSite" | "allSites" | "dragToAdjust" | "presets" | "custom" | "speedPlaceholder" | "apply" | "rangeStep" | "rateOnStore" | "shortcutHint" | "ariaLoading" | "ariaSlider" | "ariaSpeedDisplay" | "ariaPresetSpeed" | "ariaCustomSpeed" | "ariaApplyCustom" | "ariaRateOnStore",
       substitutions?: string | string[],
       options?: GetMessageOptions,
     ): string;

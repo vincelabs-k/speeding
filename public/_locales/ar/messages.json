@@ -30,5 +30,19 @@
       "step": { "content": "$3", "example": "0.25" }
     }
   },
-  "rateOnStore": { "message": "التقييم على المتجر" }
+  "rateOnStore": { "message": "التقييم على المتجر" },
+  "shortcutHint": { "message": "Alt+↑/↓ لضبط السرعة" },
+  "ariaLoading": { "message": "جاري تحميل إعدادات السرعة" },
+  "ariaSlider": { "message": "سرعة التشغيل" },
+  "ariaSpeedDisplay": {
+    "message": "السرعة الحالية $SPEED$×",
+    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+  },
+  "ariaPresetSpeed": {
+    "message": "تعيين السرعة إلى $SPEED$×",
+    "placeholders": { "speed": { "content": "$1", "example": "2" } }
+  },
+  "ariaCustomSpeed": { "message": "قيمة سرعة مخصصة" },
+  "ariaApplyCustom": { "message": "تطبيق السرعة المخصصة" },
+  "ariaRateOnStore": { "message": "التقييم على متجر Chrome الإلكتروني" }
 }

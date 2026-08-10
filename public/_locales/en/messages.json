@@ -30,5 +30,19 @@
       "step": { "content": "$3", "example": "0.25" }
     }
   },
-  "rateOnStore": { "message": "Rate on Store" }
+  "rateOnStore": { "message": "Rate on Store" },
+  "shortcutHint": { "message": "Alt+\u2191/\u2193 to adjust speed" },
+  "ariaLoading": { "message": "Loading speed settings" },
+  "ariaSlider": { "message": "Playback speed" },
+  "ariaSpeedDisplay": {
+    "message": "Current speed $SPEED$\u00d7",
+    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+  },
+  "ariaPresetSpeed": {
+    "message": "Set speed to $SPEED$\u00d7",
+    "placeholders": { "speed": { "content": "$1", "example": "2" } }
+  },
+  "ariaCustomSpeed": { "message": "Custom speed value" },
+  "ariaApplyCustom": { "message": "Apply custom speed" },
+  "ariaRateOnStore": { "message": "Rate on Chrome Web Store" }
 }

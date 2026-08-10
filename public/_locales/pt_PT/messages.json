@@ -30,5 +30,19 @@
       "step": { "content": "$3", "example": "0.25" }
     }
   },
-  "rateOnStore": { "message": "Avaliar na Loja" }
+  "rateOnStore": { "message": "Avaliar na Loja" },
+  "shortcutHint": { "message": "Alt+↑/↓ para ajustar a velocidade" },
+  "ariaLoading": { "message": "A carregar definições de velocidade" },
+  "ariaSlider": { "message": "Velocidade de reprodução" },
+  "ariaSpeedDisplay": {
+    "message": "Velocidade atual $SPEED$×",
+    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+  },
+  "ariaPresetSpeed": {
+    "message": "Definir velocidade para $SPEED$×",
+    "placeholders": { "speed": { "content": "$1", "example": "2" } }
+  },
+  "ariaCustomSpeed": { "message": "Valor de velocidade personalizado" },
+  "ariaApplyCustom": { "message": "Aplicar velocidade personalizada" },
+  "ariaRateOnStore": { "message": "Avaliar na Chrome Web Store" }
 }

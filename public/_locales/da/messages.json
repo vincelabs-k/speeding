@@ -30,5 +30,19 @@
       "step": { "content": "$3", "example": "0.25" }
     }
   },
-  "rateOnStore": { "message": "Bedøm i Store" }
+  "rateOnStore": { "message": "Bedøm i Store" },
+  "shortcutHint": { "message": "Alt+↑/↓ for at justere hastighed" },
+  "ariaLoading": { "message": "Indlæser hastighedsindstillinger" },
+  "ariaSlider": { "message": "Afspilningshastighed" },
+  "ariaSpeedDisplay": {
+    "message": "Aktuel hastighed $SPEED$×",
+    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+  },
+  "ariaPresetSpeed": {
+    "message": "Sæt hastighed til $SPEED$×",
+    "placeholders": { "speed": { "content": "$1", "example": "2" } }
+  },
+  "ariaCustomSpeed": { "message": "Brugerdefineret hastighedsværdi" },
+  "ariaApplyCustom": { "message": "Anvend brugerdefineret hastighed" },
+  "ariaRateOnStore": { "message": "Bedøm i Chrome Web Store" }
 }

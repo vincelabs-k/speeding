@@ -30,5 +30,19 @@
       "step": { "content": "$3", "example": "0.25" }
     }
   },
-  "rateOnStore": { "message": "스토어에서 평가하기" }
+  "rateOnStore": { "message": "스토어에서 평가하기" },
+  "shortcutHint": { "message": "Alt+↑/↓ 로 속도 조절" },
+  "ariaLoading": { "message": "속도 설정 로딩 중" },
+  "ariaSlider": { "message": "재생 속도" },
+  "ariaSpeedDisplay": {
+    "message": "현재 속도 $SPEED$×",
+    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+  },
+  "ariaPresetSpeed": {
+    "message": "속도를 $SPEED$×로 설정",
+    "placeholders": { "speed": { "content": "$1", "example": "2" } }
+  },
+  "ariaCustomSpeed": { "message": "사용자 지정 속도 값" },
+  "ariaApplyCustom": { "message": "사용자 지정 속도 적용" },
+  "ariaRateOnStore": { "message": "Chrome 웹 스토어에서 평가" }
 }
