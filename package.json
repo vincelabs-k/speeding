@@ -2,7 +2,7 @@
   "name": "speeding",
   "description": "Auto-speed for every site — set once, never touch again. Works on YouTube, Udemy, Bilibili, Netflix & podcasts.",
   "private": true,
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "scripts": {
     "dev": "wxt",
