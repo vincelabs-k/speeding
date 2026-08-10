@@ -1,0 +1,34 @@
+{
+  "extName": { "message": "Speeding" },
+  "extDescription": { "message": "Automatisk hastighet for hvert nettsted — still inn én gang, aldri rør igjen. Fungerer på YouTube, Udemy, Bilibili, Netflix og podcastspillere." },
+  "noVideo": { "message": "Ingen video funnet" },
+  "noVideoHint": { "message": "Åpne en side med video for å komme i gang" },
+  "videoDetected": {
+    "message": "$COUNT$ video funnet",
+    "placeholders": { "count": { "content": "$1", "example": "1" } }
+  },
+  "videosDetected": {
+    "message": "$COUNT$ videoer funnet",
+    "placeholders": { "count": { "content": "$1", "example": "5" } }
+  },
+  "speedLabel": { "message": "hastighet" },
+  "thisSite": { "message": "Dette nettstedet" },
+  "allSites": { "message": "Alle nettsteder" },
+  "dragToAdjust": {
+    "message": "Dra for å justere · $SPEED$×",
+    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+  },
+  "presets": { "message": "Forhåndsinnstillinger" },
+  "custom": { "message": "Tilpasset" },
+  "speedPlaceholder": { "message": "0.5 – 16" },
+  "apply": { "message": "Bruk" },
+  "rangeStep": {
+    "message": "Område: $MIN$× – $MAX$× · Trinn: $STEP$×",
+    "placeholders": {
+      "min": { "content": "$1", "example": "0.5" },
+      "max": { "content": "$2", "example": "16" },
+      "step": { "content": "$3", "example": "0.25" }
+    }
+  },
+  "rateOnStore": { "message": "Vurder i Store" }
+}

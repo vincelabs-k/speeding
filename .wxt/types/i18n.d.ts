@@ -72,8 +72,136 @@ declare module "wxt/browser" {
       substitutions?: string | string[],
       options?: GetMessageOptions,
     ): string;
+    /**
+     * "Speeding"
+     */
     getMessage(
-      messageName: "@@extension_id" | "@@ui_locale" | "@@bidi_dir" | "@@bidi_reversed_dir" | "@@bidi_start_edge" | "@@bidi_end_edge",
+      messageName: "extName",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Auto-speed for every site — set once, never touch again. Works on YouTube, Udemy, Bilibili, Netflix & podcast players."
+     */
+    getMessage(
+      messageName: "extDescription",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "No video detected"
+     */
+    getMessage(
+      messageName: "noVideo",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Open a page with video to get started"
+     */
+    getMessage(
+      messageName: "noVideoHint",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "$COUNT$ video detected"
+     */
+    getMessage(
+      messageName: "videoDetected",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "$COUNT$ videos detected"
+     */
+    getMessage(
+      messageName: "videosDetected",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "speed"
+     */
+    getMessage(
+      messageName: "speedLabel",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "This site"
+     */
+    getMessage(
+      messageName: "thisSite",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "All sites"
+     */
+    getMessage(
+      messageName: "allSites",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Drag to adjust · $SPEED$×"
+     */
+    getMessage(
+      messageName: "dragToAdjust",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Presets"
+     */
+    getMessage(
+      messageName: "presets",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Custom"
+     */
+    getMessage(
+      messageName: "custom",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "0.5 – 16"
+     */
+    getMessage(
+      messageName: "speedPlaceholder",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Apply"
+     */
+    getMessage(
+      messageName: "apply",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Range: $MIN$× – $MAX$× · Step: $STEP$×"
+     */
+    getMessage(
+      messageName: "rangeStep",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Rate on Store"
+     */
+    getMessage(
+      messageName: "rateOnStore",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    getMessage(
+      messageName: "@@extension_id" | "@@ui_locale" | "@@bidi_dir" | "@@bidi_reversed_dir" | "@@bidi_start_edge" | "@@bidi_end_edge" | "extName" | "extDescription" | "noVideo" | "noVideoHint" | "videoDetected" | "videosDetected" | "speedLabel" | "thisSite" | "allSites" | "dragToAdjust" | "presets" | "custom" | "speedPlaceholder" | "apply" | "rangeStep" | "rateOnStore",
       substitutions?: string | string[],
       options?: GetMessageOptions,
     ): string;

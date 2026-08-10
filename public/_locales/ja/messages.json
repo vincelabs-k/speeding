@@ -1,0 +1,34 @@
+{
+  "extName": { "message": "Speeding" },
+  "extDescription": { "message": "すべてのサイトで自動速度調整——一度設定するだけ。YouTube、Udemy、Bilibili、Netflix、ポッドキャストに対応。" },
+  "noVideo": { "message": "動画が見つかりません" },
+  "noVideoHint": { "message": "動画のあるページを開いてください" },
+  "videoDetected": {
+    "message": "$COUNT$ 件の動画を検出",
+    "placeholders": { "count": { "content": "$1", "example": "1" } }
+  },
+  "videosDetected": {
+    "message": "$COUNT$ 件の動画を検出",
+    "placeholders": { "count": { "content": "$1", "example": "5" } }
+  },
+  "speedLabel": { "message": "速度" },
+  "thisSite": { "message": "このサイト" },
+  "allSites": { "message": "すべてのサイト" },
+  "dragToAdjust": {
+    "message": "ドラッグで調整 · $SPEED$×",
+    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+  },
+  "presets": { "message": "プリセット" },
+  "custom": { "message": "カスタム" },
+  "speedPlaceholder": { "message": "0.5 – 16" },
+  "apply": { "message": "適用" },
+  "rangeStep": {
+    "message": "範囲: $MIN$× – $MAX$× · 刻み: $STEP$×",
+    "placeholders": {
+      "min": { "content": "$1", "example": "0.5" },
+      "max": { "content": "$2", "example": "16" },
+      "step": { "content": "$3", "example": "0.25" }
+    }
+  },
+  "rateOnStore": { "message": "ストアで評価" }
+}

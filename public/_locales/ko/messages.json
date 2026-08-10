@@ -1,0 +1,34 @@
+{
+  "extName": { "message": "Speeding" },
+  "extDescription": { "message": "모든 사이트에 자동 속도 조절 — 한 번 설정하면 끝. YouTube, Udemy, Bilibili, Netflix 및 팟캐스트 플레이어에서 작동합니다." },
+  "noVideo": { "message": "감지된 동영상 없음" },
+  "noVideoHint": { "message": "동영상이 있는 페이지를 열어 시작하세요" },
+  "videoDetected": {
+    "message": "$COUNT$개의 동영상 감지됨",
+    "placeholders": { "count": { "content": "$1", "example": "1" } }
+  },
+  "videosDetected": {
+    "message": "$COUNT$개의 동영상 감지됨",
+    "placeholders": { "count": { "content": "$1", "example": "5" } }
+  },
+  "speedLabel": { "message": "속도" },
+  "thisSite": { "message": "이 사이트" },
+  "allSites": { "message": "모든 사이트" },
+  "dragToAdjust": {
+    "message": "드래그하여 조정 · $SPEED$×",
+    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+  },
+  "presets": { "message": "프리셋" },
+  "custom": { "message": "사용자 지정" },
+  "speedPlaceholder": { "message": "0.5 – 16" },
+  "apply": { "message": "적용" },
+  "rangeStep": {
+    "message": "범위: $MIN$× – $MAX$× · 단계: $STEP$×",
+    "placeholders": {
+      "min": { "content": "$1", "example": "0.5" },
+      "max": { "content": "$2", "example": "16" },
+      "step": { "content": "$3", "example": "0.25" }
+    }
+  },
+  "rateOnStore": { "message": "스토어에서 평가하기" }
+}

@@ -154,8 +154,8 @@ function App() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
             </svg>
           </div>
-          <p className="text-sm text-slate-400 font-medium">No video detected</p>
-          <p className="text-[11px] text-slate-300">Open a page with video to get started</p>
+          <p className="text-sm text-slate-400 font-medium">{browser.i18n.getMessage('noVideo')}</p>
+          <p className="text-[11px] text-slate-300">{browser.i18n.getMessage('noVideoHint')}</p>
         </div>
       </div>
     );
@@ -172,7 +172,7 @@ function App() {
             Speeding
           </h1>
           <p className="text-[12px] text-slate-400 mt-0.5 font-medium">
-            {videoCount} video{videoCount !== 1 ? 's' : ''} detected
+            {browser.i18n.getMessage(videoCount === 1 ? 'videoDetected' : 'videosDetected', videoCount.toString())}
           </p>
         </div>
         {/* Speed badge */}
@@ -181,7 +181,7 @@ function App() {
             {formatSpeed(speed)}
           </span>
           <span className="text-[10px] text-slate-400 font-semibold mt-0.5 tracking-wide uppercase">
-            speed
+            {browser.i18n.getMessage('speedLabel')}
           </span>
         </div>
       </div>
@@ -205,7 +205,7 @@ function App() {
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
             </svg>
-            This site
+            {browser.i18n.getMessage('thisSite')}
           </button>
           <button
             onClick={() => handleModeChange('all')}
@@ -223,7 +223,7 @@ function App() {
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
             </svg>
-            All sites
+            {browser.i18n.getMessage('allSites')}
           </button>
         </div>
         {speedMode === 'this' && domain && (
@@ -317,14 +317,14 @@ function App() {
         {/* Hint */}
         <div className="text-center mt-1.5">
           <span className="text-[11px] text-slate-400 font-medium">
-            Drag to adjust &middot; {formatSpeed(speed)}&times;
+            {browser.i18n.getMessage('dragToAdjust', formatSpeed(speed))}
           </span>
         </div>
       </div>
 
       {/* Presets */}
       <div className="px-4 pb-3">
-        <p className="text-[10px] text-slate-400 uppercase tracking-wider mb-2 px-1 font-semibold">Presets</p>
+        <p className="text-[10px] text-slate-400 uppercase tracking-wider mb-2 px-1 font-semibold">{browser.i18n.getMessage('presets')}</p>
         <div className="grid grid-cols-4 gap-1.5">
           {PRESETS.map((p) => {
             const isActive = speed === p;
@@ -355,7 +355,7 @@ function App() {
 
       {/* Custom */}
       <div className="px-4 pb-5">
-        <p className="text-[10px] text-slate-400 uppercase tracking-wider mb-2 px-1 font-semibold">Custom</p>
+        <p className="text-[10px] text-slate-400 uppercase tracking-wider mb-2 px-1 font-semibold">{browser.i18n.getMessage('custom')}</p>
         <div className="flex gap-2">
           <div className="relative flex-1">
             <input
@@ -364,7 +364,7 @@ function App() {
               onChange={handleCustomInput}
               onBlur={handleCustomApply}
               onKeyDown={handleCustomKeyDown}
-              placeholder="0.5 – 16"
+              placeholder={browser.i18n.getMessage('speedPlaceholder')}
               className="w-full h-9 bg-white border border-slate-200 rounded-lg pl-3 pr-7 text-[13px] font-medium text-slate-700 placeholder:text-slate-300 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/15 transition-all"
             />
             <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[12px] text-slate-400 font-medium pointer-events-none select-none">
@@ -375,11 +375,11 @@ function App() {
             onClick={handleCustomApply}
             className="h-9 px-5 rounded-lg bg-gradient-to-br from-sky-500 to-sky-600 text-white text-[13px] font-semibold hover:from-sky-600 hover:to-sky-700 active:scale-[0.97] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/40 focus-visible:ring-offset-1 shadow-md shadow-sky-500/20"
           >
-            Apply
+            {browser.i18n.getMessage('apply')}
           </button>
         </div>
         <p className="text-[10px] text-slate-300 mt-2 text-center font-medium">
-          Range: {formatSpeed(MIN_SPEED)}&times; – {formatSpeed(MAX_SPEED)}&times; &middot; Step: {STEP}&times;
+          {browser.i18n.getMessage('rangeStep', [formatSpeed(MIN_SPEED), formatSpeed(MAX_SPEED), STEP.toString()])}
         </p>
         <RatingButton />
       </div>

@@ -1,0 +1,34 @@
+{
+  "extName": { "message": "Speeding" },
+  "extDescription": { "message": "Automatisk hastighet för varje sida — ställ in en gång, rör aldrig igen. Fungerar på YouTube, Udemy, Bilibili, Netflix och poddspelare." },
+  "noVideo": { "message": "Ingen video hittad" },
+  "noVideoHint": { "message": "Öppna en sida med video för att komma igång" },
+  "videoDetected": {
+    "message": "$COUNT$ video hittad",
+    "placeholders": { "count": { "content": "$1", "example": "1" } }
+  },
+  "videosDetected": {
+    "message": "$COUNT$ videor hittade",
+    "placeholders": { "count": { "content": "$1", "example": "5" } }
+  },
+  "speedLabel": { "message": "hastighet" },
+  "thisSite": { "message": "Denna sida" },
+  "allSites": { "message": "Alla sidor" },
+  "dragToAdjust": {
+    "message": "Dra för att justera · $SPEED$×",
+    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+  },
+  "presets": { "message": "Förinställningar" },
+  "custom": { "message": "Anpassad" },
+  "speedPlaceholder": { "message": "0.5 – 16" },
+  "apply": { "message": "Verkställ" },
+  "rangeStep": {
+    "message": "Intervall: $MIN$× – $MAX$× · Steg: $STEP$×",
+    "placeholders": {
+      "min": { "content": "$1", "example": "0.5" },
+      "max": { "content": "$2", "example": "16" },
+      "step": { "content": "$3", "example": "0.25" }
+    }
+  },
+  "rateOnStore": { "message": "Betygsätt i Store" }
+}

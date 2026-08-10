@@ -11,8 +11,9 @@ export default defineConfig({
   modules: ['@wxt-dev/module-react'],
   vite: () => ({ plugins: [tailwindcss()] }),
   manifest: {
-    name: 'Speeding',
-    description: 'Auto-speed for every site — set once, never touch again. Works on YouTube, Udemy, Bilibili, Netflix & podcast players.',
+    default_locale: 'en',
+    name: '__MSG_extName__',
+    description: '__MSG_extDescription__',
     permissions: ['activeTab', 'storage'],
     author: { email: '1093358332@qq.com' },
     privacy_policy_url: 'https://vincelabs-k.github.io/speeding/PRIVACY.html',

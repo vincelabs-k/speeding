@@ -1,0 +1,34 @@
+{
+  "extName": { "message": "Speeding" },
+  "extDescription": { "message": "Velocità automatica per ogni sito — imposta una volta, non toccare più. Funziona su YouTube, Udemy, Bilibili, Netflix e lettori di podcast." },
+  "noVideo": { "message": "Nessun video rilevato" },
+  "noVideoHint": { "message": "Apri una pagina con un video per iniziare" },
+  "videoDetected": {
+    "message": "$COUNT$ video rilevato",
+    "placeholders": { "count": { "content": "$1", "example": "1" } }
+  },
+  "videosDetected": {
+    "message": "$COUNT$ video rilevati",
+    "placeholders": { "count": { "content": "$1", "example": "5" } }
+  },
+  "speedLabel": { "message": "velocità" },
+  "thisSite": { "message": "Questo sito" },
+  "allSites": { "message": "Tutti i siti" },
+  "dragToAdjust": {
+    "message": "Trascina per regolare · $SPEED$×",
+    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+  },
+  "presets": { "message": "Preimpostazioni" },
+  "custom": { "message": "Personalizzato" },
+  "speedPlaceholder": { "message": "0.5 – 16" },
+  "apply": { "message": "Applica" },
+  "rangeStep": {
+    "message": "Intervallo: $MIN$× – $MAX$× · Passo: $STEP$×",
+    "placeholders": {
+      "min": { "content": "$1", "example": "0.5" },
+      "max": { "content": "$2", "example": "16" },
+      "step": { "content": "$3", "example": "0.25" }
+    }
+  },
+  "rateOnStore": { "message": "Valuta sullo Store" }
+}

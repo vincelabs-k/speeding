@@ -1,0 +1,34 @@
+{
+  "extName": { "message": "Speeding" },
+  "extDescription": { "message": "Automatische snelheid voor elke site — één keer instellen, nooit meer aanraken. Werkt op YouTube, Udemy, Bilibili, Netflix en podcastspelers." },
+  "noVideo": { "message": "Geen video gedetecteerd" },
+  "noVideoHint": { "message": "Open een pagina met video om te beginnen" },
+  "videoDetected": {
+    "message": "$COUNT$ video gedetecteerd",
+    "placeholders": { "count": { "content": "$1", "example": "1" } }
+  },
+  "videosDetected": {
+    "message": "$COUNT$ video's gedetecteerd",
+    "placeholders": { "count": { "content": "$1", "example": "5" } }
+  },
+  "speedLabel": { "message": "snelheid" },
+  "thisSite": { "message": "Deze site" },
+  "allSites": { "message": "Alle sites" },
+  "dragToAdjust": {
+    "message": "Sleep om aan te passen · $SPEED$×",
+    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+  },
+  "presets": { "message": "Voorinstellingen" },
+  "custom": { "message": "Aangepast" },
+  "speedPlaceholder": { "message": "0.5 – 16" },
+  "apply": { "message": "Toepassen" },
+  "rangeStep": {
+    "message": "Bereik: $MIN$× – $MAX$× · Stap: $STEP$×",
+    "placeholders": {
+      "min": { "content": "$1", "example": "0.5" },
+      "max": { "content": "$2", "example": "16" },
+      "step": { "content": "$3", "example": "0.25" }
+    }
+  },
+  "rateOnStore": { "message": "Beoordelen in Store" }
+}

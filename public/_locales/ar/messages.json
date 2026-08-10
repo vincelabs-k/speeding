@@ -1,0 +1,34 @@
+{
+  "extName": { "message": "Speeding" },
+  "extDescription": { "message": "سرعة تلقائية لكل موقع — اضبطها مرة واحدة ولن تحتاج للمسها مجددًا. تعمل على YouTube و Udemy و Bilibili و Netflix ومشغلات البودكاست." },
+  "noVideo": { "message": "لم يتم اكتشاف فيديو" },
+  "noVideoHint": { "message": "افتح صفحة تحتوي على فيديو للبدء" },
+  "videoDetected": {
+    "message": "تم اكتشاف $COUNT$ فيديو",
+    "placeholders": { "count": { "content": "$1", "example": "1" } }
+  },
+  "videosDetected": {
+    "message": "تم اكتشاف $COUNT$ فيديو",
+    "placeholders": { "count": { "content": "$1", "example": "5" } }
+  },
+  "speedLabel": { "message": "السرعة" },
+  "thisSite": { "message": "هذا الموقع" },
+  "allSites": { "message": "كل المواقع" },
+  "dragToAdjust": {
+    "message": "اسحب للتعديل · $SPEED$×",
+    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+  },
+  "presets": { "message": "الإعدادات المسبقة" },
+  "custom": { "message": "مخصص" },
+  "speedPlaceholder": { "message": "0.5 – 16" },
+  "apply": { "message": "تطبيق" },
+  "rangeStep": {
+    "message": "النطاق: $MIN$× – $MAX$× · الخطوة: $STEP$×",
+    "placeholders": {
+      "min": { "content": "$1", "example": "0.5" },
+      "max": { "content": "$2", "example": "16" },
+      "step": { "content": "$3", "example": "0.25" }
+    }
+  },
+  "rateOnStore": { "message": "التقييم على المتجر" }
+}
