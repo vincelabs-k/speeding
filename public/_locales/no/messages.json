@@ -1,10 +1,10 @@
 {
   "_generated": "Auto-generated from translations/messages.ts — DO NOT EDIT",
   "extName": {
-    "message": "Speeding"
+    "message": "Speeding - Video Speed Controller"
   },
   "extDescription": {
-    "message": "Automatisk hastighet for hvert nettsted — still inn én gang, aldri rør igjen. Fungerer på YouTube, Udemy, Bilibili, Netflix og podcastspillere."
+    "message": "YouTube, HTML5 video speed controller med snarveier. Still inn avspillingshastighet én gang per nettsted: Netflix, Bilibili, Udemy og mer."
   },
   "noVideo": {
     "message": "Ingen video funnet"

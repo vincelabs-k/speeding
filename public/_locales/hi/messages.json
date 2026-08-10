@@ -1,10 +1,10 @@
 {
   "_generated": "Auto-generated from translations/messages.ts — DO NOT EDIT",
   "extName": {
-    "message": "Speeding"
+    "message": "Speeding - Video Speed Controller"
   },
   "extDescription": {
-    "message": "हर साइट के लिए स्वचालित गति — एक बार सेट करें, फिर कभी न छुएं। YouTube, Udemy, Bilibili, Netflix और पॉडकास्ट प्लेयर पर काम करता है।"
+    "message": "YouTube, HTML5 वीडियो स्पीड कंट्रोलर शॉर्टकट के साथ। प्रति साइट एक बार प्लेबैक रेट सेट करें: Netflix, Bilibili, Udemy और अधिक।"
   },
   "noVideo": {
     "message": "कोई वीडियो नहीं मिला"

@@ -1,10 +1,10 @@
 {
   "_generated": "Auto-generated from translations/messages.ts — DO NOT EDIT",
   "extName": {
-    "message": "Speeding"
+    "message": "Speeding - Video Speed Controller"
   },
   "extDescription": {
-    "message": "为每个站点自动调速——设置一次，无需再管。支持 YouTube、Udemy、Bilibili、Netflix 及播客播放器。"
+    "message": "YouTube、HTML5 视频速度控制器，支持快捷键。按站点设置一次播放速率：Netflix、Bilibili、Udemy 等。"
   },
   "noVideo": {
     "message": "未检测到视频"

@@ -1,10 +1,10 @@
 {
   "_generated": "Auto-generated from translations/messages.ts — DO NOT EDIT",
   "extName": {
-    "message": "Speeding"
+    "message": "Speeding - Video Speed Controller"
   },
   "extDescription": {
-    "message": "سرعة تلقائية لكل موقع — اضبطها مرة واحدة ولن تحتاج للمسها مجددًا. تعمل على YouTube و Udemy و Bilibili و Netflix ومشغلات البودكاست."
+    "message": "YouTube, HTML5 — متحكم بسرعة الفيديو مع اختصارات. اضبط سرعة التشغيل مرة واحدة لكل موقع: Netflix, Bilibili, Udemy والمزيد."
   },
   "noVideo": {
     "message": "لم يتم اكتشاف فيديو"
