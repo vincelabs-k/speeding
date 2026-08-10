@@ -1,48 +1,119 @@
 {
-  "extName": { "message": "Speeding" },
-  "extDescription": { "message": "すべてのサイトで自動速度調整——一度設定するだけ。YouTube、Udemy、Bilibili、Netflix、ポッドキャストに対応。" },
-  "noVideo": { "message": "動画が見つかりません" },
-  "noVideoHint": { "message": "動画のあるページを開いてください" },
+  "_generated": "Auto-generated from translations/messages.ts — DO NOT EDIT",
+  "extName": {
+    "message": "Speeding"
+  },
+  "extDescription": {
+    "message": "すべてのサイトで自動速度調整——一度設定するだけ。YouTube、Udemy、Bilibili、Netflix、ポッドキャストに対応。"
+  },
+  "noVideo": {
+    "message": "動画が見つかりません"
+  },
+  "noVideoHint": {
+    "message": "動画のあるページを開いてください"
+  },
+  "speedLabel": {
+    "message": "速度"
+  },
+  "thisSite": {
+    "message": "このサイト"
+  },
+  "allSites": {
+    "message": "すべてのサイト"
+  },
+  "presets": {
+    "message": "プリセット"
+  },
+  "custom": {
+    "message": "カスタム"
+  },
+  "speedPlaceholder": {
+    "message": "0.5 – 16"
+  },
+  "apply": {
+    "message": "適用"
+  },
+  "rateOnStore": {
+    "message": "ストアで評価"
+  },
+  "shortcutHint": {
+    "message": "Alt+↑/↓ で速度を調整"
+  },
+  "ariaLoading": {
+    "message": "速度設定を読み込み中"
+  },
+  "ariaSlider": {
+    "message": "再生速度"
+  },
+  "ariaCustomSpeed": {
+    "message": "カスタム速度の値"
+  },
+  "ariaApplyCustom": {
+    "message": "カスタム速度を適用"
+  },
+  "ariaRateOnStore": {
+    "message": "Chrome ウェブストアで評価"
+  },
   "videoDetected": {
     "message": "$COUNT$ 件の動画を検出",
-    "placeholders": { "count": { "content": "$1", "example": "1" } }
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
   },
   "videosDetected": {
     "message": "$COUNT$ 件の動画を検出",
-    "placeholders": { "count": { "content": "$1", "example": "5" } }
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
   },
-  "speedLabel": { "message": "速度" },
-  "thisSite": { "message": "このサイト" },
-  "allSites": { "message": "すべてのサイト" },
   "dragToAdjust": {
     "message": "ドラッグで調整 · $SPEED$×",
-    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "1.5"
+      }
+    }
   },
-  "presets": { "message": "プリセット" },
-  "custom": { "message": "カスタム" },
-  "speedPlaceholder": { "message": "0.5 – 16" },
-  "apply": { "message": "適用" },
   "rangeStep": {
     "message": "範囲: $MIN$× – $MAX$× · 刻み: $STEP$×",
     "placeholders": {
-      "min": { "content": "$1", "example": "0.5" },
-      "max": { "content": "$2", "example": "16" },
-      "step": { "content": "$3", "example": "0.25" }
+      "min": {
+        "content": "$1",
+        "example": "0.5"
+      },
+      "max": {
+        "content": "$2",
+        "example": "16"
+      },
+      "step": {
+        "content": "$3",
+        "example": "0.25"
+      }
     }
   },
-  "rateOnStore": { "message": "ストアで評価" },
-  "shortcutHint": { "message": "Alt+↑/↓ で速度を調整" },
-  "ariaLoading": { "message": "速度設定を読み込み中" },
-  "ariaSlider": { "message": "再生速度" },
   "ariaSpeedDisplay": {
     "message": "現在の速度 $SPEED$×",
-    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "1.5"
+      }
+    }
   },
   "ariaPresetSpeed": {
     "message": "速度を $SPEED$× に設定",
-    "placeholders": { "speed": { "content": "$1", "example": "2" } }
-  },
-  "ariaCustomSpeed": { "message": "カスタム速度の値" },
-  "ariaApplyCustom": { "message": "カスタム速度を適用" },
-  "ariaRateOnStore": { "message": "Chrome ウェブストアで評価" }
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  }
 }

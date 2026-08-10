@@ -1,48 +1,119 @@
 {
-  "extName": { "message": "Speeding" },
-  "extDescription": { "message": "हर साइट के लिए स्वचालित गति — एक बार सेट करें, फिर कभी न छुएं। YouTube, Udemy, Bilibili, Netflix और पॉडकास्ट प्लेयर पर काम करता है।" },
-  "noVideo": { "message": "कोई वीडियो नहीं मिला" },
-  "noVideoHint": { "message": "शुरू करने के लिए वीडियो वाला पेज खोलें" },
+  "_generated": "Auto-generated from translations/messages.ts — DO NOT EDIT",
+  "extName": {
+    "message": "Speeding"
+  },
+  "extDescription": {
+    "message": "हर साइट के लिए स्वचालित गति — एक बार सेट करें, फिर कभी न छुएं। YouTube, Udemy, Bilibili, Netflix और पॉडकास्ट प्लेयर पर काम करता है।"
+  },
+  "noVideo": {
+    "message": "कोई वीडियो नहीं मिला"
+  },
+  "noVideoHint": {
+    "message": "शुरू करने के लिए वीडियो वाला पेज खोलें"
+  },
+  "speedLabel": {
+    "message": "गति"
+  },
+  "thisSite": {
+    "message": "यह साइट"
+  },
+  "allSites": {
+    "message": "सभी साइटें"
+  },
+  "presets": {
+    "message": "प्रीसेट"
+  },
+  "custom": {
+    "message": "कस्टम"
+  },
+  "speedPlaceholder": {
+    "message": "0.5 – 16"
+  },
+  "apply": {
+    "message": "लागू करें"
+  },
+  "rateOnStore": {
+    "message": "स्टोर पर रेटिंग दें"
+  },
+  "shortcutHint": {
+    "message": "Alt+↑/↓ गति समायोजित करें"
+  },
+  "ariaLoading": {
+    "message": "गति सेटिंग लोड हो रही है"
+  },
+  "ariaSlider": {
+    "message": "प्लेबैक गति"
+  },
+  "ariaCustomSpeed": {
+    "message": "कस्टम गति मान"
+  },
+  "ariaApplyCustom": {
+    "message": "कस्टम गति लागू करें"
+  },
+  "ariaRateOnStore": {
+    "message": "Chrome वेब स्टोर पर रेटिंग दें"
+  },
   "videoDetected": {
     "message": "$COUNT$ वीडियो मिला",
-    "placeholders": { "count": { "content": "$1", "example": "1" } }
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
   },
   "videosDetected": {
     "message": "$COUNT$ वीडियो मिले",
-    "placeholders": { "count": { "content": "$1", "example": "5" } }
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
   },
-  "speedLabel": { "message": "गति" },
-  "thisSite": { "message": "यह साइट" },
-  "allSites": { "message": "सभी साइटें" },
   "dragToAdjust": {
     "message": "समायोजित करने के लिए खींचें · $SPEED$×",
-    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "1.5"
+      }
+    }
   },
-  "presets": { "message": "प्रीसेट" },
-  "custom": { "message": "कस्टम" },
-  "speedPlaceholder": { "message": "0.5 – 16" },
-  "apply": { "message": "लागू करें" },
   "rangeStep": {
     "message": "सीमा: $MIN$× – $MAX$× · चरण: $STEP$×",
     "placeholders": {
-      "min": { "content": "$1", "example": "0.5" },
-      "max": { "content": "$2", "example": "16" },
-      "step": { "content": "$3", "example": "0.25" }
+      "min": {
+        "content": "$1",
+        "example": "0.5"
+      },
+      "max": {
+        "content": "$2",
+        "example": "16"
+      },
+      "step": {
+        "content": "$3",
+        "example": "0.25"
+      }
     }
   },
-  "rateOnStore": { "message": "स्टोर पर रेटिंग दें" },
-  "shortcutHint": { "message": "Alt+↑/↓ गति समायोजित करें" },
-  "ariaLoading": { "message": "गति सेटिंग लोड हो रही है" },
-  "ariaSlider": { "message": "प्लेबैक गति" },
   "ariaSpeedDisplay": {
     "message": "वर्तमान गति $SPEED$×",
-    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "1.5"
+      }
+    }
   },
   "ariaPresetSpeed": {
     "message": "गति $SPEED$× पर सेट करें",
-    "placeholders": { "speed": { "content": "$1", "example": "2" } }
-  },
-  "ariaCustomSpeed": { "message": "कस्टम गति मान" },
-  "ariaApplyCustom": { "message": "कस्टम गति लागू करें" },
-  "ariaRateOnStore": { "message": "Chrome वेब स्टोर पर रेटिंग दें" }
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  }
 }

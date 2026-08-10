@@ -1,48 +1,119 @@
 {
-  "extName": { "message": "Speeding" },
-  "extDescription": { "message": "Automatische snelheid voor elke site — één keer instellen, nooit meer aanraken. Werkt op YouTube, Udemy, Bilibili, Netflix en podcastspelers." },
-  "noVideo": { "message": "Geen video gedetecteerd" },
-  "noVideoHint": { "message": "Open een pagina met video om te beginnen" },
+  "_generated": "Auto-generated from translations/messages.ts — DO NOT EDIT",
+  "extName": {
+    "message": "Speeding"
+  },
+  "extDescription": {
+    "message": "Automatische snelheid voor elke site — één keer instellen, nooit meer aanraken. Werkt op YouTube, Udemy, Bilibili, Netflix en podcastspelers."
+  },
+  "noVideo": {
+    "message": "Geen video gedetecteerd"
+  },
+  "noVideoHint": {
+    "message": "Open een pagina met video om te beginnen"
+  },
+  "speedLabel": {
+    "message": "snelheid"
+  },
+  "thisSite": {
+    "message": "Deze site"
+  },
+  "allSites": {
+    "message": "Alle sites"
+  },
+  "presets": {
+    "message": "Voorinstellingen"
+  },
+  "custom": {
+    "message": "Aangepast"
+  },
+  "speedPlaceholder": {
+    "message": "0.5 – 16"
+  },
+  "apply": {
+    "message": "Toepassen"
+  },
+  "rateOnStore": {
+    "message": "Beoordelen in Store"
+  },
+  "shortcutHint": {
+    "message": "Alt+↑/↓ om snelheid aan te passen"
+  },
+  "ariaLoading": {
+    "message": "Snelheidsinstellingen laden"
+  },
+  "ariaSlider": {
+    "message": "Afspeelsnelheid"
+  },
+  "ariaCustomSpeed": {
+    "message": "Aangepaste snelheidswaarde"
+  },
+  "ariaApplyCustom": {
+    "message": "Aangepaste snelheid toepassen"
+  },
+  "ariaRateOnStore": {
+    "message": "Beoordelen in Chrome Web Store"
+  },
   "videoDetected": {
     "message": "$COUNT$ video gedetecteerd",
-    "placeholders": { "count": { "content": "$1", "example": "1" } }
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
   },
   "videosDetected": {
     "message": "$COUNT$ video's gedetecteerd",
-    "placeholders": { "count": { "content": "$1", "example": "5" } }
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
   },
-  "speedLabel": { "message": "snelheid" },
-  "thisSite": { "message": "Deze site" },
-  "allSites": { "message": "Alle sites" },
   "dragToAdjust": {
     "message": "Sleep om aan te passen · $SPEED$×",
-    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "1.5"
+      }
+    }
   },
-  "presets": { "message": "Voorinstellingen" },
-  "custom": { "message": "Aangepast" },
-  "speedPlaceholder": { "message": "0.5 – 16" },
-  "apply": { "message": "Toepassen" },
   "rangeStep": {
     "message": "Bereik: $MIN$× – $MAX$× · Stap: $STEP$×",
     "placeholders": {
-      "min": { "content": "$1", "example": "0.5" },
-      "max": { "content": "$2", "example": "16" },
-      "step": { "content": "$3", "example": "0.25" }
+      "min": {
+        "content": "$1",
+        "example": "0.5"
+      },
+      "max": {
+        "content": "$2",
+        "example": "16"
+      },
+      "step": {
+        "content": "$3",
+        "example": "0.25"
+      }
     }
   },
-  "rateOnStore": { "message": "Beoordelen in Store" },
-  "shortcutHint": { "message": "Alt+↑/↓ om snelheid aan te passen" },
-  "ariaLoading": { "message": "Snelheidsinstellingen laden" },
-  "ariaSlider": { "message": "Afspeelsnelheid" },
   "ariaSpeedDisplay": {
     "message": "Huidige snelheid $SPEED$×",
-    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "1.5"
+      }
+    }
   },
   "ariaPresetSpeed": {
     "message": "Snelheid instellen op $SPEED$×",
-    "placeholders": { "speed": { "content": "$1", "example": "2" } }
-  },
-  "ariaCustomSpeed": { "message": "Aangepaste snelheidswaarde" },
-  "ariaApplyCustom": { "message": "Aangepaste snelheid toepassen" },
-  "ariaRateOnStore": { "message": "Beoordelen in Chrome Web Store" }
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  }
 }

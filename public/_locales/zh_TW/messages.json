@@ -1,48 +1,119 @@
 {
-  "extName": { "message": "Speeding" },
-  "extDescription": { "message": "為每個網站自動調速——設定一次，無需再管。支援 YouTube、Udemy、Bilibili、Netflix 及 podcast 播放器。" },
-  "noVideo": { "message": "未檢測到影片" },
-  "noVideoHint": { "message": "打開一個有影片的頁面即可開始" },
+  "_generated": "Auto-generated from translations/messages.ts — DO NOT EDIT",
+  "extName": {
+    "message": "Speeding"
+  },
+  "extDescription": {
+    "message": "為每個網站自動調速——設定一次，無需再管。支援 YouTube、Udemy、Bilibili、Netflix 及 podcast 播放器。"
+  },
+  "noVideo": {
+    "message": "未檢測到影片"
+  },
+  "noVideoHint": {
+    "message": "打開一個有影片的頁面即可開始"
+  },
+  "speedLabel": {
+    "message": "倍速"
+  },
+  "thisSite": {
+    "message": "目前網站"
+  },
+  "allSites": {
+    "message": "所有網站"
+  },
+  "presets": {
+    "message": "預設"
+  },
+  "custom": {
+    "message": "自訂"
+  },
+  "speedPlaceholder": {
+    "message": "0.5 – 16"
+  },
+  "apply": {
+    "message": "套用"
+  },
+  "rateOnStore": {
+    "message": "前往商店評分"
+  },
+  "shortcutHint": {
+    "message": "Alt+↑/↓ 調整播放速度"
+  },
+  "ariaLoading": {
+    "message": "正在載入速度設定"
+  },
+  "ariaSlider": {
+    "message": "播放速度"
+  },
+  "ariaCustomSpeed": {
+    "message": "自訂速度值"
+  },
+  "ariaApplyCustom": {
+    "message": "套用自訂速度"
+  },
+  "ariaRateOnStore": {
+    "message": "在 Chrome 線上應用程式商店評分"
+  },
   "videoDetected": {
     "message": "檢測到 $COUNT$ 個影片",
-    "placeholders": { "count": { "content": "$1", "example": "1" } }
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
   },
   "videosDetected": {
     "message": "檢測到 $COUNT$ 個影片",
-    "placeholders": { "count": { "content": "$1", "example": "5" } }
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
   },
-  "speedLabel": { "message": "倍速" },
-  "thisSite": { "message": "目前網站" },
-  "allSites": { "message": "所有網站" },
   "dragToAdjust": {
     "message": "拖曳調整 · $SPEED$×",
-    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "1.5"
+      }
+    }
   },
-  "presets": { "message": "預設" },
-  "custom": { "message": "自訂" },
-  "speedPlaceholder": { "message": "0.5 – 16" },
-  "apply": { "message": "套用" },
   "rangeStep": {
     "message": "範圍: $MIN$× – $MAX$× · 步長: $STEP$×",
     "placeholders": {
-      "min": { "content": "$1", "example": "0.5" },
-      "max": { "content": "$2", "example": "16" },
-      "step": { "content": "$3", "example": "0.25" }
+      "min": {
+        "content": "$1",
+        "example": "0.5"
+      },
+      "max": {
+        "content": "$2",
+        "example": "16"
+      },
+      "step": {
+        "content": "$3",
+        "example": "0.25"
+      }
     }
   },
-  "rateOnStore": { "message": "前往商店評分" },
-  "shortcutHint": { "message": "Alt+↑/↓ 調整播放速度" },
-  "ariaLoading": { "message": "正在載入速度設定" },
-  "ariaSlider": { "message": "播放速度" },
   "ariaSpeedDisplay": {
     "message": "目前速度 $SPEED$×",
-    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "1.5"
+      }
+    }
   },
   "ariaPresetSpeed": {
     "message": "設定速度為 $SPEED$×",
-    "placeholders": { "speed": { "content": "$1", "example": "2" } }
-  },
-  "ariaCustomSpeed": { "message": "自訂速度值" },
-  "ariaApplyCustom": { "message": "套用自訂速度" },
-  "ariaRateOnStore": { "message": "在 Chrome 線上應用程式商店評分" }
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  }
 }

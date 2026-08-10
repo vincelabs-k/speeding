@@ -1,48 +1,119 @@
 {
-  "extName": { "message": "Speeding" },
-  "extDescription": { "message": "Automatisk hastighed for hvert websted — indstil én gang, rør aldrig igen. Fungerer på YouTube, Udemy, Bilibili, Netflix og podcastafspillere." },
-  "noVideo": { "message": "Ingen video fundet" },
-  "noVideoHint": { "message": "Åbn en side med video for at komme i gang" },
+  "_generated": "Auto-generated from translations/messages.ts — DO NOT EDIT",
+  "extName": {
+    "message": "Speeding"
+  },
+  "extDescription": {
+    "message": "Automatisk hastighed for hvert websted — indstil én gang, rør aldrig igen. Fungerer på YouTube, Udemy, Bilibili, Netflix og podcastafspillere."
+  },
+  "noVideo": {
+    "message": "Ingen video fundet"
+  },
+  "noVideoHint": {
+    "message": "Åbn en side med video for at komme i gang"
+  },
+  "speedLabel": {
+    "message": "hastighed"
+  },
+  "thisSite": {
+    "message": "Dette websted"
+  },
+  "allSites": {
+    "message": "Alle websteder"
+  },
+  "presets": {
+    "message": "Forudindstillinger"
+  },
+  "custom": {
+    "message": "Brugerdefineret"
+  },
+  "speedPlaceholder": {
+    "message": "0.5 – 16"
+  },
+  "apply": {
+    "message": "Anvend"
+  },
+  "rateOnStore": {
+    "message": "Bedøm i Store"
+  },
+  "shortcutHint": {
+    "message": "Alt+↑/↓ for at justere hastighed"
+  },
+  "ariaLoading": {
+    "message": "Indlæser hastighedsindstillinger"
+  },
+  "ariaSlider": {
+    "message": "Afspilningshastighed"
+  },
+  "ariaCustomSpeed": {
+    "message": "Brugerdefineret hastighedsværdi"
+  },
+  "ariaApplyCustom": {
+    "message": "Anvend brugerdefineret hastighed"
+  },
+  "ariaRateOnStore": {
+    "message": "Bedøm i Chrome Web Store"
+  },
   "videoDetected": {
     "message": "$COUNT$ video fundet",
-    "placeholders": { "count": { "content": "$1", "example": "1" } }
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
   },
   "videosDetected": {
     "message": "$COUNT$ videoer fundet",
-    "placeholders": { "count": { "content": "$1", "example": "5" } }
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
   },
-  "speedLabel": { "message": "hastighed" },
-  "thisSite": { "message": "Dette websted" },
-  "allSites": { "message": "Alle websteder" },
   "dragToAdjust": {
     "message": "Træk for at justere · $SPEED$×",
-    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "1.5"
+      }
+    }
   },
-  "presets": { "message": "Forudindstillinger" },
-  "custom": { "message": "Brugerdefineret" },
-  "speedPlaceholder": { "message": "0.5 – 16" },
-  "apply": { "message": "Anvend" },
   "rangeStep": {
     "message": "Område: $MIN$× – $MAX$× · Trin: $STEP$×",
     "placeholders": {
-      "min": { "content": "$1", "example": "0.5" },
-      "max": { "content": "$2", "example": "16" },
-      "step": { "content": "$3", "example": "0.25" }
+      "min": {
+        "content": "$1",
+        "example": "0.5"
+      },
+      "max": {
+        "content": "$2",
+        "example": "16"
+      },
+      "step": {
+        "content": "$3",
+        "example": "0.25"
+      }
     }
   },
-  "rateOnStore": { "message": "Bedøm i Store" },
-  "shortcutHint": { "message": "Alt+↑/↓ for at justere hastighed" },
-  "ariaLoading": { "message": "Indlæser hastighedsindstillinger" },
-  "ariaSlider": { "message": "Afspilningshastighed" },
   "ariaSpeedDisplay": {
     "message": "Aktuel hastighed $SPEED$×",
-    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "1.5"
+      }
+    }
   },
   "ariaPresetSpeed": {
     "message": "Sæt hastighed til $SPEED$×",
-    "placeholders": { "speed": { "content": "$1", "example": "2" } }
-  },
-  "ariaCustomSpeed": { "message": "Brugerdefineret hastighedsværdi" },
-  "ariaApplyCustom": { "message": "Anvend brugerdefineret hastighed" },
-  "ariaRateOnStore": { "message": "Bedøm i Chrome Web Store" }
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  }
 }

@@ -1,48 +1,119 @@
 {
-  "extName": { "message": "Speeding" },
-  "extDescription": { "message": "Velocidad automática para cada sitio — configúralo una vez, no lo toques más. Funciona en YouTube, Udemy, Bilibili, Netflix y reproductores de podcast." },
-  "noVideo": { "message": "No se detectó ningún video" },
-  "noVideoHint": { "message": "Abre una página con video para empezar" },
+  "_generated": "Auto-generated from translations/messages.ts — DO NOT EDIT",
+  "extName": {
+    "message": "Speeding"
+  },
+  "extDescription": {
+    "message": "Velocidad automática para cada sitio — configúralo una vez, no lo toques más. Funciona en YouTube, Udemy, Bilibili, Netflix y reproductores de podcast."
+  },
+  "noVideo": {
+    "message": "No se detectó ningún video"
+  },
+  "noVideoHint": {
+    "message": "Abre una página con video para empezar"
+  },
+  "speedLabel": {
+    "message": "velocidad"
+  },
+  "thisSite": {
+    "message": "Este sitio"
+  },
+  "allSites": {
+    "message": "Todos los sitios"
+  },
+  "presets": {
+    "message": "Preajustes"
+  },
+  "custom": {
+    "message": "Personalizado"
+  },
+  "speedPlaceholder": {
+    "message": "0.5 – 16"
+  },
+  "apply": {
+    "message": "Aplicar"
+  },
+  "rateOnStore": {
+    "message": "Valorar en la tienda"
+  },
+  "shortcutHint": {
+    "message": "Alt+↑/↓ para ajustar la velocidad"
+  },
+  "ariaLoading": {
+    "message": "Cargando ajustes de velocidad"
+  },
+  "ariaSlider": {
+    "message": "Velocidad de reproducción"
+  },
+  "ariaCustomSpeed": {
+    "message": "Valor de velocidad personalizado"
+  },
+  "ariaApplyCustom": {
+    "message": "Aplicar velocidad personalizada"
+  },
+  "ariaRateOnStore": {
+    "message": "Valorar en Chrome Web Store"
+  },
   "videoDetected": {
     "message": "$COUNT$ video detectado",
-    "placeholders": { "count": { "content": "$1", "example": "1" } }
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
   },
   "videosDetected": {
     "message": "$COUNT$ videos detectados",
-    "placeholders": { "count": { "content": "$1", "example": "5" } }
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
   },
-  "speedLabel": { "message": "velocidad" },
-  "thisSite": { "message": "Este sitio" },
-  "allSites": { "message": "Todos los sitios" },
   "dragToAdjust": {
     "message": "Arrastra para ajustar · $SPEED$×",
-    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "1.5"
+      }
+    }
   },
-  "presets": { "message": "Preajustes" },
-  "custom": { "message": "Personalizado" },
-  "speedPlaceholder": { "message": "0.5 – 16" },
-  "apply": { "message": "Aplicar" },
   "rangeStep": {
     "message": "Rango: $MIN$× – $MAX$× · Paso: $STEP$×",
     "placeholders": {
-      "min": { "content": "$1", "example": "0.5" },
-      "max": { "content": "$2", "example": "16" },
-      "step": { "content": "$3", "example": "0.25" }
+      "min": {
+        "content": "$1",
+        "example": "0.5"
+      },
+      "max": {
+        "content": "$2",
+        "example": "16"
+      },
+      "step": {
+        "content": "$3",
+        "example": "0.25"
+      }
     }
   },
-  "rateOnStore": { "message": "Valorar en la tienda" },
-  "shortcutHint": { "message": "Alt+↑/↓ para ajustar la velocidad" },
-  "ariaLoading": { "message": "Cargando ajustes de velocidad" },
-  "ariaSlider": { "message": "Velocidad de reproducción" },
   "ariaSpeedDisplay": {
     "message": "Velocidad actual $SPEED$×",
-    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "1.5"
+      }
+    }
   },
   "ariaPresetSpeed": {
     "message": "Establecer velocidad a $SPEED$×",
-    "placeholders": { "speed": { "content": "$1", "example": "2" } }
-  },
-  "ariaCustomSpeed": { "message": "Valor de velocidad personalizado" },
-  "ariaApplyCustom": { "message": "Aplicar velocidad personalizada" },
-  "ariaRateOnStore": { "message": "Valorar en Chrome Web Store" }
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  }
 }

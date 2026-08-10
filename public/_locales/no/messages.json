@@ -1,48 +1,119 @@
 {
-  "extName": { "message": "Speeding" },
-  "extDescription": { "message": "Automatisk hastighet for hvert nettsted — still inn én gang, aldri rør igjen. Fungerer på YouTube, Udemy, Bilibili, Netflix og podcastspillere." },
-  "noVideo": { "message": "Ingen video funnet" },
-  "noVideoHint": { "message": "Åpne en side med video for å komme i gang" },
+  "_generated": "Auto-generated from translations/messages.ts — DO NOT EDIT",
+  "extName": {
+    "message": "Speeding"
+  },
+  "extDescription": {
+    "message": "Automatisk hastighet for hvert nettsted — still inn én gang, aldri rør igjen. Fungerer på YouTube, Udemy, Bilibili, Netflix og podcastspillere."
+  },
+  "noVideo": {
+    "message": "Ingen video funnet"
+  },
+  "noVideoHint": {
+    "message": "Åpne en side med video for å komme i gang"
+  },
+  "speedLabel": {
+    "message": "hastighet"
+  },
+  "thisSite": {
+    "message": "Dette nettstedet"
+  },
+  "allSites": {
+    "message": "Alle nettsteder"
+  },
+  "presets": {
+    "message": "Forhåndsinnstillinger"
+  },
+  "custom": {
+    "message": "Tilpasset"
+  },
+  "speedPlaceholder": {
+    "message": "0.5 – 16"
+  },
+  "apply": {
+    "message": "Bruk"
+  },
+  "rateOnStore": {
+    "message": "Vurder i Store"
+  },
+  "shortcutHint": {
+    "message": "Alt+↑/↓ for å justere hastighet"
+  },
+  "ariaLoading": {
+    "message": "Laster hastighetsinnstillinger"
+  },
+  "ariaSlider": {
+    "message": "Avspillingshastighet"
+  },
+  "ariaCustomSpeed": {
+    "message": "Tilpasset hastighetsverdi"
+  },
+  "ariaApplyCustom": {
+    "message": "Bruk tilpasset hastighet"
+  },
+  "ariaRateOnStore": {
+    "message": "Vurder i Chrome Web Store"
+  },
   "videoDetected": {
     "message": "$COUNT$ video funnet",
-    "placeholders": { "count": { "content": "$1", "example": "1" } }
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
   },
   "videosDetected": {
     "message": "$COUNT$ videoer funnet",
-    "placeholders": { "count": { "content": "$1", "example": "5" } }
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
   },
-  "speedLabel": { "message": "hastighet" },
-  "thisSite": { "message": "Dette nettstedet" },
-  "allSites": { "message": "Alle nettsteder" },
   "dragToAdjust": {
     "message": "Dra for å justere · $SPEED$×",
-    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "1.5"
+      }
+    }
   },
-  "presets": { "message": "Forhåndsinnstillinger" },
-  "custom": { "message": "Tilpasset" },
-  "speedPlaceholder": { "message": "0.5 – 16" },
-  "apply": { "message": "Bruk" },
   "rangeStep": {
     "message": "Område: $MIN$× – $MAX$× · Trinn: $STEP$×",
     "placeholders": {
-      "min": { "content": "$1", "example": "0.5" },
-      "max": { "content": "$2", "example": "16" },
-      "step": { "content": "$3", "example": "0.25" }
+      "min": {
+        "content": "$1",
+        "example": "0.5"
+      },
+      "max": {
+        "content": "$2",
+        "example": "16"
+      },
+      "step": {
+        "content": "$3",
+        "example": "0.25"
+      }
     }
   },
-  "rateOnStore": { "message": "Vurder i Store" },
-  "shortcutHint": { "message": "Alt+↑/↓ for å justere hastighet" },
-  "ariaLoading": { "message": "Laster hastighetsinnstillinger" },
-  "ariaSlider": { "message": "Avspillingshastighet" },
   "ariaSpeedDisplay": {
     "message": "Gjeldende hastighet $SPEED$×",
-    "placeholders": { "speed": { "content": "$1", "example": "1.5" } }
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "1.5"
+      }
+    }
   },
   "ariaPresetSpeed": {
     "message": "Sett hastighet til $SPEED$×",
-    "placeholders": { "speed": { "content": "$1", "example": "2" } }
-  },
-  "ariaCustomSpeed": { "message": "Tilpasset hastighetsverdi" },
-  "ariaApplyCustom": { "message": "Bruk tilpasset hastighet" },
-  "ariaRateOnStore": { "message": "Vurder i Chrome Web Store" }
+    "placeholders": {
+      "speed": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  }
 }
