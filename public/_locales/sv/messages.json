@@ -4,7 +4,7 @@
     "message": "Speeding - Video Speed Controller"
   },
   "extDescription": {
-    "message": "Styr uppspelningshastigheten på valfri HTML5-video eller YouTube med tangentbordsgenvägar. Justerbar från 0,5× till 16× — hastighetspreferens sparas per sida. Fungerar på Netflix, Bilibili, Udemy och mer."
+    "message": "Justera videouppspelningshastighet från 0,5× till 16× på valfri sida. Fungerar på YouTube, Bilibili, Netflix och mer."
   },
   "noVideo": {
     "message": "Ingen video hittad"

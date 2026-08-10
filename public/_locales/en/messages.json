@@ -4,7 +4,7 @@
     "message": "Speeding - Video Speed Controller"
   },
   "extDescription": {
-    "message": "Control playback speed on any HTML5 video or YouTube with keyboard shortcuts. Adjustable from 0.5× to 16× — speed preference remembered per site. Works on Netflix, Bilibili, Udemy, and more."
+    "message": "Adjust video speed from 0.5× to 16× on any site. Works on YouTube, Bilibili, Netflix, Udemy, and more."
   },
   "noVideo": {
     "message": "No video detected"

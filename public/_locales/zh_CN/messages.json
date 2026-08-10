@@ -4,7 +4,7 @@
     "message": "Speeding - Video Speed Controller"
   },
   "extDescription": {
-    "message": "使用快捷键控制任何 HTML5 视频或 YouTube 的播放速度。0.5× 至 16× 自由调节，自动记住每个站点的速度偏好。支持 Netflix、Bilibili、Udemy 等主流平台。"
+    "message": "在任何网站的 HTML5 视频上调节 0.5× 至 16× 倍速播放。支持 B站、YouTube、Netflix 等平台。"
   },
   "noVideo": {
     "message": "未检测到视频"

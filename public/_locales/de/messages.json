@@ -4,7 +4,7 @@
     "message": "Speeding - Video Speed Controller"
   },
   "extDescription": {
-    "message": "Steuere die Wiedergabegeschwindigkeit von HTML5-Videos und YouTube mit Tastenkombinationen. Einstellbar von 0,5× bis 16× — Geschwindigkeit wird pro Website gespeichert. Funktioniert auf Netflix, Bilibili, Udemy und mehr."
+    "message": "Video-Wiedergabegeschwindigkeit 0,5×–16× auf jeder Website anpassen. Funktioniert auf YouTube, Bilibili, Netflix und mehr."
   },
   "noVideo": {
     "message": "Kein Video erkannt"

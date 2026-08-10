@@ -86,7 +86,7 @@ declare module "wxt/browser" {
       options?: GetMessageOptions,
     ): string;
     /**
-     * "Control playback speed on any HTML5 video or YouTube with keyboard shortcuts. Adjustable from 0.5× to 16× — speed preference remembered per site. Works on Netflix, Bilibili, Udemy, and more."
+     * "Adjust video speed from 0.5× to 16× on any site. Works on YouTube, Bilibili, Netflix, Udemy, and more."
      */
     getMessage(
       messageName: "extDescription",

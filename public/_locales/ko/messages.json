@@ -4,7 +4,7 @@
     "message": "Speeding - Video Speed Controller"
   },
   "extDescription": {
-    "message": "키보드 단축키로 HTML5 동영상과 YouTube의 재생 속도 제어. 0.5배에서 16배까지 조정 가능, 사이트별 속도 자동 저장. Netflix, Bilibili, Udemy 등에서 작동."
+    "message": "모든 사이트에서 동영상 재생 속도를 0.5×~16×로 조정. YouTube, Bilibili, Netflix 등에서 작동."
   },
   "noVideo": {
     "message": "감지된 동영상 없음"

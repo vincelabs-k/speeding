@@ -4,7 +4,7 @@
     "message": "Speeding - Video Speed Controller"
   },
   "extDescription": {
-    "message": "キーボードショートカットでHTML5動画やYouTubeの再生速度を制御。0.5倍から16倍まで調整可能、サイトごとに速度設定を自動保存。Netflix、Bilibili、Udemyなどに対応。"
+    "message": "あらゆるサイトで動画の再生速度を0.5×から16×まで調整。YouTube、Bilibili、Netflixなどに対応。"
   },
   "noVideo": {
     "message": "動画が見つかりません"
