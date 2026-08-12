@@ -1,0 +1,72 @@
+---
+description: 
+alwaysApply: true
+enabled: true
+updatedAt: 2026-08-13T00:00:00.000Z
+provider: 
+---
+
+# 测试用例规范
+
+## 发布门禁语义
+- 发布/上架前**必执行** `extension_launch_checklist` skill 的 Step 3「发布前测试」：扫描并运行 `tests/` 下全部测试套件，**所有套件全部 PASS 才允许发布**
+- 任一套件 FAIL 即阻断发布，须输出修复清单并重跑至全部通过
+
+## 套件目录约定
+- 项目测试根目录为 `tests/`（2026-08 随本仓库引入，受版本库管理），**所有测试用例必须存放于此**，不得散落于项目根目录或其他位置
+- 测试套件统一存放于 `tests/<suite>/`，每个含 `check.sh` 的子目录即一个套件
+- 当前套件：`tests/linux-compat/`（Linux 成品兼容性验证）
+- 新增测试维度即新增一个 `tests/<新套件>/` 目录（`check.sh`），不得混入其他目录
+
+## 套件文件规范
+| 文件 | 用途 | 约定 |
+|---|---|---|
+| `check.sh` | 固化测试脚本 | bash 零依赖（grep/sed，不引入 jq/python），输出 PASS/FAIL 清单与耗时，退出码 0=通过 / 1=失败 |
+| `setup.sh` | 环境初始化 | bash 零依赖，幂等可重跑（阶段 A 自检 → B 依赖安装 → C 运行时初始化 → D 基线校准），`--skip-baseline` 跳过校准，退出码 0=成功 / 1=失败 |
+
+## 用例调用规范（以 tests/linux-compat/ 为基准，全项目套件统一遵循）
+### 入口与统一约定
+- 每个套件**唯一测试入口**为 `check.sh`；环境初始化入口为 `setup.sh`（可选、幂等可重跑）
+- 一律以 `bash <script>` 调用（在 WSL 内经 `wsl -e bash -c "bash <script> ..."` 执行）
+- 输出契约：stdout 分阶段日志（`PASS`/`FAIL`/`SKIP` 前缀）→ 结尾「结果汇总」（计数 + 总耗时 + 门禁结论 + 失败项清单）
+
+### check.sh（测试执行）
+| 契约 | 约定 |
+|---|---|
+| 用法 | `bash check.sh [--deep] <产物目录\|zip路径>` |
+| 输入 | 成品扩展产物目录（unpacked）或 zip 路径；目录 → `rsync -a --delete` 同步至 `~/ext-test/run/`，zip → `unzip -qo` 解压，规避 `/mnt/c` 跨盘权限位异常 |
+| 输出 | stdout：阶段日志（0 产物同步 / 1 黑盒安装判定 / 2 深入交互引导）+ 结果汇总（PASS/FAIL 计数、总耗时、门禁结论、失败项清单）；FAIL 时附浏览器 stderr 诊断 |
+| 退出码 | 0=全部 PASS / 1=存在 FAIL / 2=用法错误（`--help` 或无参数） |
+| 判定 | 依据浏览器持久化注册证据（Preferences `"path":"<RUN_DIR>"`），由浏览器自身裁决，不解析产物文件内容 |
+| 耗时 | 常规约 10~20s；`--deep` 追加 WSLg 图形交互引导（可选，约 1~2min） |
+
+### setup.sh（环境初始化，一次性 + 幂等可重跑）
+| 契约 | 约定 |
+|---|---|
+| 用法 | `bash setup.sh [--skip-baseline]`（`--skip-baseline` 跳过阶段 D 基线校准） |
+| 输入 | 无外部参数；依赖 `~/ext-test/`（CfT 二进制、run/ 运行时目录） |
+| 阶段 | A 环境自检 → B 依赖安装（rsync/unzip/curl + Chrome for Testing 软链 `/usr/local/bin/chromium`）→ C 运行时初始化 → D 基线校准 |
+| 输出 | stdout 阶段日志 + 结果汇总；阶段 D 校准结果存档 `~/ext-test/baseline.log` |
+| 退出码 | 0=成功 / 1=存在失败 / 2=用法错误 |
+| 注意 | Google Chrome 产品版硬禁用 `--load-extension`，黑盒必须用 CfT；CfT 下载免 sudo，仅建软链需 sudo 一次（请在 WSL 交互终端执行） |
+
+- 运行时暂存区 `~/ext-test/run/` 由脚本内部管理，**不入版本库**
+- **新套件必须遵守同一契约**：唯一入口 `check.sh`、参数/退出码/输出格式与基准一致，判定须为黑盒证据
+
+## 黑盒优先原则
+- 测试用例**以黑盒为主（当前基准为完全黑盒）**：判定必须依据运行时真实行为证据（浏览器注册记录、真实 API/服务响应等），**不解析产物文件内容**，由被验证对象自身裁决成败
+- 新增测试维度默认按黑盒设计；若某维度确实无法黑盒验证（无真实运行载体、验证成本不可接受），**必须先与开发人员沟通**：优先寻找可黑盒化的替代载体/验证路径；经开发人员确认确无黑盒方案后，才允许生成白盒用例
+- 白盒用例（静态解析产物、检查文件内容）仅允许作为黑盒的**补充诊断**，不得作为门禁 PASS 判据；套件主体仍须黑盒
+
+## 边界
+- 仅验证**成品扩展**（构建产物/zip）在 Linux 的安装与使用，**不重建产物、不安装 bun/node**
+- 验证维度：**浏览器安装注册（黑盒）**——由真实 Chromium（headless）以 `--load-extension` 加载产物，以浏览器持久化注册证据裁决，不解析产物文件内容
+
+## 黑盒判定约定
+- 判定依据：浏览器成功注册 unpacked 扩展后，在 `<user-data-dir>/Default/Preferences` 的 `"extensions":{"settings":{...}}` 中写入加载路径 `"path":"<RUN_DIR>"`（仅本次 `--load-extension` 加载的扩展有，天然排除 Chrome 内置组件）；manifest/_locales 无效或加载失败则无该记录 → FAIL
+- 浏览器 stderr 日志仅作失败诊断输出，不参与判定
+- 产物先同步入 WSL 内部目录（`~/ext-test/run/`）再加载，规避 `/mnt/c` 跨盘权限位异常
+
+## 与 skill 的联动
+- `extension_launch_checklist` skill 的 Step 3 负责门禁判定与报告输出；本项目套件为 skill 的测试执行实体
+- skill 检测到项目无 `tests/<suite>/check.sh` 时，生成模板到该目录
