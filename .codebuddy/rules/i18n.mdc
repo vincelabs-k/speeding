@@ -10,3 +10,4 @@ provider:
 - 翻译源文件位于 `translations/messages.ts`，所有翻译修改必须在此文件进行
 - `public/_locales/**` 为自动生成文件，禁止直接编辑
 - 新增/修改翻译 key 后运行 `bun run generate:i18n`
+- `messages.json` 每个顶层 key 必须是含 `message` 字段的对象；禁止写入 `_generated` 等注释性/标记性字段——非法 key 会导致 Chrome/Edge 拒绝加载整个扩展
