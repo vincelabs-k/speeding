@@ -72,11 +72,6 @@ declare module "wxt/browser" {
       substitutions?: string | string[],
       options?: GetMessageOptions,
     ): string;
-    getMessage(
-      messageName: "_generated",
-      substitutions?: string | string[],
-      options?: GetMessageOptions,
-    ): string;
     /**
      * "Speeding - Video Speed Controller"
      */
@@ -270,7 +265,7 @@ declare module "wxt/browser" {
       options?: GetMessageOptions,
     ): string;
     getMessage(
-      messageName: "@@extension_id" | "@@ui_locale" | "@@bidi_dir" | "@@bidi_reversed_dir" | "@@bidi_start_edge" | "@@bidi_end_edge" | "_generated" | "extName" | "extDescription" | "noVideo" | "noVideoHint" | "speedLabel" | "thisSite" | "allSites" | "presets" | "custom" | "speedPlaceholder" | "apply" | "rateOnStore" | "shortcutHint" | "ariaLoading" | "ariaSlider" | "ariaCustomSpeed" | "ariaApplyCustom" | "ariaRateOnStore" | "videoDetected" | "videosDetected" | "dragToAdjust" | "rangeStep" | "ariaSpeedDisplay" | "ariaPresetSpeed",
+      messageName: "@@extension_id" | "@@ui_locale" | "@@bidi_dir" | "@@bidi_reversed_dir" | "@@bidi_start_edge" | "@@bidi_end_edge" | "extName" | "extDescription" | "noVideo" | "noVideoHint" | "speedLabel" | "thisSite" | "allSites" | "presets" | "custom" | "speedPlaceholder" | "apply" | "rateOnStore" | "shortcutHint" | "ariaLoading" | "ariaSlider" | "ariaCustomSpeed" | "ariaApplyCustom" | "ariaRateOnStore" | "videoDetected" | "videosDetected" | "dragToAdjust" | "rangeStep" | "ariaSpeedDisplay" | "ariaPresetSpeed",
       substitutions?: string | string[],
       options?: GetMessageOptions,
     ): string;

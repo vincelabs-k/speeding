@@ -28,9 +28,7 @@ function check(): void {
   let hasErrors = false;
 
   for (const locale of LOCALES) {
-    const expected: Record<string, unknown> = {
-      _generated: 'Auto-generated from translations/messages.ts — DO NOT EDIT',
-    };
+    const expected: Record<string, unknown> = {};
 
     for (const [key, localeMap] of Object.entries(messages)) {
       const text = (localeMap as Record<string, string>)[locale];

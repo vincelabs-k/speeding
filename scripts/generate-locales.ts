@@ -8,22 +8,18 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const OUTPUT_DIR = join(import.meta.dir, '..', 'public', '_locales');
-const GENERATED_TAG = 'Auto-generated from translations/messages.ts — DO NOT EDIT';
 
 type ChromeMsg =
   | { message: string }
   | { message: string; placeholders: Record<string, { content: string; example: string }> };
 
 interface ChromeMessages {
-  _generated: string;
   [key: string]: ChromeMsg | string;
 }
 
 function generate(): void {
   for (const locale of LOCALES) {
-    const result: ChromeMessages = {
-      _generated: GENERATED_TAG,
-    };
+    const result: ChromeMessages = {};
 
     // Simple messages
     for (const [key, localeMap] of Object.entries(messages)) {
