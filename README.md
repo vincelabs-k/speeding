@@ -1,24 +1,22 @@
 # Speeding — Auto-speed for Every Site
 
-> The speed extension built for people who DON'T want a controller.
+> The speed extension built for people who want to set it once and forget it.
 
-Set speed once per site, never touch it again. Open YouTube — auto 2x. Open Udemy — auto 1.5x. Open a podcast — your last speed is already applied. No popup, no OSD, no keyboard shortcuts to memorize.
+Set speed once per site, never touch it again. Open YouTube — auto 2x. Open Udemy — auto 1.5x. Open a course lecture — your last speed is already applied. A lightweight popup and Alt+↑/↓ shortcuts handle adjustments — no floating OSD overlay to fight with.
 
 ## Features
 
 - **Per-site auto-speed** — each site remembers its own speed setting
 - **"This site" or "All sites"** modes for flexible control
-- **0.5x – 16x** with 0.25x steps on any HTML5 video or audio
+- **0.5x – 16x** with 0.25x steps on any HTML5 video
 - **Pitch-preserving audio** — voices stay natural at any speed
-- **Podcasts & audiobooks** — works on audio-only players too
 - **Privacy-first** — zero tracking, zero telemetry
 
 ## Who is this for?
 
 - 📚 Online course learners (Udemy, Coursera, Bilibili courses)
-- 🎧 Podcast & audiobook listeners
 - 📺 Binge-watchers who always watch at 2x
-- 🙅 Anyone tired of keyboard shortcuts and on-screen controllers
+- 🙅 Anyone tired of complex shortcuts and floating on-screen controllers
 
 ## Who should use Video Speed Controller instead?
 
@@ -26,7 +24,7 @@ Set speed once per site, never touch it again. Open YouTube — auto 2x. Open Ud
 - Users who need **per-tab** (not per-site) speed memory
 - Users who prefer a floating OSD controller
 
-**Speeding is intentionally simple. If you want a controller, VSC is the better choice.**
+**Speeding stays intentionally minimal. If you want a full-featured controller, VSC is the better choice.**
 
 ## Why Speeding
 

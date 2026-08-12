@@ -1,6 +1,6 @@
 {
   "name": "speeding",
-  "description": "Auto-speed for every site — set once, never touch again. Works on YouTube, Udemy, Bilibili, Netflix & podcasts.",
+  "description": "Adjust video speed from 0.5× to 16× on any site. Works on YouTube, Udemy, Bilibili, Netflix, and more.",
   "private": true,
   "version": "1.0.3",
   "type": "module",

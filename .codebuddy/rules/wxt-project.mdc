@@ -12,9 +12,9 @@ WXT Project Rules (Final)
 - Package Manager: Bun ONLY. Use bun install, bun add, and bun run. Strictly forbid​ npm, yarn, or pnpm. Ensure bun.lock is present and up-to-date; do not generate package-lock.json or yarn.lock.
 - Framework: WXT only. Strictly follow WXT standards. **NO** webpack, CRX, Vue, or Vite-only configs.
 - Structure: **MUST** use `entrypoints/` directory. **NEVER** create `src/`.
-- Manifest: Chrome MV3 only. Background is Service Worker (**FORBID** `window`, `document`, DOM APIs).
-- Logic: Content Script <-> Page via `postMessage`. BG <-> CS via `tabs.sendMessage`.
-- UI: React 18 + TS. **ALL styling MUST use Tailwind CSS v4** via `@tailwindcss/vite`. **NO** `.css` files (except vendor overrides).
+- Manifest: MV3 (Chrome-first, Firefox-compatible). Background is Service Worker (**FORBID** `window`, `document`, DOM APIs).
+- Logic: UI (popup) <-> Content Script via `browser.tabs.sendMessage` + `runtime.onMessage`. Background stays minimal — no per-message routing. No `postMessage` page bridge is currently used.
+- UI: React 19 + TS. **Styling MUST use Tailwind CSS v4** via `@tailwindcss/vite`. Allow exactly one entrypoint CSS file as the Tailwind entry (e.g. `entrypoints/popup/style.css`); no other `.css` files.
 - APIs: Use `browser.*` namespace exclusively (WXT polyfill).
 - Quality: Strict TS, no `any`. Arrow functions preferred.
 - Anti-Patterns: No `eval`, no `new Function()`, no Manifest V2 code.
