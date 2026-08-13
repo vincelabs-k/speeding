@@ -22,7 +22,9 @@ set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CFG_DIR="${HOME}/ext-test"
-RUN_DIR="${CFG_DIR}/run"
+# 每次测试使用带时间戳的唯一运行目录（run-<时间戳>），从根上规避旧文件复用；
+# 测试开始即清理全部历史 run-* 副本，日志中的 RUN_DIR 必为本次全新副本
+RUN_DIR="${CFG_DIR}/run-$(date +%Y%m%d-%H%M%S)"
 CHROMIUM_BIN="${CHROMIUM_BIN:-chromium}"
 
 PASS=0
@@ -50,24 +52,31 @@ ext_id_of() {
 # ---------- 阶段 0: 产物同步 ----------
 stage0_sync() {
   local src="$1"
-  log "阶段 0: 产物同步（rsync -> ${RUN_DIR}）"
+  log "阶段 0: 产物同步（${RUN_DIR}）"
   if ! command -v rsync >/dev/null 2>&1; then
     bad "rsync 未安装（sudo apt install -y rsync）"
     return 1
   fi
+  # 清理历史运行目录（run-*），确保本次为唯一全新副本，杜绝旧文件复用
+  find "${CFG_DIR}" -maxdepth 1 -type d -name 'run-*' -exec rm -rf {} + 2>/dev/null
+  mkdir -p "$RUN_DIR"
   if [ -f "$src" ] && [[ "$src" == *.zip ]]; then
     if ! command -v unzip >/dev/null 2>&1; then
       bad "unzip 未安装（sudo apt install -y unzip）"
       return 1
     fi
-    rm -rf "$RUN_DIR"
-    mkdir -p "$RUN_DIR"
     unzip -qo "$src" -d "$RUN_DIR" || { bad "zip 解压失败: $src"; return 1; }
+    ok "zip 已全新解压至 ${RUN_DIR}（历史 run-* 副本已清除）"
   else
-    mkdir -p "$RUN_DIR"
-    rsync -a --delete "${src}/" "${RUN_DIR}/" || { bad "rsync 同步失败: $src"; return 1; }
+    # --checksum 内容级同步：mtime/大小相同也按内容比对，杜绝漏同步导致旧文件残留
+    rsync -a --delete --checksum "${src}/" "${RUN_DIR}/" || { bad "rsync 同步失败: $src"; return 1; }
+    # 强校验：二次 dry-run 内容对比，输出为空 ⇒ RUN_DIR 与本次产物逐字节一致
+    if [ -n "$(rsync -ac --delete --dry-run "${src}/" "${RUN_DIR}/" 2>/dev/null)" ]; then
+      bad "产物一致性校验失败：${RUN_DIR} 与 ${src} 存在差异（旧文件残留或同步遗漏）"
+      return 1
+    fi
+    ok "产物已同步且一致性校验通过（${RUN_DIR} 与本次产物逐字节一致）"
   fi
-  ok "产物已同步至 ${RUN_DIR}"
 }
 
 # ---------- 阶段 1: 黑盒安装判定 ----------
@@ -150,6 +159,7 @@ stage2_deep() {
     1) 扩展已出现在工具栏且图标正常
     2) popup 打开无报错，核心功能流程走通
     3) 右键菜单 / 页面注入行为一致
+  提示: 如需全新浏览器环境，可先执行 rm -rf ${CFG_DIR}/user-deep 再加载
 EOF
 }
 
