@@ -16,11 +16,24 @@ export const EDGE_STORE_URL =
   'https://microsoftedge.microsoft.com/addons/detail/speeding/ccbafdcmpemnooafglgkijaccnnohnkc';
 
 /**
+ * utm_source for the popup rating button (see docs/utm-sources.md).
+ */
+const RATING_UTM_SOURCE = 'popup_rating';
+
+/**
+ * Appends a utm_source query parameter to a store URL.
+ */
+const appendUtm = (url: string, source: string): string => {
+  const separator = url.includes('?') ? '&' : '?';
+  return `${url}${separator}utm_source=${encodeURIComponent(source)}`;
+};
+
+/**
  * Returns the store review URL for the current browser.
  */
 export const getStoreUrl = (): string => {
-  if (isEdge()) {
-    return EDGE_STORE_URL;
-  }
-  return `https://chromewebstore.google.com/detail/${CHROME_EXTENSION_ID}/reviews`;
+  const url = isEdge()
+    ? EDGE_STORE_URL
+    : `https://chromewebstore.google.com/detail/${CHROME_EXTENSION_ID}/reviews`;
+  return appendUtm(url, RATING_UTM_SOURCE);
 };
