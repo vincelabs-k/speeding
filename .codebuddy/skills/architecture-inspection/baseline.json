@@ -1,0 +1,50 @@
+{
+  "version": 2,
+  "lastRunAt": "2026-08-14T00:00:00.000Z",
+  "score": 60,
+  "scoreHistory": [
+    { "runAt": "2026-08-14T00:00:00.000Z", "score": 60, "p0": 0, "p1": 4, "p2": 0 }
+  ],
+  "findings": [
+    {
+      "id": "rule-wxt-chrome-ns-storage-ts",
+      "dimension": "rule",
+      "severity": "P1",
+      "location": "entrypoints/utils/storage.ts:9",
+      "description": "直接使用 chrome.storage.* 而非 browser.*（WXT polyfill，Firefox 兼容风险）",
+      "status": "open",
+      "firstSeenAt": "2026-08-14T00:00:00.000Z",
+      "resolvedAt": null
+    },
+    {
+      "id": "rule-wxt-chrome-ns-stats-ts",
+      "dimension": "rule",
+      "severity": "P1",
+      "location": "entrypoints/utils/stats.ts:45",
+      "description": "直接使用 chrome.storage.* 而非 browser.*（WXT polyfill，Firefox 兼容风险）",
+      "status": "open",
+      "firstSeenAt": "2026-08-14T00:00:00.000Z",
+      "resolvedAt": null
+    },
+    {
+      "id": "quality-dead-file-icon-svg",
+      "dimension": "quality",
+      "severity": "P1",
+      "location": "public/icon/icon.svg",
+      "description": "无任何代码引用的僵尸资源文件",
+      "status": "open",
+      "firstSeenAt": "2026-08-14T00:00:00.000Z",
+      "resolvedAt": null
+    },
+    {
+      "id": "quality-hardcoded-brand-app-tsx",
+      "dimension": "quality",
+      "severity": "P1",
+      "location": "entrypoints/popup/App.tsx:177",
+      "description": "品牌名 Speeding 硬编码在 JSX 文本【推测，品牌名常为可接受例外】",
+      "status": "acknowledged",
+      "firstSeenAt": "2026-08-14T00:00:00.000Z",
+      "resolvedAt": null
+    }
+  ]
+}

@@ -2,7 +2,8 @@
 description: >-
   Chromium 浏览器扩展（Chrome/Edge）上架前 MV3 合规自检技能。当用户说
   “上架前检查”“launch checklist”“MV3 自检”“提交商店前核对”，或当前
-  工作区含 manifest.json 且提及发布/上架时触发。执行静态基线核查并联网
+  工作区为 Chromium 扩展项目（WXT 结构含 wxt.config.ts，或传统结构含 manifest.json）
+  且提及发布/上架时触发。执行静态基线核查并联网
   检索近期商店政策变更，输出带置信度的报告。
 allowed-tools: Read, Grep, Glob, WebSearch, WebFetch, Bash
 ---
@@ -32,17 +33,28 @@ allowed-tools: Read, Grep, Glob, WebSearch, WebFetch, Bash
    - 核对 `permissions` 数组，确保没有弃用 API（如 `webRequestBlocking`）。
 5. **打包完整性**：确认 ZIP 根目录存在 `manifest.json`，且无 `.map`、`node_modules`、源代码文件（如 `.ts` 未编译文件）。
 6. **隐私政策**：若使用了 `storage`、`cookies` 或 `host_permissions`，检查是否存在隐私政策 URL 占位符。
-7. **图标品牌校验**：使用 `Bash` 工具对 `manifest.json` 中 `icons` 字段声明的所有图标文件计算 SHA-256 哈希，与以下 WXT 默认图标哈希黑名单比对：
-   - `icon16.png`: `58eddff80c85c1aaf6b6d0b4b65e99e3debacabe93c7083fb3ba2fa67d315236`
-   - `icon32.png`: `df3d956fea6bd2a615515c31067cec039e707badb83a9501737572e45bc5e8dd`
-   - `icon48.png`: `3c09dff4ead132afcbb2c6de4ad96d07e02ba4a09a4a7f3bdaa7a69736b638d8`
-   - `icon128.png`: `9a51ba4154a72f2d6f3c36a1e018a6c1f3932d2748ba6b63339ce93b0ae870b2`
+7. **图标品牌校验**（WXT 适配）：使用 `Bash` 工具解析 `icons` 声明并计算 SHA-256 哈希，与以下 WXT 默认图标哈希黑名单比对：
+   - 解析来源按优先级：① 已构建产物 `.output/chrome-mv3/manifest.json` 的 `icons` 字段；② 缺失时回退读取 `wxt.config.ts` 的 `manifest.icons` 声明（WXT 源码无手写 `manifest.json`）。
+   - 对声明的每个尺寸在源码 `public/` 目录定位对应文件（WXT 约定 `public/icon/<size>.png`）计算哈希；黑名单仅覆盖 WXT 模板默认 `16/32/48/128` 四尺寸，自定义尺寸（如 `96.png`）不在黑名单范围，需计算记录但不作失败依据：
+   - `16.png`: `58eddff80c85c1aaf6b6d0b4b65e99e3debacabe93c7083fb3ba2fa67d315236`
+   - `32.png`: `df3d956fea6bd2a615515c31067cec039e707badb83a9501737572e45bc5e8dd`
+   - `48.png`: `3c09dff4ead132afcbb2c6de4ad96d07e02ba4a09a4a7f3bdaa7a69736b638d8`
+   - `128.png`: `9a51ba4154a72f2d6f3c36a1e018a6c1f3932d2748ba6b63339ce93b0ae870b2`
+   - 任一黑名单尺寸哈希命中 → ❌ 未替换默认图标；全部不同 → ✅。
 8. **国际化（i18n）合规**：
    - 检查是否存在 `_locales/` 目录，且至少包含 `en/messages.json`【事实，CWS 强制要求】。
    - 检查 `manifest.json` 中用户可见字段（`name`、`description`、`short_name`）是否使用 `__MSG_xxx__` 占位符，而非硬编码文本【事实，多语言上架规范】。
    - 扫描所有 UI 相关 JS/HTML 文件，确认是否存在硬编码文案；若使用 `chrome.i18n.getMessage()`，抽样检查 key 是否存在于 `messages.json` 中【推测，静态扫描无法覆盖运行时动态拼接的 key】。
    - 检查 `messages.json` 中关键字段是否包含 `description`（翻译上下文），缺失则标记为警告【推测，最佳实践】。
    - 若声明了 `default_locale`，确认 `_locales/<default_locale>/messages.json` 文件存在【事实，Manifest 规范】。
+9. **架构巡检门禁引用（🚧 门禁入口，双层判定）**：
+   - 读取 `.codebuddy/skills/architecture-inspection/baseline.json`（schema v2 契约由 `architecture-inspection` skill 唯一定义，此处只引用不重述），提取两项输入：`severity: "P0"` 且 `status: "open"` 的 finding 清单，以及健康分 `score`。
+   - **分支 A — baseline 缺失（首次巡检）**：标记 ⚠️「健康分未知」，先运行 `architecture-inspection` skill 生成报告与 baseline 后再继续。
+   - **分支 B — baseline 存在但 `score: null`**（旧版 v1 迁移或本轮未写入）：标记 ⚠️「健康分未知」，提示重新运行 `architecture-inspection` 刷新 score 后重试；**不直接放行也不直接阻断**。
+   - **分支 C — score 有效**，按双层公式判定：
+     - `P0 open > 0`（硬否决）→ 阻断 ❌，**禁止进入 Step 3 发布前测试**，直至 P0 清零；修复后由 `architecture-inspection` skill 更新 baseline（status 置 `closed`）。
+     - `score < 60`（软门槛）→ 阻断 ❌，提示健康分不足，优先消化 P1/P2 后重跑巡检。
+     - `P0 open == 0` 且 `score >= 60` → 放行，进入 Step 2 动态网络侦查。
 
 ## Step 2: 动态网络侦查（关键步骤，必须联网）
 
