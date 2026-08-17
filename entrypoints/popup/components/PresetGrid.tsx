@@ -18,11 +18,11 @@ export const PresetGrid = ({ speed, onSelect }: Props) => (
           className={`
             relative py-2 rounded-lg text-body font-semibold
             transition-all duration-150 ease-out
-            focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/40 focus-visible:ring-offset-1
+            focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400/40 focus-visible:ring-offset-1
             active:scale-[0.96]
             ${isActive
-              ? 'bg-gradient-to-br from-sky-500 to-sky-600 text-white shadow-md shadow-sky-500/25 scale-[1.02]'
-              : 'bg-white/80 text-slate-500 border border-slate-200/80 hover:bg-sky-50/60 hover:border-sky-200 hover:text-sky-600'
+              ? 'bg-gradient-to-br from-brand-500 to-brand-600 text-white shadow-md shadow-brand-500/25 scale-[1.02]'
+              : 'bg-white/80 text-slate-500 border border-slate-200/80 hover:bg-brand-50/60 hover:border-brand-200 hover:text-brand-600'
             }
           `}
         >

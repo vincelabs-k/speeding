@@ -22,7 +22,7 @@ export const RatingButton = () => {
         aria-label={browser.i18n.getMessage('ariaRateOnStore')}
         className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full
                    bg-white/80 border border-slate-200 text-slate-500 text-xs
-                   hover:bg-sky-50 hover:border-sky-300 hover:text-sky-600
+                   hover:bg-brand-50 hover:border-brand-300 hover:text-brand-600
                    transition-colors duration-200"
       >
         <svg aria-hidden="true" className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">

@@ -32,7 +32,7 @@ export const SpeedSlider = ({ speed, dragPct, onDrag, onCommit }: Props) => (
     <div className="relative h-7 flex items-center">
       <div className="absolute inset-x-0 h-1.5 rounded-full bg-slate-200" />
       <div
-        className="absolute h-1.5 rounded-full bg-gradient-to-r from-sky-500 to-cyan-500"
+        className="absolute h-1.5 rounded-full bg-gradient-to-r from-brand-500 to-brand-400"
         style={{ width: `${dragPct}%` }}
       />
       <input

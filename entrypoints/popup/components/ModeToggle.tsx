@@ -16,11 +16,11 @@ export const ModeToggle = ({ mode, domain, onModeChange }: Props) => {
         className={`
           flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-md text-caption font-semibold
           transition-all duration-150 ease-out
-          focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/40 focus-visible:ring-offset-1
+          focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400/40 focus-visible:ring-offset-1
           active:scale-[0.97]
           ${isActive
-            ? 'bg-gradient-to-br from-sky-500 to-sky-600 text-white shadow-md shadow-sky-500/20'
-            : 'text-slate-500 hover:bg-sky-50/60 hover:text-sky-600'
+            ? 'bg-gradient-to-br from-brand-500 to-brand-600 text-white shadow-md shadow-brand-500/20'
+            : 'text-slate-500 hover:bg-brand-50/60 hover:text-brand-600'
           }
         `}
       >

@@ -6,6 +6,17 @@
   --text-caption: 12px;
   --text-hint: 11px;
   --text-micro: 10px;
+
+  /* Brand color scale (sky → brand, values unchanged) */
+  --color-brand-50:  #F0F9FF;
+  --color-brand-100: #E0F2FE;
+  --color-brand-200: #BAE6FD;
+  --color-brand-300: #7DD3FC;
+  --color-brand-400: #38BDF8;
+  --color-brand-500: #0EA5E9;
+  --color-brand-600: #0284C7;
+  --color-brand-700: #0369A1;
+  --color-surface:   #F8FAFC;
 }
 
 body {
@@ -14,7 +25,7 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #F8FAFC;
+  background: var(--color-surface);
   min-width: 360px;
 }
 
@@ -31,7 +42,7 @@ body {
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #0EA5E9, #38BDF8);
+    background: linear-gradient(135deg, var(--color-brand-500), var(--color-brand-400));
     border: 3px solid #FFFFFF;
     box-shadow: 0 2px 8px rgba(14, 165, 233, 0.35), 0 0 0 1px rgba(14, 165, 233, 0.1);
     cursor: pointer;
@@ -48,7 +59,7 @@ body {
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #0EA5E9, #38BDF8);
+    background: linear-gradient(135deg, var(--color-brand-500), var(--color-brand-400));
     border: 3px solid #FFFFFF;
     box-shadow: 0 2px 8px rgba(14, 165, 233, 0.35);
     cursor: pointer;
