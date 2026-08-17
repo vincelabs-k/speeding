@@ -8,7 +8,8 @@
   --text-micro: 10px;
 
   /* Brand color scale (sky → brand, values unchanged).
-     SSOT: 改色需同步 .codebuddy/rules/wxt-project.mdc → generate_brand_icon → store-spec.md §2 */
+     SSOT: 改色需同步 .codebuddy/rules/wxt-project.mdc → generate_brand_icon → store-spec.md §2
+     store-image light 毛玻璃背景由 logo 主色 HSL 派生（不再直取品牌色阶），文字取 #0F172A/#334155 */
   --color-brand-50:  #F0F9FF;
   --color-brand-100: #E0F2FE;
   --color-brand-200: #BAE6FD;
