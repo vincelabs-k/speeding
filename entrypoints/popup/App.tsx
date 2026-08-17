@@ -134,7 +134,7 @@ function App() {
   // ── Loading ──
   if (loadState === 'loading') {
     return (
-      <div className="w-80 p-[3px] bg-slate-100">
+      <div className="w-[360px] bg-white">
         <div
           role="status"
           aria-label={browser.i18n.getMessage('ariaLoading')}
@@ -152,7 +152,7 @@ function App() {
   // ── No video ──
   if (loadState === 'no-video') {
     return (
-      <div className="w-80 p-[3px] bg-slate-100">
+      <div className="w-[360px] bg-white">
         <div className="rounded-xl border border-slate-200/60 bg-gradient-to-b from-slate-50 to-white min-h-[360px] flex flex-col items-center justify-center gap-3">
           <div className="w-12 h-12 rounded-2xl bg-sky-50 flex items-center justify-center">
             <svg aria-hidden="true" className="w-6 h-6 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -168,7 +168,7 @@ function App() {
 
   // ── Main ──
   return (
-    <div className="w-80 p-[3px] bg-slate-100">
+    <div className="w-[360px] bg-white">
     <div className="rounded-xl border border-slate-200/60 bg-gradient-to-b from-slate-50 to-white text-slate-800 select-none overflow-hidden">
       {/* Header */}
       <div className="px-5 pt-5 pb-4 flex items-center justify-between">
@@ -332,7 +332,7 @@ function App() {
       </div>
 
       {/* Presets */}
-      <div className="px-4 pb-3">
+      <div className="px-5 pb-3">
         <p className="text-[10px] text-slate-400 uppercase tracking-wider mb-2 px-1 font-semibold">{browser.i18n.getMessage('presets')}</p>
         <div className="grid grid-cols-4 gap-1.5">
           {PRESETS.map((p) => {
@@ -365,7 +365,7 @@ function App() {
       </div>
 
       {/* Custom */}
-      <div className="px-4 pb-5">
+      <div className="px-5 pb-5">
         <p className="text-[10px] text-slate-400 uppercase tracking-wider mb-2 px-1 font-semibold">{browser.i18n.getMessage('custom')}</p>
         <div className="flex gap-2">
           <div className="relative flex-1">
