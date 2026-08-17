@@ -1,35 +1,25 @@
 import { useState, useCallback, useEffect, useRef } from 'react';
+import {
+  clamp,
+  formatSpeed,
+  logPctToSpeed,
+  speedToLogPct,
+  MIN_SPEED,
+  MAX_SPEED,
+  STEP,
+  type SpeedMode,
+} from './speed-model';
+import { LoadingView } from './components/LoadingView';
+import { NoVideoView } from './components/NoVideoView';
+import { SpeedBadge } from './components/SpeedBadge';
+import { SectionLabel } from './components/SectionLabel';
+import { ModeToggle } from './components/ModeToggle';
+import { SpeedSlider } from './components/SpeedSlider';
+import { PresetGrid } from './components/PresetGrid';
+import { CustomInput } from './components/CustomInput';
 import { RatingButton } from './RatingButton';
 
-const PRESETS = [0.5, 1, 1.5, 2, 3, 4, 8, 16];
-const MIN_SPEED = 0.5;
-const MAX_SPEED = 16;
-const STEP = 0.25;
-
-// Log-scale math constants
-const LOG_MIN = Math.log(MIN_SPEED);
-const LOG_MAX = Math.log(MAX_SPEED);
-const LOG_RANGE = LOG_MAX - LOG_MIN;
-
-const SLIDER_LABELS = [
-  { label: '0.5', value: 0.5 },
-  { label: '1', value: 1 },
-  { label: '2', value: 2 },
-  { label: '4', value: 4 },
-  { label: '8', value: 8 },
-  { label: '16', value: 16 },
-];
-
-const clamp = (v: number) => Math.max(MIN_SPEED, Math.min(MAX_SPEED, v));
-const formatSpeed = (v: number) => {
-  const rounded = Math.round(v * 100) / 100;
-  return parseFloat(rounded.toFixed(2)).toString();
-};
-
-const speedToLogPct = (s: number) => ((Math.log(s) - LOG_MIN) / LOG_RANGE) * 100;
-const logPctToSpeed = (p: number) => Math.exp(LOG_MIN + (p / 100) * LOG_RANGE);
-
-type VideoInfo = { speed: number; videoCount: number; speedMode?: 'this' | 'all'; domain?: string };
+type VideoInfo = { speed: number; videoCount: number; speedMode?: SpeedMode; domain?: string };
 type LoadingState = 'loading' | 'loaded' | 'no-video';
 
 function App() {
@@ -38,7 +28,7 @@ function App() {
   const [loadState, setLoadState] = useState<LoadingState>('loading');
   const [customInput, setCustomInput] = useState('1');
   const [sliderDragPct, setSliderDragPct] = useState(speedToLogPct(1));
-  const [speedMode, setSpeedMode] = useState<'this' | 'all'>('this');
+  const [speedMode, setSpeedMode] = useState<SpeedMode>('this');
   const [domain, setDomain] = useState('');
   const initialized = useRef(false);
 
@@ -53,7 +43,7 @@ function App() {
         : { type };
 
     const response = await browser.tabs.sendMessage(tab.id, payload);
-    return response as VideoInfo | { success: boolean; speed: number; speedMode?: 'this' | 'all' } | undefined;
+    return response as VideoInfo | { success: boolean; speed: number; speedMode?: SpeedMode } | undefined;
   }, []);
 
   useEffect(() => {
@@ -86,7 +76,7 @@ function App() {
     sendMessage('SET_SPEED', clamped);
   }, [sendMessage]);
 
-  const handleModeChange = useCallback(async (mode: 'this' | 'all') => {
+  const handleModeChange = useCallback(async (mode: SpeedMode) => {
     if (mode === speedMode) return;
     const res = await sendMessage('SET_MODE', mode);
     if (res && 'speed' in res && typeof res.speed === 'number') {
@@ -98,8 +88,7 @@ function App() {
     }
   }, [speedMode, sendMessage]);
 
-  const handleSlider = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const pct = parseFloat(e.target.value);
+  const handleSlider = useCallback((pct: number) => {
     setSliderDragPct(pct);
     const raw = logPctToSpeed(pct);
     setSpeed(raw);
@@ -112,10 +101,6 @@ function App() {
     applySpeed(snapped);
   }, [sliderDragPct, applySpeed]);
 
-  const handleCustomInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setCustomInput(e.target.value);
-  }, []);
-
   const handleCustomApply = useCallback(() => {
     const val = parseFloat(customInput);
     if (isNaN(val)) {
@@ -125,281 +110,58 @@ function App() {
     applySpeed(val);
   }, [customInput, speed, applySpeed]);
 
-  const handleCustomKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      handleCustomApply();
-    }
-  }, [handleCustomApply]);
-
   // ── Loading ──
   if (loadState === 'loading') {
-    return (
-      <div className="w-[360px] bg-white">
-        <div
-          role="status"
-          aria-label={browser.i18n.getMessage('ariaLoading')}
-          aria-busy="true"
-          className="rounded-xl border border-slate-200/60 bg-gradient-to-b from-slate-50 to-white min-h-[360px] flex items-center justify-center"
-        >
-          <div className="relative w-7 h-7" aria-hidden="true">
-            <div className="absolute inset-0 rounded-full border-[3px] border-slate-200 border-t-sky-500 animate-spin" />
-          </div>
-        </div>
-      </div>
-    );
+    return <LoadingView />;
   }
 
   // ── No video ──
   if (loadState === 'no-video') {
-    return (
-      <div className="w-[360px] bg-white">
-        <div className="rounded-xl border border-slate-200/60 bg-gradient-to-b from-slate-50 to-white min-h-[360px] flex flex-col items-center justify-center gap-3">
-          <div className="w-12 h-12 rounded-2xl bg-sky-50 flex items-center justify-center">
-            <svg aria-hidden="true" className="w-6 h-6 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
-            </svg>
-          </div>
-          <p className="text-sm text-slate-400 font-medium">{browser.i18n.getMessage('noVideo')}</p>
-          <p className="text-[11px] text-slate-300">{browser.i18n.getMessage('noVideoHint')}</p>
-        </div>
-      </div>
-    );
+    return <NoVideoView />;
   }
 
   // ── Main ──
   return (
     <div className="w-[360px] bg-white">
-    <div className="rounded-xl border border-slate-200/60 bg-gradient-to-b from-slate-50 to-white text-slate-800 select-none overflow-hidden">
-      {/* Header */}
-      <div className="px-5 pt-5 pb-4 flex items-center justify-between">
-        <div>
-          <h1 className="text-lg font-bold tracking-tight text-slate-800">
-            Speeding
-          </h1>
-          <p className="text-[12px] text-slate-400 mt-0.5 font-medium">
-            {browser.i18n.getMessage(videoCount === 1 ? 'videoDetected' : 'videosDetected', videoCount.toString())}
-          </p>
-        </div>
-        {/* Speed badge */}
-        <div className="flex-shrink-0 w-[68px] h-[68px] rounded-2xl bg-gradient-to-br from-sky-50 via-white to-cyan-50 border border-sky-100/60 flex flex-col items-center justify-center shadow-lg shadow-sky-500/5">
-          <span className="text-[28px] font-bold leading-none bg-gradient-to-br from-sky-600 to-cyan-600 bg-clip-text text-transparent">
-            {formatSpeed(speed)}
-          </span>
-          <span className="text-[10px] text-slate-400 font-semibold mt-0.5 tracking-wide uppercase">
-            {browser.i18n.getMessage('speedLabel')}
-          </span>
-        </div>
-      </div>
-
-      {/* Mode Toggle */}
-      <div className="px-5 pb-3">
-        <div className="flex gap-1 p-0.5 bg-slate-100/80 rounded-lg border border-slate-200/60">
-          <button
-            onClick={() => handleModeChange('this')}
-            aria-pressed={speedMode === 'this'}
-            className={`
-              flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-md text-[12px] font-semibold
-              transition-all duration-150 ease-out
-              focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/40 focus-visible:ring-offset-1
-              active:scale-[0.97]
-              ${speedMode === 'this'
-                ? 'bg-gradient-to-br from-sky-500 to-sky-600 text-white shadow-md shadow-sky-500/20'
-                : 'text-slate-500 hover:bg-sky-50/60 hover:text-sky-600'
-              }
-            `}
-          >
-            <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
-            </svg>
-            {browser.i18n.getMessage('thisSite')}
-          </button>
-          <button
-            onClick={() => handleModeChange('all')}
-            aria-pressed={speedMode === 'all'}
-            className={`
-              flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-md text-[12px] font-semibold
-              transition-all duration-150 ease-out
-              focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/40 focus-visible:ring-offset-1
-              active:scale-[0.97]
-              ${speedMode === 'all'
-                ? 'bg-gradient-to-br from-sky-500 to-sky-600 text-white shadow-md shadow-sky-500/20'
-                : 'text-slate-500 hover:bg-sky-50/60 hover:text-sky-600'
-              }
-            `}
-          >
-            <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
-            </svg>
-            {browser.i18n.getMessage('allSites')}
-          </button>
-        </div>
-        {speedMode === 'this' && domain && (
-          <p className="text-[10px] text-slate-400 mt-1.5 text-center font-medium truncate">
-            {domain}
-          </p>
-        )}
-      </div>
-
-      {/* Slider */}
-      <div className="px-5 pb-3">
-        {/* Labels */}
-        <div className="relative h-5 mb-1">
-          {SLIDER_LABELS.map((item, idx) => {
-            const pct = speedToLogPct(item.value);
-            const isFirst = idx === 0;
-            const isLast = idx === SLIDER_LABELS.length - 1;
-            const style = isFirst
-              ? { left: '0%' }
-              : isLast
-                ? { left: '100%', transform: 'translateX(-100%)' }
-                : { left: `${pct}%`, transform: 'translateX(-50%)' };
-            return (
-              <span
-                key={item.label}
-                className="absolute text-[10px] text-slate-400 font-medium"
-                style={style}
-              >
-                {item.label}
-              </span>
-            );
-          })}
-        </div>
-
-        {/* Slider track + progress */}
-        <div className="relative h-7 flex items-center">
-          {/* Background track */}
-          <div className="absolute inset-x-0 h-1.5 rounded-full bg-slate-200" />
-          {/* Progress fill */}
-          <div
-            className="absolute h-1.5 rounded-full bg-gradient-to-r from-sky-500 to-cyan-500"
-            style={{ width: `${sliderDragPct}%` }}
-          />
-          {/* Invisible range input overlaid */}
-          <input
-            type="range"
-            min={0}
-            max={100}
-            step={1}
-            value={Math.round(sliderDragPct)}
-            onChange={handleSlider}
-            onMouseUp={handleSliderCommit}
-            onTouchEnd={handleSliderCommit}
-            aria-label={browser.i18n.getMessage('ariaSlider')}
-            aria-valuetext={`${formatSpeed(speed)}×`}
-            className="relative w-full h-full appearance-none bg-transparent cursor-pointer focus:outline-none"
-          />
-          <style>{`
-            input[type=range]::-webkit-slider-thumb {
-              -webkit-appearance: none;
-              appearance: none;
-              width: 22px;
-              height: 22px;
-              border-radius: 50%;
-              background: linear-gradient(135deg, #0EA5E9, #38BDF8);
-              border: 3px solid #FFFFFF;
-              box-shadow: 0 2px 8px rgba(14,165,233,0.35), 0 0 0 1px rgba(14,165,233,0.1);
-              cursor: pointer;
-              transition: transform 0.15s ease, box-shadow 0.15s ease;
-            }
-            input[type=range]::-webkit-slider-thumb:hover {
-              transform: scale(1.15);
-              box-shadow: 0 3px 12px rgba(14,165,233,0.45), 0 0 0 1px rgba(14,165,233,0.15);
-            }
-            input[type=range]::-webkit-slider-thumb:active {
-              transform: scale(1.08);
-            }
-            input[type=range]::-moz-range-thumb {
-              width: 22px;
-              height: 22px;
-              border-radius: 50%;
-              background: linear-gradient(135deg, #0EA5E9, #38BDF8);
-              border: 3px solid #FFFFFF;
-              box-shadow: 0 2px 8px rgba(14,165,233,0.35);
-              cursor: pointer;
-            }
-            input[type=range]::-moz-range-track {
-              background: transparent;
-            }
-          `}</style>
-        </div>
-
-        {/* Hint */}
-        <div className="text-center mt-1.5">
-          <span className="text-[11px] text-slate-400 font-medium">
-            {browser.i18n.getMessage('dragToAdjust', formatSpeed(speed))}
-          </span>
-        </div>
-      </div>
-
-      {/* Presets */}
-      <div className="px-5 pb-3">
-        <p className="text-[10px] text-slate-400 uppercase tracking-wider mb-2 px-1 font-semibold">{browser.i18n.getMessage('presets')}</p>
-        <div className="grid grid-cols-4 gap-1.5">
-          {PRESETS.map((p) => {
-            const isActive = speed === p;
-            return (
-              <button
-                key={p}
-                onClick={() => applySpeed(p)}
-                aria-pressed={isActive}
-                aria-label={browser.i18n.getMessage('ariaPresetSpeed', formatSpeed(p))}
-                className={`
-                  relative py-2 rounded-lg text-[13px] font-semibold
-                  transition-all duration-150 ease-out
-                  focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/40 focus-visible:ring-offset-1
-                  active:scale-[0.96]
-                  ${isActive
-                    ? 'bg-gradient-to-br from-sky-500 to-sky-600 text-white shadow-md shadow-sky-500/25 scale-[1.02]'
-                    : 'bg-white/80 text-slate-500 border border-slate-200/80 hover:bg-sky-50/60 hover:border-sky-200 hover:text-sky-600'
-                  }
-                `}
-              >
-                {formatSpeed(p)}&times;
-                {isActive && (
-                  <span aria-hidden="true" className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-400 rounded-full border-2 border-white shadow-sm" />
-                )}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Custom */}
-      <div className="px-5 pb-5">
-        <p className="text-[10px] text-slate-400 uppercase tracking-wider mb-2 px-1 font-semibold">{browser.i18n.getMessage('custom')}</p>
-        <div className="flex gap-2">
-          <div className="relative flex-1">
-            <input
-              type="text"
-              value={customInput}
-              onChange={handleCustomInput}
-              onBlur={handleCustomApply}
-              onKeyDown={handleCustomKeyDown}
-              placeholder={browser.i18n.getMessage('speedPlaceholder')}
-              aria-label={browser.i18n.getMessage('ariaCustomSpeed')}
-              className="w-full h-9 bg-white border border-slate-200 rounded-lg pl-3 pr-7 text-[13px] font-medium text-slate-700 placeholder:text-slate-300 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-400/15 transition-all"
-            />
-            <span aria-hidden="true" className="absolute right-3 top-1/2 -translate-y-1/2 text-[12px] text-slate-400 font-medium pointer-events-none select-none">
-              &times;
-            </span>
+      <div className="rounded-xl border border-slate-200/60 bg-gradient-to-b from-slate-50 to-white text-slate-800 select-none overflow-hidden">
+        {/* Header */}
+        <div className="px-5 pt-5 pb-4 flex items-center justify-between">
+          <div>
+            <h1 className="text-lg font-bold tracking-tight text-slate-800">Speeding</h1>
+            <p className="text-caption text-slate-400 mt-0.5 font-medium">
+              {browser.i18n.getMessage(videoCount === 1 ? 'videoDetected' : 'videosDetected', videoCount.toString())}
+            </p>
           </div>
-          <button
-            onClick={handleCustomApply}
-            aria-label={browser.i18n.getMessage('ariaApplyCustom')}
-            className="h-9 px-5 rounded-lg bg-gradient-to-br from-sky-500 to-sky-600 text-white text-[13px] font-semibold hover:from-sky-600 hover:to-sky-700 active:scale-[0.97] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/40 focus-visible:ring-offset-1 shadow-md shadow-sky-500/20"
-          >
-            {browser.i18n.getMessage('apply')}
-          </button>
+          <SpeedBadge speed={speed} />
         </div>
-        <p className="text-[10px] text-slate-300 mt-2 text-center font-medium">
-          {browser.i18n.getMessage('rangeStep', [formatSpeed(MIN_SPEED), formatSpeed(MAX_SPEED), STEP.toString()])}
-        </p>
-        <RatingButton />
-        <p className="text-[10px] text-slate-300 mt-2 text-center font-medium">
-          {browser.i18n.getMessage('shortcutHint')}
-        </p>
+
+        {/* Mode Toggle */}
+        <div className="px-5 pb-3">
+          <ModeToggle mode={speedMode} domain={domain} onModeChange={handleModeChange} />
+        </div>
+
+        {/* Slider */}
+        <SpeedSlider speed={speed} dragPct={sliderDragPct} onDrag={handleSlider} onCommit={handleSliderCommit} />
+
+        {/* Presets */}
+        <div className="px-5 pb-3">
+          <SectionLabel>{browser.i18n.getMessage('presets')}</SectionLabel>
+          <PresetGrid speed={speed} onSelect={applySpeed} />
+        </div>
+
+        {/* Custom */}
+        <div className="px-5 pb-5">
+          <SectionLabel>{browser.i18n.getMessage('custom')}</SectionLabel>
+          <CustomInput value={customInput} onValueChange={setCustomInput} onApply={handleCustomApply} />
+          <p className="text-micro text-slate-300 mt-2 text-center font-medium">
+            {browser.i18n.getMessage('rangeStep', [formatSpeed(MIN_SPEED), formatSpeed(MAX_SPEED), STEP.toString()])}
+          </p>
+          <RatingButton />
+          <p className="text-micro text-slate-300 mt-2 text-center font-medium">
+            {browser.i18n.getMessage('shortcutHint')}
+          </p>
+        </div>
       </div>
-    </div>
     </div>
   );
 }

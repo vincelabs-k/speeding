@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@theme {
+  --text-display: 28px;
+  --text-body: 13px;
+  --text-caption: 12px;
+  --text-hint: 11px;
+  --text-micro: 10px;
+}
+
 body {
   font-family: "Segoe UI Variable", "Segoe UI", system-ui, -apple-system, sans-serif;
   font-size: 13px;
@@ -8,4 +16,44 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #F8FAFC;
   min-width: 360px;
+}
+
+@layer components {
+  .speed-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+  }
+  .speed-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0EA5E9, #38BDF8);
+    border: 3px solid #FFFFFF;
+    box-shadow: 0 2px 8px rgba(14, 165, 233, 0.35), 0 0 0 1px rgba(14, 165, 233, 0.1);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .speed-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+    box-shadow: 0 3px 12px rgba(14, 165, 233, 0.45), 0 0 0 1px rgba(14, 165, 233, 0.15);
+  }
+  .speed-slider::-webkit-slider-thumb:active {
+    transform: scale(1.08);
+  }
+  .speed-slider::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0EA5E9, #38BDF8);
+    border: 3px solid #FFFFFF;
+    box-shadow: 0 2px 8px rgba(14, 165, 233, 0.35);
+    cursor: pointer;
+  }
+  .speed-slider::-moz-range-track {
+    background: transparent;
+  }
 }
