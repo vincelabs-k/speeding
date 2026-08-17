@@ -7,7 +7,8 @@
   --text-hint: 11px;
   --text-micro: 10px;
 
-  /* Brand color scale (sky → brand, values unchanged) */
+  /* Brand color scale (sky → brand, values unchanged).
+     SSOT: 改色需同步 .codebuddy/rules/wxt-project.mdc → generate_brand_icon → store-spec.md §2 */
   --color-brand-50:  #F0F9FF;
   --color-brand-100: #E0F2FE;
   --color-brand-200: #BAE6FD;

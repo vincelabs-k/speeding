@@ -15,6 +15,9 @@ WXT Project Rules (Final)
 - Manifest: MV3 (Chrome-first, Firefox-compatible). Background is Service Worker (**FORBID** `window`, `document`, DOM APIs).
 - Logic: UI (popup) <-> Content Script via `browser.tabs.sendMessage` + `runtime.onMessage`. Background stays minimal — no per-message routing. No `postMessage` page bridge is currently used.
 - UI: React 19 + TS. **Styling MUST use Tailwind CSS v4** via `@tailwindcss/vite`. Allow exactly one entrypoint CSS file as the Tailwind entry (e.g. `entrypoints/popup/style.css`); no other `.css` files.
+- Design tokens: Brand colors are defined ONLY in `entrypoints/popup/style.css` `@theme` (`--color-brand-50..700`, `--color-surface`). All UI colors MUST use `brand-*` utilities or `var(--color-brand-*)`. **FORBID** hardcoded hex and Tailwind `sky-*`/`cyan-*` colors.
+- Changing brand colors MUST also update the `brand` palette in `.codebuddy/skills/generate_brand_icon/SKILL.md` and `.codebuddy/skills/generate_store_image/references/store-spec.md` §2 (self-contained copies kept for skill reuse).
+- New visual assets (icons, store images) default to the `brand` palette.
 - APIs: Use `browser.*` namespace exclusively (WXT polyfill).
 - Quality: Strict TS, no `any`. Arrow functions preferred.
 - Anti-Patterns: No `eval`, no `new Function()`, no Manifest V2 code.
