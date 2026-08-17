@@ -19,11 +19,11 @@ description: >-
 
 | 类型 | SVG 要素 | 适用场景 | 选型关键词 |
 |------|---------|---------|-----------|
-| `rounded-rect` 圆角矩形 | `<rect rx="10">` 84×84 居中 | **通用默认**，适合大多数工具类插件 | 标签页管理、剪贴板、下载、书签、截图、计时器 |
-| `circle` 圆形 | `<circle r="42">` 圆心 (64,64) | 社交通讯、即时消息、社区互动类 | 聊天、消息、社区、分享、评论、好友 |
-| `hexagon` 六边形 | `<polygon>` 正六边形，顶点距中心 42px | 技术开发、工具链、工程类 | 代码、调试、API、命令行、开发工具、JSON |
+| `rounded-rect` 圆角矩形 | `<rect rx="14">` 116×116 居中 | **通用默认**，适合大多数工具类插件 | 标签页管理、剪贴板、下载、书签、截图、计时器 |
+| `circle` 圆形 | `<circle r="58">` 圆心 (64,64) | 社交通讯、即时消息、社区互动类 | 聊天、消息、社区、分享、评论、好友 |
+| `hexagon` 六边形 | `<polygon>` 外接框 116×116，水平拉伸撑满边距 | 技术开发、工具链、工程类 | 代码、调试、API、命令行、开发工具、JSON |
 | `shield` 盾形 | `<path>` 经典盾牌轮廓，底部弧线收窄 | 安全隐私、防护、广告拦截类 | 密码、加密、广告拦截、隐私、权限、防火墙 |
-| `squircle` 大方角 | `<rect rx="22">` 超大圆角 88×88 | 现代化工具、创意设计、AI 类 | AI、设计、生成、编辑器、笔记、智能助手 |
+| `squircle` 大方角 | `<rect rx="30">` 超大圆角 116×116 | 现代化工具、创意设计、AI 类 | AI、设计、生成、编辑器、笔记、智能助手 |
 
 **自动匹配规则**：从 `--function` 中提取关键词，按"选型关键词"列匹配，命中多个时取首次命中。无命中默认 `rounded-rect`。
 
@@ -49,11 +49,11 @@ description: >-
 ## 全局约束
 
 - 输出：仅 SVG 代码。
-- 画布：128×128，四周留 16px 边距，右下角 24×24 留空（Chrome Badge 区）。
+- 画布：128×128，四周留 6px 安全边距；右下角 24×24 为 Chrome Badge 预留区（软约束：仅要求中心图标避开该区，底托可覆盖）。
 - 布局：**固定两层结构**，禁止自由构图：
 
   **Layer 1 — 徽章底托（Background Badge）**
-  根据 `--badge` 参数选择对应形状，主色填充 + 对角线渐变。占据画布主体约 60-65%，为上层图标提供稳定视觉基座。
+  根据 `--badge` 参数选择对应形状，主色填充 + 对角线渐变。占据画布主体约 90%~94%，为上层图标提供稳定视觉基座。
 
   **Layer 2 — 标准中心图标（Center Icon）**
   根据插件功能选择最常规、最通用、不会出错的图标。白色填充或辅色描边，严格居中于底托几何中心。线条简洁，确保 16px 缩放剪影可辨识。
@@ -103,24 +103,24 @@ description: >-
   ```
 - 描边：2px，颜色 `{{color_accent}}`，`stroke-linejoin="round"`
 - 投影：`<filter id="shadow"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.15"/></filter>`
-- 占位约束：占画布 59%~66%，几何中心 (64, 64)
+- 占位约束：占画布 90%~94%，几何中心 (64, 64)
 
 **各类型专属规格**：
 
 | 类型 | SVG 模板 | 尺寸 | 特殊约束 |
 |------|---------|------|---------|
-| `rounded-rect` | `<rect x="22" y="22" width="84" height="84" rx="10" ry="10"/>` | 84×84 | y 轴可微调 ±2px 补偿视觉重心 |
-| `circle` | `<circle cx="64" cy="64" r="42"/>` | φ84 | — |
-| `hexagon` | `<polygon points="64,22 106,43 106,85 64,106 22,85 22,43"/>` | 84×84 | 顶点朝上，`stroke-linejoin="round"` |
-| `shield` | `<path d="M64 20 L106 36 L106 72 C106 98 85 108 64 108 C43 108 22 98 22 72 L22 36 Z"/>` | 84×88 | y 轴微调 -2px 补偿视觉重心 |
-| `squircle` | `<rect x="20" y="20" width="88" height="88" rx="22" ry="22"/>` | 88×88 | — |
+| `rounded-rect` | `<rect x="6" y="6" width="116" height="116" rx="14" ry="14"/>` | 116×116 | y 轴可微调 ±2px 补偿视觉重心 |
+| `circle` | `<circle cx="64" cy="64" r="58"/>` | φ116 | — |
+| `hexagon` | `<polygon points="64,6 122,35 122,93 64,122 6,93 6,35"/>` | 116×116 | 顶点朝上，水平拉伸撑满 6px 边距框，`stroke-linejoin="round"` |
+| `shield` | `<path d="M64 3 L122 25 L122 75 C122 111 93 125 64 125 C35 125 6 111 6 75 L6 25 Z"/>` | 116×122 | y 轴微调 -2px 补偿视觉重心 |
+| `squircle` | `<rect x="6" y="6" width="116" height="116" rx="30" ry="30"/>` | 116×116 | — |
 
 ### Layer 2: 标准中心图标
 
 | 属性 | 规格 |
 |------|------|
 | 位置 | 底托几何中心，x=64，y=64 |
-| 尺寸 | 图标包围盒 ≤ 底托边长的 55%（约 42~46px） |
+| 尺寸 | 图标包围盒 ≤ 底托边长的 55%（约 60~64px） |
 | 配色 | `#FFFFFF` 白色填充优先，辅色 `{{color_accent}}` 描边 2px |
 | 描边 | 2px，`stroke-linejoin="round"`, `stroke-linecap="round"` |
 | 剪影要求 | 16px 缩放下主要轮廓必须可辨识，禁止密集平行线或 <3px 间距的细节 |
@@ -128,21 +128,29 @@ description: >-
 
 ## 黄金法则
 
-1. **层级比例**：底托 ∝ 画布 × 0.618（~79px），图标 ∝ 底托 × 0.55（~43px）。避免图标过大挤压负空间。
+1. **层级比例**：底托 ∝ 画布 × 0.906（~116px），图标 ∝ 底托 × 0.55（~64px）。避免图标过大挤压负空间。
 
-2. **间距数列**：画布边距 16px → 底托内腔边距 12px。底托外到内形成呼吸节奏。
+2. **间距数列**：画布边距 6px → 底托内腔边距 12px。底托外到内形成呼吸节奏。
 
 3. **圆角与拐角策略**：
-   - `rounded-rect`：rx=10px（微圆营造亲和感）
+   - `rounded-rect`：rx=14px（微圆营造亲和感）
    - `circle`：无需额外处理
    - `hexagon`：顶点处 `stroke-linejoin="round"` 柔化尖角
    - `shield`：底部弧线用贝塞尔曲线 `C` 平滑过渡，顶部折角 `stroke-linejoin="round"`
-   - `squircle`：rx=22px（超大圆角，接近 iOS 图标的 superellipse 感觉）
+   - `squircle`：rx=30px（超大圆角，接近 iOS 图标的 superellipse 感觉）
    - 图标线条统一 `stroke-linejoin="round"`, `stroke-linecap="round"`
 
 4. **描边权重**：底托 2px 边框分隔空间，图标 2px 描边定义形状。保持一致权重。
 
-5. **负空间平衡**：两层叠加后图形总面积 ≈ 画布 × 35%。Badge 区（24×24 右下角）和底托外围（16px 边距）合计占 ≈65% 负空间，确保图标不拥挤。
+5. **负空间平衡**：两层叠加后图形总面积 ≈ 画布 × 82%。底托外围（6px 边距）仅占 ≈18% 负空间，视觉上撑满画布，确保工具栏缩放下可辨识。
+
+## 设计动机（防止回归）
+
+Chrome/Edge 工具栏以 16/32px 缩放**整个画布图片**、不做内容裁剪——透明边距在缩放后按同比例保留，因此画布边距直接决定图标视觉占比。实测：旧版 84×84 底托（22px 边距）在 16px 工具栏下图标仅剩 ~10.5px 视觉尺寸，而 116×116 底托（6px 边距）可保留 ~14.5px，与"撑满画布"的周边扩展观感一致。生成时必须遵守：
+
+- 底托撑满画布主体（90%~94%），仅保留 4~6px 抗锯齿安全边距；
+- 右下角 24×24 Badge 区由浏览器**动态叠加**数字徽标，无需预留整块空白，中心图标避开该区即可；
+- 禁止为"呼吸感"或"安全区"放大边距——那正是图标显小的根因。
 
 ## 执行流程
 
@@ -192,7 +200,7 @@ Color scheme:
 - Fill: linearGradient from {{color_primary}} to {{color_gradient_end}}, direction 135° (top-left to bottom-right)
 - Stroke: 2px {{color_accent}}, stroke-linejoin="round"
 - Filter: feDropShadow dy=2 stdDeviation=4 flood-opacity=0.15
-- Keep 16px margin to canvas edges
+- Keep 6px safety margin to canvas edges (badge must fill ~90% of canvas)
 
 === LAYER 2: Standard Center Icon ===
 - Function: "{{function}}"
@@ -201,12 +209,12 @@ Color scheme:
 - Position: Exact center of badge (64, 64)
 - Fill: #FFFFFF (preferred) or {{color_accent}}
 - Stroke: 2px round-linejoin, round-linecap
-- Icon bounding box ≤ 46×46px
+- Icon bounding box ≤ 64×64px
 - MUST be silhouette-readable at 16×16px scale — no dense lines or <3px gaps
 - Single geometric element, simple and clean
 
 === GLOBAL RULES ===
-- Canvas: 128×128, 16px margin, bottom-right 24×24 EMPTY (Chrome badge zone)
+- Canvas: 128×128, 6px margin; bottom-right 24×24 is the Chrome badge overlay zone — keep the center icon clear of it (the badge may cover it, do NOT reserve an empty block)
 - All gradients and shadows via SVG <linearGradient> and <filter>, no CSS
 - Ensure xmlns="http://www.w3.org/2000/svg" on root element
 ```

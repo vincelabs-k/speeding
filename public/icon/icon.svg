@@ -9,18 +9,18 @@
     </filter>
   </defs>
 
-  <!-- Layer 1: Rounded Rectangle Badge -->
-  <rect x="22" y="22" width="84" height="84" rx="10" ry="10"
+  <!-- Layer 1: Rounded Rectangle Badge (6px safety margin, 116×116) -->
+  <rect x="6" y="6" width="116" height="116" rx="14" ry="14"
         fill="url(#bg)" stroke="#00C7FD" stroke-width="2" stroke-linejoin="round"
         filter="url(#shadow)"/>
 
-  <!-- Layer 2: Two Fast-Forward Triangles (blue accent) -->
+  <!-- Layer 2: Two Fast-Forward Triangles (blue accent, centered at 64,64) -->
   <!-- Left triangle -->
-  <polygon points="48,38 48,86 68,62"
+  <polygon points="37,32 37,96 64,64"
            fill="#00C7FD" stroke="#00C7FD" stroke-width="2"
            stroke-linejoin="round" stroke-linecap="round"/>
   <!-- Right triangle -->
-  <polygon points="68,38 68,86 88,62"
+  <polygon points="64,32 64,96 91,64"
            fill="#00C7FD" stroke="#00C7FD" stroke-width="2"
            stroke-linejoin="round" stroke-linecap="round"/>
 </svg>
