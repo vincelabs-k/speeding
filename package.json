@@ -2,7 +2,7 @@
   "name": "speeding",
   "description": "Adjust video speed from 0.5× to 16× on any site. Works on YouTube, Udemy, Bilibili, Netflix, and more.",
   "private": true,
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
   "scripts": {
     "dev": "wxt",
