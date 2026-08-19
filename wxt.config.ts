@@ -6,7 +6,7 @@ export default defineConfig({
     startUrls: [
       "https://www.bilibili.com/video/",
     ],
-    chromiumArgs: ["--user-data-dir=./.chrome-dev-profile"],
+    chromiumArgs: ["--user-data-dir=./.chrome-dev-profile", "--lang=en-US"],
   },
   modules: ['@wxt-dev/module-react'],
   vite: () => ({ plugins: [tailwindcss()] }),
