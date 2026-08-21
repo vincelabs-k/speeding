@@ -11,6 +11,9 @@
   "noVideoHint": {
     "message": "افتح صفحة تحتوي على فيديو للبدء"
   },
+  "noVideoCta": {
+    "message": "جرّب على يوتيوب"
+  },
   "speedLabel": {
     "message": "السرعة"
   },
@@ -52,6 +55,51 @@
   },
   "ariaRateOnStore": {
     "message": "التقييم على متجر Chrome الإلكتروني"
+  },
+  "scenes": {
+    "message": "مشاهد"
+  },
+  "sceneCourse": {
+    "message": "دورة تعليمية"
+  },
+  "sceneSeries": {
+    "message": "مشاهدة مسلسل"
+  },
+  "sceneListening": {
+    "message": "استماع بلغة أجنبية"
+  },
+  "sceneAdd": {
+    "message": "إضافة مشهد"
+  },
+  "sceneEdit": {
+    "message": "تعديل"
+  },
+  "sceneDelete": {
+    "message": "حذف"
+  },
+  "sceneSave": {
+    "message": "حفظ"
+  },
+  "sceneCancel": {
+    "message": "إلغاء"
+  },
+  "sceneName": {
+    "message": "اسم المشهد"
+  },
+  "sceneSpeed": {
+    "message": "السرعة"
+  },
+  "sceneEmpty": {
+    "message": "لا توجد مشاهد بعد. أضف مشهدًا للبدء."
+  },
+  "ariaSceneAdd": {
+    "message": "إضافة مشهد"
+  },
+  "ariaSceneName": {
+    "message": "اسم المشهد"
+  },
+  "ariaSceneSpeed": {
+    "message": "قيمة سرعة المشهد"
   },
   "videoDetected": {
     "message": "تم اكتشاف $COUNT$ فيديو",
@@ -112,6 +160,37 @@
       "speed": {
         "content": "$1",
         "example": "2"
+      }
+    }
+  },
+  "ariaSceneEdit": {
+    "message": "تعديل المشهد $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneDelete": {
+    "message": "حذف المشهد $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneApply": {
+    "message": "تطبيق المشهد $NAME$ بسرعة $SPEED$×",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      },
+      "speed": {
+        "content": "$2",
+        "example": "16"
       }
     }
   }

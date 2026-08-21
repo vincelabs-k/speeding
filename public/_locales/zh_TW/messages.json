@@ -11,6 +11,9 @@
   "noVideoHint": {
     "message": "打開一個有影片的頁面即可開始"
   },
+  "noVideoCta": {
+    "message": "去 YouTube 試試"
+  },
   "speedLabel": {
     "message": "倍速"
   },
@@ -52,6 +55,51 @@
   },
   "ariaRateOnStore": {
     "message": "在 Chrome 線上應用程式商店評分"
+  },
+  "scenes": {
+    "message": "場景"
+  },
+  "sceneCourse": {
+    "message": "刷課程"
+  },
+  "sceneSeries": {
+    "message": "追劇"
+  },
+  "sceneListening": {
+    "message": "外語聽力"
+  },
+  "sceneAdd": {
+    "message": "新增場景"
+  },
+  "sceneEdit": {
+    "message": "編輯"
+  },
+  "sceneDelete": {
+    "message": "刪除"
+  },
+  "sceneSave": {
+    "message": "儲存"
+  },
+  "sceneCancel": {
+    "message": "取消"
+  },
+  "sceneName": {
+    "message": "場景名稱"
+  },
+  "sceneSpeed": {
+    "message": "倍速"
+  },
+  "sceneEmpty": {
+    "message": "還沒有場景，新增一個開始吧"
+  },
+  "ariaSceneAdd": {
+    "message": "新增一個場景"
+  },
+  "ariaSceneName": {
+    "message": "場景名稱"
+  },
+  "ariaSceneSpeed": {
+    "message": "場景倍速值"
   },
   "videoDetected": {
     "message": "檢測到 $COUNT$ 個影片",
@@ -112,6 +160,37 @@
       "speed": {
         "content": "$1",
         "example": "2"
+      }
+    }
+  },
+  "ariaSceneEdit": {
+    "message": "編輯場景 $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneDelete": {
+    "message": "刪除場景 $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneApply": {
+    "message": "以 $SPEED$× 套用場景 $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      },
+      "speed": {
+        "content": "$2",
+        "example": "16"
       }
     }
   }

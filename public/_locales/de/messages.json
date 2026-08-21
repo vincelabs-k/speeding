@@ -11,6 +11,9 @@
   "noVideoHint": {
     "message": "Öffne eine Seite mit Video, um zu starten"
   },
+  "noVideoCta": {
+    "message": "Auf YouTube ausprobieren"
+  },
   "speedLabel": {
     "message": "Tempo"
   },
@@ -52,6 +55,51 @@
   },
   "ariaRateOnStore": {
     "message": "Im Chrome Web Store bewerten"
+  },
+  "scenes": {
+    "message": "Szenarien"
+  },
+  "sceneCourse": {
+    "message": "Kurs lernen"
+  },
+  "sceneSeries": {
+    "message": "Serien schauen"
+  },
+  "sceneListening": {
+    "message": "Fremdsprachen-Hören"
+  },
+  "sceneAdd": {
+    "message": "Szenario hinzufügen"
+  },
+  "sceneEdit": {
+    "message": "Bearbeiten"
+  },
+  "sceneDelete": {
+    "message": "Löschen"
+  },
+  "sceneSave": {
+    "message": "Speichern"
+  },
+  "sceneCancel": {
+    "message": "Abbrechen"
+  },
+  "sceneName": {
+    "message": "Szenario-Name"
+  },
+  "sceneSpeed": {
+    "message": "Tempo"
+  },
+  "sceneEmpty": {
+    "message": "Noch keine Szenarien. Füge eines hinzu, um zu starten."
+  },
+  "ariaSceneAdd": {
+    "message": "Szenario hinzufügen"
+  },
+  "ariaSceneName": {
+    "message": "Szenario-Name"
+  },
+  "ariaSceneSpeed": {
+    "message": "Szenario-Geschwindigkeitswert"
   },
   "videoDetected": {
     "message": "$COUNT$ Video erkannt",
@@ -112,6 +160,37 @@
       "speed": {
         "content": "$1",
         "example": "2"
+      }
+    }
+  },
+  "ariaSceneEdit": {
+    "message": "Szenario $NAME$ bearbeiten",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneDelete": {
+    "message": "Szenario $NAME$ löschen",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneApply": {
+    "message": "Szenario $NAME$ mit $SPEED$× anwenden",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      },
+      "speed": {
+        "content": "$2",
+        "example": "16"
       }
     }
   }

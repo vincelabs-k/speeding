@@ -11,6 +11,9 @@
   "noVideoHint": {
     "message": "Open een pagina met video om te beginnen"
   },
+  "noVideoCta": {
+    "message": "Probeer op YouTube"
+  },
   "speedLabel": {
     "message": "snelheid"
   },
@@ -52,6 +55,51 @@
   },
   "ariaRateOnStore": {
     "message": "Beoordelen in Chrome Web Store"
+  },
+  "scenes": {
+    "message": "Scènes"
+  },
+  "sceneCourse": {
+    "message": "Cursus leren"
+  },
+  "sceneSeries": {
+    "message": "Series kijken"
+  },
+  "sceneListening": {
+    "message": "Luisteren in vreemde taal"
+  },
+  "sceneAdd": {
+    "message": "Scène toevoegen"
+  },
+  "sceneEdit": {
+    "message": "Bewerken"
+  },
+  "sceneDelete": {
+    "message": "Verwijderen"
+  },
+  "sceneSave": {
+    "message": "Opslaan"
+  },
+  "sceneCancel": {
+    "message": "Annuleren"
+  },
+  "sceneName": {
+    "message": "Scènenaam"
+  },
+  "sceneSpeed": {
+    "message": "Snelheid"
+  },
+  "sceneEmpty": {
+    "message": "Nog geen scènes. Voeg er een toe om te beginnen."
+  },
+  "ariaSceneAdd": {
+    "message": "Een scène toevoegen"
+  },
+  "ariaSceneName": {
+    "message": "Scènenaam"
+  },
+  "ariaSceneSpeed": {
+    "message": "Snelheidswaarde van de scène"
   },
   "videoDetected": {
     "message": "$COUNT$ video gedetecteerd",
@@ -112,6 +160,37 @@
       "speed": {
         "content": "$1",
         "example": "2"
+      }
+    }
+  },
+  "ariaSceneEdit": {
+    "message": "Scène $NAME$ bewerken",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneDelete": {
+    "message": "Scène $NAME$ verwijderen",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneApply": {
+    "message": "Scène $NAME$ toepassen op $SPEED$×",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      },
+      "speed": {
+        "content": "$2",
+        "example": "16"
       }
     }
   }

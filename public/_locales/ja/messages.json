@@ -11,6 +11,9 @@
   "noVideoHint": {
     "message": "動画のあるページを開いてください"
   },
+  "noVideoCta": {
+    "message": "YouTube で試す"
+  },
   "speedLabel": {
     "message": "速度"
   },
@@ -52,6 +55,51 @@
   },
   "ariaRateOnStore": {
     "message": "Chrome ウェブストアで評価"
+  },
+  "scenes": {
+    "message": "シーン"
+  },
+  "sceneCourse": {
+    "message": "コース学習"
+  },
+  "sceneSeries": {
+    "message": "ドラマ視聴"
+  },
+  "sceneListening": {
+    "message": "外国語リスニング"
+  },
+  "sceneAdd": {
+    "message": "シーンを追加"
+  },
+  "sceneEdit": {
+    "message": "編集"
+  },
+  "sceneDelete": {
+    "message": "削除"
+  },
+  "sceneSave": {
+    "message": "保存"
+  },
+  "sceneCancel": {
+    "message": "キャンセル"
+  },
+  "sceneName": {
+    "message": "シーン名"
+  },
+  "sceneSpeed": {
+    "message": "速度"
+  },
+  "sceneEmpty": {
+    "message": "シーンがありません。追加して始めましょう。"
+  },
+  "ariaSceneAdd": {
+    "message": "シーンを追加"
+  },
+  "ariaSceneName": {
+    "message": "シーン名"
+  },
+  "ariaSceneSpeed": {
+    "message": "シーンの速度値"
   },
   "videoDetected": {
     "message": "$COUNT$ 件の動画を検出",
@@ -112,6 +160,37 @@
       "speed": {
         "content": "$1",
         "example": "2"
+      }
+    }
+  },
+  "ariaSceneEdit": {
+    "message": "シーン「$NAME$」を編集",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneDelete": {
+    "message": "シーン「$NAME$」を削除",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneApply": {
+    "message": "シーン「$NAME$」を $SPEED$× で適用",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      },
+      "speed": {
+        "content": "$2",
+        "example": "16"
       }
     }
   }

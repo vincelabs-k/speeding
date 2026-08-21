@@ -8,18 +8,28 @@ import {
   MAX_SPEED,
   STEP,
   type SpeedMode,
+  type Scene,
 } from './speed-model';
 import { LoadingView } from './components/LoadingView';
-import { NoVideoView } from './components/NoVideoView';
+import { NoVideoBanner } from './components/NoVideoBanner';
 import { SpeedBadge } from './components/SpeedBadge';
 import { SectionLabel } from './components/SectionLabel';
 import { ModeToggle } from './components/ModeToggle';
 import { SpeedSlider } from './components/SpeedSlider';
 import { PresetGrid } from './components/PresetGrid';
 import { CustomInput } from './components/CustomInput';
+import { SceneSection } from './components/SceneSection';
 import { RatingButton } from './RatingButton';
+import { setSpeedMode as persistSpeedMode } from '../utils/storage';
 
-type VideoInfo = { speed: number; videoCount: number; speedMode?: SpeedMode; domain?: string };
+type VideoInfo = {
+  speed: number;
+  videoCount: number;
+  speedMode?: SpeedMode;
+  domain?: string;
+  sceneId?: string | null;
+};
+type SceneInfo = { scenes?: Scene[]; siteSceneId?: string | null };
 type LoadingState = 'loading' | 'loaded' | 'no-video';
 
 function App() {
@@ -30,25 +40,34 @@ function App() {
   const [sliderDragPct, setSliderDragPct] = useState(speedToLogPct(1));
   const [speedMode, setSpeedMode] = useState<SpeedMode>('this');
   const [domain, setDomain] = useState('');
+  const [scenes, setScenes] = useState<Scene[]>([]);
+  const [siteSceneId, setSiteSceneId] = useState<string | null>(null);
   const initialized = useRef(false);
 
-  const sendMessage = useCallback(async (type: 'GET_SPEED' | 'SET_SPEED' | 'SET_MODE', speedOrMode?: number | string) => {
+  const sendMessage = useCallback(async (type: 'GET_SPEED' | 'SET_SPEED' | 'SET_MODE' | 'GET_SCENES' | 'SAVE_SCENES' | 'SET_SCENE', arg?: number | string | Scene[] | null) => {
     const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
     if (!tab?.id) return;
 
-    const payload = type === 'SET_SPEED' && typeof speedOrMode === 'number'
-      ? { type, speed: speedOrMode }
-      : type === 'SET_MODE' && typeof speedOrMode === 'string'
-        ? { type, mode: speedOrMode }
-        : { type };
+    let payload: Record<string, unknown>;
+    if (type === 'SET_SPEED' && typeof arg === 'number') payload = { type, speed: arg };
+    else if (type === 'SET_MODE' && typeof arg === 'string') payload = { type, mode: arg };
+    else if (type === 'SET_SCENE') payload = { type, sceneId: typeof arg === 'string' ? arg : null };
+    else if (type === 'SAVE_SCENES' && Array.isArray(arg)) payload = { type, scenes: arg };
+    else payload = { type };
 
     const response = await browser.tabs.sendMessage(tab.id, payload);
-    return response as VideoInfo | { success: boolean; speed: number; speedMode?: SpeedMode } | undefined;
+    return response as (VideoInfo | SceneInfo) | undefined;
   }, []);
 
   useEffect(() => {
     if (initialized.current) return;
     initialized.current = true;
+
+    sendMessage('GET_SCENES').then((res) => {
+      const data = res as SceneInfo | undefined;
+      if (data && Array.isArray(data.scenes)) setScenes(data.scenes);
+      if (data && 'siteSceneId' in data) setSiteSceneId(data.siteSceneId ?? null);
+    }).catch(() => undefined);
 
     sendMessage('GET_SPEED').then((res) => {
       if (res && 'speed' in res && typeof res.speed === 'number') {
@@ -59,6 +78,7 @@ function App() {
         setSliderDragPct(speedToLogPct(info.speed));
         if (info.speedMode) setSpeedMode(info.speedMode);
         if (info.domain) setDomain(info.domain);
+        if (info.sceneId !== undefined) setSiteSceneId(info.sceneId);
         setLoadState(info.videoCount > 0 ? 'loaded' : 'no-video');
       } else {
         setLoadState('no-video');
@@ -73,20 +93,59 @@ function App() {
     setSpeed(clamped);
     setCustomInput(formatSpeed(clamped));
     setSliderDragPct(speedToLogPct(clamped));
-    sendMessage('SET_SPEED', clamped);
+    sendMessage('SET_SPEED', clamped).then((res) => {
+      const data = res as { speedMode?: SpeedMode } | undefined;
+      if (data?.speedMode) setSpeedMode(data.speedMode);
+    }).catch(() => undefined);
   }, [sendMessage]);
 
   const handleModeChange = useCallback(async (mode: SpeedMode) => {
     if (mode === speedMode) return;
-    const res = await sendMessage('SET_MODE', mode);
+    // Optimistic: respond immediately even on pages without a content script.
+    setSpeedMode(mode);
+    const res = await sendMessage('SET_MODE', mode).catch(() => undefined);
     if (res && 'speed' in res && typeof res.speed === 'number') {
-      const newSpeed = res.speed;
+      const info = res as VideoInfo;
+      const newSpeed = info.speed;
       setSpeed(newSpeed);
-      setSpeedMode(mode);
       setCustomInput(formatSpeed(newSpeed));
       setSliderDragPct(speedToLogPct(newSpeed));
+      if (info.sceneId !== undefined) setSiteSceneId(info.sceneId);
+    } else {
+      // Content script unreachable (chrome://, Web Store, etc.): persist the mode
+      // directly so the next video page picks it up on load.
+      await persistSpeedMode(mode).catch(() => undefined);
     }
   }, [speedMode, sendMessage]);
+
+  const handleSceneSelect = useCallback(async (sceneId: string | null) => {
+    const res = await sendMessage('SET_SCENE', sceneId).catch(() => undefined);
+    if (res && 'speed' in res && typeof res.speed === 'number') {
+      const info = res as VideoInfo;
+      setSpeed(info.speed);
+      if (info.speedMode) setSpeedMode(info.speedMode);
+      setCustomInput(formatSpeed(info.speed));
+      setSliderDragPct(speedToLogPct(info.speed));
+      setSiteSceneId(info.sceneId ?? null);
+    }
+  }, [sendMessage]);
+
+  const handleScenesSave = useCallback((next: Scene[]) => {
+    setScenes(next);
+    if (siteSceneId !== null && !next.some((s) => s.id === siteSceneId)) {
+      setSiteSceneId(null);
+    }
+    sendMessage('SAVE_SCENES', next).then((res) => {
+      // Editing the bound scene's speed syncs the slider / badge / input.
+      const data = res as { speed?: number; speedMode?: SpeedMode } | undefined;
+      if (data && typeof data.speed === 'number') {
+        setSpeed(data.speed);
+        setCustomInput(formatSpeed(data.speed));
+        setSliderDragPct(speedToLogPct(data.speed));
+        if (data.speedMode) setSpeedMode(data.speedMode);
+      }
+    }).catch(() => undefined);
+  }, [sendMessage, siteSceneId]);
 
   const handleSlider = useCallback((pct: number) => {
     setSliderDragPct(pct);
@@ -115,11 +174,6 @@ function App() {
     return <LoadingView />;
   }
 
-  // ── No video ──
-  if (loadState === 'no-video') {
-    return <NoVideoView />;
-  }
-
   // ── Main ──
   return (
     <div className="w-[360px] bg-white">
@@ -128,17 +182,35 @@ function App() {
         <div className="px-5 pt-5 pb-4 flex items-center justify-between">
           <div>
             <h1 className="text-lg font-bold tracking-tight text-slate-800">Speeding</h1>
-            <p className="text-caption text-slate-400 mt-0.5 font-medium">
-              {browser.i18n.getMessage(videoCount === 1 ? 'videoDetected' : 'videosDetected', videoCount.toString())}
-            </p>
+            {videoCount > 0 && (
+              <p className="text-caption text-slate-400 mt-0.5 font-medium">
+                {browser.i18n.getMessage(videoCount === 1 ? 'videoDetected' : 'videosDetected', videoCount.toString())}
+              </p>
+            )}
           </div>
           <SpeedBadge speed={speed} />
         </div>
+
+        {/* No-video banner */}
+        {videoCount === 0 && <NoVideoBanner />}
 
         {/* Mode Toggle */}
         <div className="px-5 pb-3">
           <ModeToggle mode={speedMode} domain={domain} onModeChange={handleModeChange} />
         </div>
+
+        {/* Scenes */}
+        {speedMode === 'scenes' && (
+          <div className="px-5 pb-3">
+            <SectionLabel>{browser.i18n.getMessage('scenes')}</SectionLabel>
+            <SceneSection
+              scenes={scenes}
+              siteSceneId={siteSceneId}
+              onSelect={handleSceneSelect}
+              onSave={handleScenesSave}
+            />
+          </div>
+        )}
 
         {/* Slider */}
         <SpeedSlider speed={speed} dragPct={sliderDragPct} onDrag={handleSlider} onCommit={handleSliderCommit} />

@@ -11,6 +11,9 @@
   "noVideoHint": {
     "message": "Abre una página con video para empezar"
   },
+  "noVideoCta": {
+    "message": "Probar en YouTube"
+  },
   "speedLabel": {
     "message": "velocidad"
   },
@@ -52,6 +55,51 @@
   },
   "ariaRateOnStore": {
     "message": "Valorar en Chrome Web Store"
+  },
+  "scenes": {
+    "message": "Escenas"
+  },
+  "sceneCourse": {
+    "message": "Curso"
+  },
+  "sceneSeries": {
+    "message": "Ver series"
+  },
+  "sceneListening": {
+    "message": "Audición en otro idioma"
+  },
+  "sceneAdd": {
+    "message": "Añadir escena"
+  },
+  "sceneEdit": {
+    "message": "Editar"
+  },
+  "sceneDelete": {
+    "message": "Eliminar"
+  },
+  "sceneSave": {
+    "message": "Guardar"
+  },
+  "sceneCancel": {
+    "message": "Cancelar"
+  },
+  "sceneName": {
+    "message": "Nombre de la escena"
+  },
+  "sceneSpeed": {
+    "message": "Velocidad"
+  },
+  "sceneEmpty": {
+    "message": "Aún no hay escenas. Añade una para empezar."
+  },
+  "ariaSceneAdd": {
+    "message": "Añadir una escena"
+  },
+  "ariaSceneName": {
+    "message": "Nombre de la escena"
+  },
+  "ariaSceneSpeed": {
+    "message": "Valor de velocidad de la escena"
   },
   "videoDetected": {
     "message": "$COUNT$ video detectado",
@@ -112,6 +160,37 @@
       "speed": {
         "content": "$1",
         "example": "2"
+      }
+    }
+  },
+  "ariaSceneEdit": {
+    "message": "Editar escena $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneDelete": {
+    "message": "Eliminar escena $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneApply": {
+    "message": "Aplicar escena $NAME$ a $SPEED$×",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      },
+      "speed": {
+        "content": "$2",
+        "example": "16"
       }
     }
   }

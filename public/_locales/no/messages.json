@@ -11,6 +11,9 @@
   "noVideoHint": {
     "message": "Åpne en side med video for å komme i gang"
   },
+  "noVideoCta": {
+    "message": "Prøv på YouTube"
+  },
   "speedLabel": {
     "message": "hastighet"
   },
@@ -52,6 +55,51 @@
   },
   "ariaRateOnStore": {
     "message": "Vurder i Chrome Web Store"
+  },
+  "scenes": {
+    "message": "Scenarier"
+  },
+  "sceneCourse": {
+    "message": "Kursstudier"
+  },
+  "sceneSeries": {
+    "message": "Seriemaraton"
+  },
+  "sceneListening": {
+    "message": "Lytting på fremmedspråk"
+  },
+  "sceneAdd": {
+    "message": "Legg til scenarie"
+  },
+  "sceneEdit": {
+    "message": "Rediger"
+  },
+  "sceneDelete": {
+    "message": "Slett"
+  },
+  "sceneSave": {
+    "message": "Lagre"
+  },
+  "sceneCancel": {
+    "message": "Avbryt"
+  },
+  "sceneName": {
+    "message": "Scenarionavn"
+  },
+  "sceneSpeed": {
+    "message": "Hastighet"
+  },
+  "sceneEmpty": {
+    "message": "Ingen scenarier ennå. Legg til ett for å komme i gang."
+  },
+  "ariaSceneAdd": {
+    "message": "Legg til et scenarie"
+  },
+  "ariaSceneName": {
+    "message": "Scenarionavn"
+  },
+  "ariaSceneSpeed": {
+    "message": "Hastighetsverdi for scenariet"
   },
   "videoDetected": {
     "message": "$COUNT$ video funnet",
@@ -112,6 +160,37 @@
       "speed": {
         "content": "$1",
         "example": "2"
+      }
+    }
+  },
+  "ariaSceneEdit": {
+    "message": "Rediger scenariet $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneDelete": {
+    "message": "Slett scenariet $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneApply": {
+    "message": "Bruk scenariet $NAME$ på $SPEED$×",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      },
+      "speed": {
+        "content": "$2",
+        "example": "16"
       }
     }
   }

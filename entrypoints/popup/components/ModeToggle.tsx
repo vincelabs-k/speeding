@@ -6,8 +6,10 @@ type Props = {
   onModeChange: (mode: SpeedMode) => void;
 };
 
+type TabKey = 'thisSite' | 'scenes' | 'allSites';
+
 export const ModeToggle = ({ mode, domain, onModeChange }: Props) => {
-  const renderButton = (target: SpeedMode, labelKey: 'thisSite' | 'allSites', iconPath: string) => {
+  const renderButton = (target: SpeedMode, labelKey: TabKey, iconPath: string) => {
     const isActive = mode === target;
     return (
       <button
@@ -39,6 +41,11 @@ export const ModeToggle = ({ mode, domain, onModeChange }: Props) => {
           'this',
           'thisSite',
           'M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21',
+        )}
+        {renderButton(
+          'scenes',
+          'scenes',
+          'M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3',
         )}
         {renderButton(
           'all',

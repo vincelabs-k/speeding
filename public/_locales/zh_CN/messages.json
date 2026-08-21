@@ -11,6 +11,9 @@
   "noVideoHint": {
     "message": "打开一个有视频的页面即可开始"
   },
+  "noVideoCta": {
+    "message": "去 YouTube 试试"
+  },
   "speedLabel": {
     "message": "倍速"
   },
@@ -52,6 +55,51 @@
   },
   "ariaRateOnStore": {
     "message": "在 Chrome 网上应用店评分"
+  },
+  "scenes": {
+    "message": "场景"
+  },
+  "sceneCourse": {
+    "message": "刷课程"
+  },
+  "sceneSeries": {
+    "message": "追剧"
+  },
+  "sceneListening": {
+    "message": "外语听力"
+  },
+  "sceneAdd": {
+    "message": "添加场景"
+  },
+  "sceneEdit": {
+    "message": "编辑"
+  },
+  "sceneDelete": {
+    "message": "删除"
+  },
+  "sceneSave": {
+    "message": "保存"
+  },
+  "sceneCancel": {
+    "message": "取消"
+  },
+  "sceneName": {
+    "message": "场景名称"
+  },
+  "sceneSpeed": {
+    "message": "倍速"
+  },
+  "sceneEmpty": {
+    "message": "还没有场景，添加一个开始吧"
+  },
+  "ariaSceneAdd": {
+    "message": "添加一个场景"
+  },
+  "ariaSceneName": {
+    "message": "场景名称"
+  },
+  "ariaSceneSpeed": {
+    "message": "场景倍速值"
   },
   "videoDetected": {
     "message": "检测到 $COUNT$ 个视频",
@@ -112,6 +160,37 @@
       "speed": {
         "content": "$1",
         "example": "2"
+      }
+    }
+  },
+  "ariaSceneEdit": {
+    "message": "编辑场景 $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneDelete": {
+    "message": "删除场景 $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneApply": {
+    "message": "以 $SPEED$× 应用场景 $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      },
+      "speed": {
+        "content": "$2",
+        "example": "16"
       }
     }
   }

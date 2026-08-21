@@ -11,6 +11,9 @@
   "noVideoHint": {
     "message": "शुरू करने के लिए वीडियो वाला पेज खोलें"
   },
+  "noVideoCta": {
+    "message": "YouTube पर आज़माएँ"
+  },
   "speedLabel": {
     "message": "गति"
   },
@@ -52,6 +55,51 @@
   },
   "ariaRateOnStore": {
     "message": "Chrome वेब स्टोर पर रेटिंग दें"
+  },
+  "scenes": {
+    "message": "दृश्य"
+  },
+  "sceneCourse": {
+    "message": "कोर्स पढ़ाई"
+  },
+  "sceneSeries": {
+    "message": "सीरीज़ देखना"
+  },
+  "sceneListening": {
+    "message": "विदेशी भाषा सुनना"
+  },
+  "sceneAdd": {
+    "message": "दृश्य जोड़ें"
+  },
+  "sceneEdit": {
+    "message": "संपादित करें"
+  },
+  "sceneDelete": {
+    "message": "हटाएं"
+  },
+  "sceneSave": {
+    "message": "सहेजें"
+  },
+  "sceneCancel": {
+    "message": "रद्द करें"
+  },
+  "sceneName": {
+    "message": "दृश्य का नाम"
+  },
+  "sceneSpeed": {
+    "message": "गति"
+  },
+  "sceneEmpty": {
+    "message": "अभी कोई दृश्य नहीं। शुरू करने के लिए एक जोड़ें।"
+  },
+  "ariaSceneAdd": {
+    "message": "एक दृश्य जोड़ें"
+  },
+  "ariaSceneName": {
+    "message": "दृश्य का नाम"
+  },
+  "ariaSceneSpeed": {
+    "message": "दृश्य गति मान"
   },
   "videoDetected": {
     "message": "$COUNT$ वीडियो मिला",
@@ -112,6 +160,37 @@
       "speed": {
         "content": "$1",
         "example": "2"
+      }
+    }
+  },
+  "ariaSceneEdit": {
+    "message": "$NAME$ दृश्य संपादित करें",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneDelete": {
+    "message": "$NAME$ दृश्य हटाएं",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneApply": {
+    "message": "$NAME$ दृश्य $SPEED$× पर लागू करें",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      },
+      "speed": {
+        "content": "$2",
+        "example": "16"
       }
     }
   }

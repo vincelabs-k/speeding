@@ -11,6 +11,9 @@
   "noVideoHint": {
     "message": "Ouvrez une page contenant une vidéo pour commencer"
   },
+  "noVideoCta": {
+    "message": "Essayer sur YouTube"
+  },
   "speedLabel": {
     "message": "vitesse"
   },
@@ -52,6 +55,51 @@
   },
   "ariaRateOnStore": {
     "message": "Noter sur le Chrome Web Store"
+  },
+  "scenes": {
+    "message": "Scènes"
+  },
+  "sceneCourse": {
+    "message": "Cours"
+  },
+  "sceneSeries": {
+    "message": "Séries"
+  },
+  "sceneListening": {
+    "message": "Écoute en langue étrangère"
+  },
+  "sceneAdd": {
+    "message": "Ajouter une scène"
+  },
+  "sceneEdit": {
+    "message": "Modifier"
+  },
+  "sceneDelete": {
+    "message": "Supprimer"
+  },
+  "sceneSave": {
+    "message": "Enregistrer"
+  },
+  "sceneCancel": {
+    "message": "Annuler"
+  },
+  "sceneName": {
+    "message": "Nom de la scène"
+  },
+  "sceneSpeed": {
+    "message": "Vitesse"
+  },
+  "sceneEmpty": {
+    "message": "Aucune scène pour l'instant. Ajoutez-en une pour commencer."
+  },
+  "ariaSceneAdd": {
+    "message": "Ajouter une scène"
+  },
+  "ariaSceneName": {
+    "message": "Nom de la scène"
+  },
+  "ariaSceneSpeed": {
+    "message": "Valeur de vitesse de la scène"
   },
   "videoDetected": {
     "message": "$COUNT$ vidéo détectée",
@@ -112,6 +160,37 @@
       "speed": {
         "content": "$1",
         "example": "2"
+      }
+    }
+  },
+  "ariaSceneEdit": {
+    "message": "Modifier la scène $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneDelete": {
+    "message": "Supprimer la scène $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneApply": {
+    "message": "Appliquer la scène $NAME$ à $SPEED$×",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      },
+      "speed": {
+        "content": "$2",
+        "example": "16"
       }
     }
   }

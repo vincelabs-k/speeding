@@ -11,6 +11,9 @@
   "noVideoHint": {
     "message": "동영상이 있는 페이지를 열어 시작하세요"
   },
+  "noVideoCta": {
+    "message": "YouTube에서 사용해 보기"
+  },
   "speedLabel": {
     "message": "속도"
   },
@@ -52,6 +55,51 @@
   },
   "ariaRateOnStore": {
     "message": "Chrome 웹 스토어에서 평가"
+  },
+  "scenes": {
+    "message": "장면"
+  },
+  "sceneCourse": {
+    "message": "강의 수강"
+  },
+  "sceneSeries": {
+    "message": "시리즈 몰아보기"
+  },
+  "sceneListening": {
+    "message": "외국어 듣기"
+  },
+  "sceneAdd": {
+    "message": "장면 추가"
+  },
+  "sceneEdit": {
+    "message": "편집"
+  },
+  "sceneDelete": {
+    "message": "삭제"
+  },
+  "sceneSave": {
+    "message": "저장"
+  },
+  "sceneCancel": {
+    "message": "취소"
+  },
+  "sceneName": {
+    "message": "장면 이름"
+  },
+  "sceneSpeed": {
+    "message": "속도"
+  },
+  "sceneEmpty": {
+    "message": "아직 장면이 없습니다. 하나 추가하여 시작하세요."
+  },
+  "ariaSceneAdd": {
+    "message": "장면 추가"
+  },
+  "ariaSceneName": {
+    "message": "장면 이름"
+  },
+  "ariaSceneSpeed": {
+    "message": "장면 속도 값"
   },
   "videoDetected": {
     "message": "$COUNT$개의 동영상 감지됨",
@@ -112,6 +160,37 @@
       "speed": {
         "content": "$1",
         "example": "2"
+      }
+    }
+  },
+  "ariaSceneEdit": {
+    "message": "$NAME$ 장면 편집",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneDelete": {
+    "message": "$NAME$ 장면 삭제",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneApply": {
+    "message": "$NAME$ 장면을 $SPEED$×로 적용",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      },
+      "speed": {
+        "content": "$2",
+        "example": "16"
       }
     }
   }

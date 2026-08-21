@@ -2,11 +2,16 @@ import { SpeedController } from './utils/speed-controller';
 import {
   getSpeedMode,
   getResolvedSpeed,
+  getScenes,
+  saveScenes,
+  getSiteSceneId,
+  setSiteScene,
   setGlobalSpeed,
   setSiteSpeed,
   setSpeedMode,
 } from './utils/storage';
 import type { SpeedMode } from './utils/storage';
+import type { Scene } from './popup/speed-model';
 import { recordUsage } from './utils/stats';
 
 const STEP = 0.25;
@@ -28,12 +33,17 @@ export default defineContentScript({
       }
     };
 
-    const persistSpeed = (speed: number) => {
+    const persistSpeed = async (speed: number) => {
       if (currentMode === 'all') {
-        setGlobalSpeed(speed);
-      } else {
-        setSiteSpeed(hostname, speed);
+        await setGlobalSpeed(speed);
+        return;
       }
+      // A manual speed adjustment exits Scenes mode back to This site.
+      if (currentMode === 'scenes') {
+        currentMode = 'this';
+        await setSpeedMode('this');
+      }
+      await setSiteSpeed(hostname, speed);
     };
 
     const controller = new SpeedController(initialSpeed);
@@ -54,46 +64,108 @@ export default defineContentScript({
       maybeRecord();
 
       if (persistTimer) clearTimeout(persistTimer);
-      persistTimer = setTimeout(() => persistSpeed(newSpeed), 300);
+      persistTimer = setTimeout(() => {
+        void persistSpeed(newSpeed);
+      }, 300);
     };
 
     document.addEventListener('keydown', handleKeydown, true);
 
-    browser.runtime.onMessage.addListener((msg: { type: string; speed?: number; mode?: SpeedMode }) => {
-      if (msg.type === 'GET_SPEED') {
-        return Promise.resolve({
-          speed: controller.getSpeed(),
-          videoCount: controller.getVideoCount(),
-          speedMode: currentMode,
-          domain: hostname,
-        });
-      }
-
-      if (msg.type === 'SET_SPEED' && typeof msg.speed === 'number') {
-        controller.setSpeed(msg.speed);
-        persistSpeed(msg.speed);
-        maybeRecord();
-
-        return Promise.resolve({
-          success: true,
-          speed: controller.getSpeed(),
-        });
-      }
-
-      if (msg.type === 'SET_MODE' && msg.mode) {
-        currentMode = msg.mode;
-        return (async () => {
-          await setSpeedMode(msg.mode!);
-          const resolved = await getResolvedSpeed(hostname);
-          controller.setSpeed(resolved);
-          maybeRecord();
-          return {
-            success: true,
+    browser.runtime.onMessage.addListener(
+      (msg: {
+        type: string;
+        speed?: number;
+        mode?: SpeedMode;
+        sceneId?: string | null;
+        scenes?: Scene[];
+      }) => {
+        if (msg.type === 'GET_SPEED') {
+          return (async () => ({
             speed: controller.getSpeed(),
+            videoCount: controller.getVideoCount(),
             speedMode: currentMode,
-          };
-        })();
-      }
-    });
+            domain: hostname,
+            sceneId: await getSiteSceneId(hostname),
+          }))();
+        }
+
+        if (msg.type === 'SET_SPEED' && typeof msg.speed === 'number') {
+          return (async () => {
+            controller.setSpeed(msg.speed);
+            await persistSpeed(msg.speed);
+            maybeRecord();
+            return {
+              success: true,
+              speed: controller.getSpeed(),
+              speedMode: currentMode,
+            };
+          })();
+        }
+
+        if (msg.type === 'SET_MODE' && msg.mode) {
+          currentMode = msg.mode;
+          return (async () => {
+            await setSpeedMode(msg.mode!);
+            const resolved = await getResolvedSpeed(hostname);
+            controller.setSpeed(resolved);
+            maybeRecord();
+            return {
+              success: true,
+              speed: controller.getSpeed(),
+              speedMode: currentMode,
+              sceneId: await getSiteSceneId(hostname),
+            };
+          })();
+        }
+
+        if (msg.type === 'GET_SCENES') {
+          return (async () => {
+            const scenes = await getScenes();
+            const siteSceneId = await getSiteSceneId(hostname);
+            return { scenes, siteSceneId };
+          })();
+        }
+
+        if (msg.type === 'SET_SCENE') {
+          return (async () => {
+            const sceneId = msg.sceneId ?? null;
+            if (sceneId !== null) {
+              const scenes = await getScenes();
+              const exists = scenes.some((s) => s.id === sceneId);
+              if (!exists) {
+                return { success: false, error: 'SCENE_NOT_FOUND', speed: controller.getSpeed(), sceneId: null };
+              }
+            }
+            if (currentMode !== 'scenes') {
+              currentMode = 'scenes';
+              await setSpeedMode('scenes');
+            }
+            await setSiteScene(hostname, sceneId);
+            const resolved = await getResolvedSpeed(hostname);
+            controller.setSpeed(resolved);
+            maybeRecord();
+            return {
+              success: true,
+              speed: controller.getSpeed(),
+              speedMode: currentMode,
+              sceneId,
+            };
+          })();
+        }
+
+        if (msg.type === 'SAVE_SCENES' && Array.isArray(msg.scenes)) {
+          return (async () => {
+            await saveScenes(msg.scenes!);
+            // Editing the bound scene's speed should take effect immediately.
+            if (currentMode === 'scenes') {
+              const resolved = await getResolvedSpeed(hostname);
+              controller.setSpeed(resolved);
+              return { success: true, speed: controller.getSpeed(), speedMode: currentMode };
+            }
+            return { success: true };
+          })();
+        }
+      },
+    );
   },
 });

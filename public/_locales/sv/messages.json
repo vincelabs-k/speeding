@@ -11,6 +11,9 @@
   "noVideoHint": {
     "message": "Öppna en sida med video för att komma igång"
   },
+  "noVideoCta": {
+    "message": "Prova på YouTube"
+  },
   "speedLabel": {
     "message": "hastighet"
   },
@@ -52,6 +55,51 @@
   },
   "ariaRateOnStore": {
     "message": "Betygsätt i Chrome Web Store"
+  },
+  "scenes": {
+    "message": "Scener"
+  },
+  "sceneCourse": {
+    "message": "Kursstudier"
+  },
+  "sceneSeries": {
+    "message": "Serietittande"
+  },
+  "sceneListening": {
+    "message": "Lyssna på främmande språk"
+  },
+  "sceneAdd": {
+    "message": "Lägg till scen"
+  },
+  "sceneEdit": {
+    "message": "Redigera"
+  },
+  "sceneDelete": {
+    "message": "Ta bort"
+  },
+  "sceneSave": {
+    "message": "Spara"
+  },
+  "sceneCancel": {
+    "message": "Avbryt"
+  },
+  "sceneName": {
+    "message": "Scennamn"
+  },
+  "sceneSpeed": {
+    "message": "Hastighet"
+  },
+  "sceneEmpty": {
+    "message": "Inga scener än. Lägg till en för att komma igång."
+  },
+  "ariaSceneAdd": {
+    "message": "Lägg till en scen"
+  },
+  "ariaSceneName": {
+    "message": "Scennamn"
+  },
+  "ariaSceneSpeed": {
+    "message": "Scenhastighetsvärde"
   },
   "videoDetected": {
     "message": "$COUNT$ video hittad",
@@ -112,6 +160,37 @@
       "speed": {
         "content": "$1",
         "example": "2"
+      }
+    }
+  },
+  "ariaSceneEdit": {
+    "message": "Redigera scen $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneDelete": {
+    "message": "Ta bort scen $NAME$",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      }
+    }
+  },
+  "ariaSceneApply": {
+    "message": "Verkställ scen $NAME$ på $SPEED$×",
+    "placeholders": {
+      "name": {
+        "content": "$1",
+        "example": "Course study"
+      },
+      "speed": {
+        "content": "$2",
+        "example": "16"
       }
     }
   }

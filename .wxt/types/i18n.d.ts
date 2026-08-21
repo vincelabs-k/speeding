@@ -105,6 +105,14 @@ declare module "wxt/browser" {
       options?: GetMessageOptions,
     ): string;
     /**
+     * "Try on YouTube"
+     */
+    getMessage(
+      messageName: "noVideoCta",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
      * "speed"
      */
     getMessage(
@@ -217,6 +225,126 @@ declare module "wxt/browser" {
       options?: GetMessageOptions,
     ): string;
     /**
+     * "Scenes"
+     */
+    getMessage(
+      messageName: "scenes",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Course study"
+     */
+    getMessage(
+      messageName: "sceneCourse",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Series bingeing"
+     */
+    getMessage(
+      messageName: "sceneSeries",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Foreign listening"
+     */
+    getMessage(
+      messageName: "sceneListening",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Add scene"
+     */
+    getMessage(
+      messageName: "sceneAdd",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Edit"
+     */
+    getMessage(
+      messageName: "sceneEdit",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Delete"
+     */
+    getMessage(
+      messageName: "sceneDelete",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Save"
+     */
+    getMessage(
+      messageName: "sceneSave",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Cancel"
+     */
+    getMessage(
+      messageName: "sceneCancel",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Scene name"
+     */
+    getMessage(
+      messageName: "sceneName",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Speed"
+     */
+    getMessage(
+      messageName: "sceneSpeed",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "No scenes yet. Add one to get started."
+     */
+    getMessage(
+      messageName: "sceneEmpty",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Add a scene"
+     */
+    getMessage(
+      messageName: "ariaSceneAdd",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Scene name"
+     */
+    getMessage(
+      messageName: "ariaSceneName",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Scene speed value"
+     */
+    getMessage(
+      messageName: "ariaSceneSpeed",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
      * "$COUNT$ video detected"
      */
     getMessage(
@@ -264,8 +392,32 @@ declare module "wxt/browser" {
       substitutions?: string | string[],
       options?: GetMessageOptions,
     ): string;
+    /**
+     * "Edit scene $NAME$"
+     */
     getMessage(
-      messageName: "@@extension_id" | "@@ui_locale" | "@@bidi_dir" | "@@bidi_reversed_dir" | "@@bidi_start_edge" | "@@bidi_end_edge" | "extName" | "extDescription" | "noVideo" | "noVideoHint" | "speedLabel" | "thisSite" | "allSites" | "presets" | "custom" | "speedPlaceholder" | "apply" | "rateOnStore" | "shortcutHint" | "ariaLoading" | "ariaSlider" | "ariaCustomSpeed" | "ariaApplyCustom" | "ariaRateOnStore" | "videoDetected" | "videosDetected" | "dragToAdjust" | "rangeStep" | "ariaSpeedDisplay" | "ariaPresetSpeed",
+      messageName: "ariaSceneEdit",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Delete scene $NAME$"
+     */
+    getMessage(
+      messageName: "ariaSceneDelete",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    /**
+     * "Apply scene $NAME$ at $SPEED$×"
+     */
+    getMessage(
+      messageName: "ariaSceneApply",
+      substitutions?: string | string[],
+      options?: GetMessageOptions,
+    ): string;
+    getMessage(
+      messageName: "@@extension_id" | "@@ui_locale" | "@@bidi_dir" | "@@bidi_reversed_dir" | "@@bidi_start_edge" | "@@bidi_end_edge" | "extName" | "extDescription" | "noVideo" | "noVideoHint" | "noVideoCta" | "speedLabel" | "thisSite" | "allSites" | "presets" | "custom" | "speedPlaceholder" | "apply" | "rateOnStore" | "shortcutHint" | "ariaLoading" | "ariaSlider" | "ariaCustomSpeed" | "ariaApplyCustom" | "ariaRateOnStore" | "scenes" | "sceneCourse" | "sceneSeries" | "sceneListening" | "sceneAdd" | "sceneEdit" | "sceneDelete" | "sceneSave" | "sceneCancel" | "sceneName" | "sceneSpeed" | "sceneEmpty" | "ariaSceneAdd" | "ariaSceneName" | "ariaSceneSpeed" | "videoDetected" | "videosDetected" | "dragToAdjust" | "rangeStep" | "ariaSpeedDisplay" | "ariaPresetSpeed" | "ariaSceneEdit" | "ariaSceneDelete" | "ariaSceneApply",
       substitutions?: string | string[],
       options?: GetMessageOptions,
     ): string;
