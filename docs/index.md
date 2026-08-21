@@ -4,7 +4,7 @@ layout: default
 
 # Speeding Documentation
 
-Video speed controller with pitch-preserving audio. Works on Bilibili, YouTube, Vimeo, Netflix, and online course platforms.
+Video speed controller with pitch-preserving audio and scene presets for course study, series bingeing, and foreign listening. Works on Bilibili, YouTube, Vimeo, Netflix, and online course platforms.
 
 ## Documents
 

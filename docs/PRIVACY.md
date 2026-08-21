@@ -1,6 +1,6 @@
 # Privacy Policy for Speeding
 
-**Last Updated: August 7, 2026**
+**Last Updated: August 21, 2026**
 
 ## Data Collection
 
@@ -9,7 +9,9 @@
 The extension stores the following non-personal configuration data locally on your device:
 
 - **Per-site speed preferences** (domain name + speed value): So your chosen playback speed is remembered for each website you visit.
-- **Mode preference** ("This site" or "All sites"): Controls whether speed is remembered per-domain or shared globally.
+- **Mode preference** ("This site", "Scenes", or "All sites"): Controls whether speed is remembered per-domain, applied per-scene, or shared globally.
+- **Scene presets and custom scenes** (scene name + speed value): Built-in presets for course study (16x), series bingeing (1.25x), and foreign listening (0.75x), plus any scenes you create or edit.
+- **Site-to-scene bindings** (domain name + scene identifier): Maps a website to a scene so the right speed is applied automatically.
 
 **Where data is stored:**
 - Primarily in `chrome.storage.sync` — allows your preferences to sync across devices when signed into Chrome.
@@ -32,7 +34,7 @@ The extension requests the following permissions:
 
 - **`activeTab`**: Required to interact with `<video>` elements on the current page to adjust playback speed. This permission is only activated when the user clicks the extension icon. The extension does not access any page content beyond video playback state.
 
-- **`storage`**: Required to save your per-site speed preferences locally and sync them across your Chrome devices via Chrome Sync. Only domain names and speed values are stored. No personal identifying information is involved.
+- **`storage`**: Required to save your per-site speed preferences, scene presets, and site-to-scene bindings locally and sync them across your Chrome devices via Chrome Sync. Only domain names, scene names, and speed values are stored. No personal identifying information is involved.
 
 ## Content Scripts
 
